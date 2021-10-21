@@ -43,9 +43,21 @@ class SentimentLexicon(Evaluation):
 
         # TODO Q0
         for review in reviews:
-            
-            if magnitude:
-                pass
+            label = review[0]
+            content = review[1]
+
+            count = 0
+            for word in content:
+                if word in self.lexicon:
+                    if self.lexicon[word][1] == 'positive':
+                        count += 1
+                    else:
+                        count -= 1
+
+            if count >= threshold and label=="POS":
+                self.predictions.append("+")
+            elif count < threshold and label=="NEG":
+                self.predictions.append("+")
             else:
-                pass
+                self.predictions.append("-")
 
