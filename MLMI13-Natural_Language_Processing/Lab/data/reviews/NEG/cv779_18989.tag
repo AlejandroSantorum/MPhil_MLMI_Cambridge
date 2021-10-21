@@ -1,0 +1,32 @@
+9	CD
+:	:
+Its	PRP$
+pathetic	JJ
+attempt	NN
+at	IN
+``	``
+improving	VBG
+''	''
+on	IN
+a	DT
+Shakespeare	NNP
+classic	NN
+.	.
+
+10a	JJ
+classic	JJ
+9borderline	JJ
+classic	JJ
+8excellent	JJ
+7good	NN
+6better	NN
+than	IN
+average	JJ
+5average	JJ
+4disappointing	NN
+3poor	NN
+2awful	JJ
+1a	NN
+crap	NN
+classic	NN
+
