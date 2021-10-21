@@ -1,10 +1,10 @@
 import numpy, os
 from subprocess import call
 from gensim.models import Doc2Vec
-from Classifiers import SVM
+from Classifiers import SVMText
 
 
-class SVMDoc2Vec(SVM):
+class SVMDoc2Vec(SVMText):
     """ 
     class for baseline extension using SVM with Doc2Vec pre-trained vectors
     """
