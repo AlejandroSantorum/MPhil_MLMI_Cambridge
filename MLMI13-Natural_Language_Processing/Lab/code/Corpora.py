@@ -26,6 +26,37 @@ class MovieReviewCorpus():
         # import movie reviews
         self.get_reviews()
 
+
+    def _read_datafolder(self, extension='txt', sign='POS'):
+        DATA_PATH = "data/reviews/"
+        data_path = DATA_PATH + sign + "/"
+
+        all_files = os.listdir(data_path)
+
+        for file in all_files:
+            if file[-3:] == extension:
+                with open(data_path+file, 'r') as f:
+                    for line in f:
+                        if len(line) > 1:
+                            line_wo_final_period = line[:-2] # deliting \n and final period
+                            review_tuple = (sign, line_wo_final_period.split())
+                            #print(file, '-', review_tuple)
+                            self.reviews.append(review_tuple)
+                            
+                            if file[:3] == 'cv9':
+                                self.test.append(review_tuple)
+                            else:
+                                self.train.append(review_tuple)
+
+                            fold_num = int(file[2])
+                            if fold_num in self.folds:
+                                self.folds[fold_num].append(review_tuple)
+                            else:
+                                self.folds[fold_num] = [review_tuple]
+
+
+
+
     def get_reviews(self):
         """
         processing of movie reviews.
@@ -46,3 +77,13 @@ class MovieReviewCorpus():
            you can get the fold number from the review file name.
         """
         # TODO Q0
+
+        self._read_datafolder(extension='txt', sign='POS')
+        self._read_datafolder(extension='txt', sign='NEG')
+
+        print(self.reviews[0])
+        print(self.folds[8][0])
+
+
+        
+        
