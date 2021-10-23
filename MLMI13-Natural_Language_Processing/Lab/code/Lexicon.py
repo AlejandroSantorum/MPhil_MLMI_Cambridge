@@ -47,7 +47,9 @@ class SentimentLexicon(Evaluation):
             content = review[1]
 
             count = 0
-            for word in content:
+            for word_tag in content:
+                word = word_tag[0]
+                # USED IN THE FUTURE: tag = word_tag[1]
                 if word in self.lexicon:
                     if self.lexicon[word][1] == 'positive':
                         count += 1

@@ -26,35 +26,78 @@ class MovieReviewCorpus():
         # import movie reviews
         self.get_reviews()
 
+    
+    def _read_txtfile(self, data_path, filename, sign):
+        '''
+        with open(data_path+filename, 'r') as f:
+            for line in f:
+                if len(line) > 1:
+                    line_wo_final_period = line[:-2] # deliting \n and final period
+                    review_tuple = (sign, line_wo_final_period.split())
+                    #print(file, '-', review_tuple)
+                    self.reviews.append(review_tuple)
+                    
+                    if file[:3] == 'cv9':
+                        self.test.append(review_tuple)
+                    else:
+                        self.train.append(review_tuple)
 
-    def _read_datafolder(self, extension='txt', sign='POS'):
+                    fold_num = int(file[2])
+                    if fold_num in self.folds:
+                        self.folds[fold_num].append(review_tuple)
+                    else:
+                        self.folds[fold_num] = [review_tuple]
+        '''
+        pass
+
+
+    def _read_tagfile(self, data_path, filename, sign):
+        with open(data_path+filename, 'r') as f:
+            review_list = []
+            for line in f:
+                # omitting empty lines
+                if len(line) > 1:
+                    # line[:-1] to delete final \n, and then splitting by tabs  
+                    word_tag = tuple(line[:-1].split("\t"))
+                    # adding to (word, tag) list
+                    review_list.append(word_tag)
+
+            # adding review
+            review = (sign, review_list)
+            self.reviews.append(review)
+
+            # adding review to train/test sets
+            if filename[:3] == 'cv9':
+                self.test.append(review)
+            else:
+                self.train.append(review)
+
+            # adding review to its corresponding fold
+            fold_num = int(filename[2])
+            if fold_num in self.folds:
+                self.folds[fold_num].append(review)
+            else:
+                self.folds[fold_num] = [review]
+
+
+    def _read_datafolder(self, extension='tag', sign='POS'):
         DATA_PATH = "data/reviews/"
         data_path = DATA_PATH + sign + "/"
 
         all_files = os.listdir(data_path)
 
-        for file in all_files:
-            if file[-3:] == extension:
-                with open(data_path+file, 'r') as f:
-                    for line in f:
-                        if len(line) > 1:
-                            line_wo_final_period = line[:-2] # deliting \n and final period
-                            review_tuple = (sign, line_wo_final_period.split())
-                            #print(file, '-', review_tuple)
-                            self.reviews.append(review_tuple)
-                            
-                            if file[:3] == 'cv9':
-                                self.test.append(review_tuple)
-                            else:
-                                self.train.append(review_tuple)
+        if extension == 'tag':
+            for filename in all_files:
+                if filename[-3:] == extension:
+                    self._read_tagfile(data_path, filename, sign)
 
-                            fold_num = int(file[2])
-                            if fold_num in self.folds:
-                                self.folds[fold_num].append(review_tuple)
-                            else:
-                                self.folds[fold_num] = [review_tuple]
+        elif extension == 'txt':
+            for filename in all_files:
+                if filename[-3:] == extension:
+                    self._read_txtfile(data_path, filename)
 
-
+        else:
+            print("Corpora Error: given extension not suppported")
 
 
     def get_reviews(self):
@@ -78,11 +121,8 @@ class MovieReviewCorpus():
         """
         # TODO Q0
 
-        self._read_datafolder(extension='txt', sign='POS')
-        self._read_datafolder(extension='txt', sign='NEG')
-
-        print(self.reviews[0])
-        print(self.folds[8][0])
+        self._read_datafolder(extension='tag', sign='POS')
+        self._read_datafolder(extension='tag', sign='NEG')
 
 
         
