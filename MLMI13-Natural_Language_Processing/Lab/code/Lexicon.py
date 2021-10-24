@@ -42,20 +42,16 @@ class SentimentLexicon(Evaluation):
         self.predictions=[]
 
         # TODO Q0
-        for review in reviews:
-            sentiment = review[0]
-            content = review[1]
-
+        for sentiment,review in reviews:
             count = 0
-            for word_tag in content:
-                word = word_tag[0]
+            for word,tag in review:
                 if word in self.lexicon:
                     if self.lexicon[word][1] == 'positive':
                         if magnitude and self.lexicon[word][0] == 'strongsubj':
                             count += 2
                         else:
                             count += 1
-                    else:
+                    elif self.lexicon[word][1] == 'negative':
                         if magnitude and self.lexicon[word][0] == 'strongsubj':
                             count -= 2
                         else:
