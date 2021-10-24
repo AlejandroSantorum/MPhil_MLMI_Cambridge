@@ -160,17 +160,10 @@ class NaiveBayesText(Evaluation):
                     if token in self.condProb["NEG"]:
                         arg_neg += np.log(self.condProb["NEG"][token])
 
-            '''
-            print("Review:", review)
-            print("Sentiment:", sentiment)
-            print("Arg POS:", arg_pos)
-            print("Arg NEG:", arg_neg)
-            '''
-
             if arg_pos > arg_neg and sentiment == "POS":
                 self.predictions.append("+")
             elif arg_pos < arg_neg and sentiment == "NEG":
-                self.predictions.append("-")
+                self.predictions.append("+")
             elif arg_pos == arg_neg:
                 # If posterior is equal for both classes, then we choose the class with highest prior
                 if self.prior["POS"] > self.prior["NEG"] and sentiment == "POS":
@@ -181,9 +174,6 @@ class NaiveBayesText(Evaluation):
                     self.predictions.append("-")
             else:
                 self.predictions.append("-")
-
-
-
 
 
 
