@@ -75,7 +75,8 @@ class NaiveBayesText(Evaluation):
     def create_vocab_dict(self):
         vocab_to_id = {}
         for word in self.vocabulary:
-            vocab_to_id[word] = len(vocab_to_id)
+            #vocab_to_id[word] = len(vocab_to_id)
+            vocab_to_id[word] = 0
         return vocab_to_id
 
     def train(self,reviews):
@@ -98,46 +99,44 @@ class NaiveBayesText(Evaluation):
         
         total_pos_reviews = 0
         total_neg_reviews = 0
-        self.condProb["POS"] = {}
-        self.condProb["NEG"] = {}
+        self.condProb["POS"] = self.create_vocab_dict()
+        self.condProb["NEG"] = self.create_vocab_dict()
 
         for sentiment,review in reviews:
             if sentiment == "POS":
                 # calculating total number of positive reviews
                 total_pos_reviews += 1
-                # calculating appearences for conditional probabilities
-                for token in review:
-                    if token in self.vocabulary:
-                        if token in self.condProb["POS"]:
-                            self.condProb["POS"][token] += 1
-                        else:
-                            self.condProb["POS"][token] = 1
-
             else:
                 # calculating total number of negative reviews
                 total_neg_reviews += 1
-                # calculating appearences for conditional probabilities
-                for token in review:
-                    if token in self.vocabulary:
-                        if token in self.condProb["NEG"]:
-                            self.condProb["NEG"][token] += 1
-                        else:
-                            self.condProb["NEG"][token] = 1
+            
+            # calculating appearences for each token (word + tag)
+            for token in review:
+                if token in self.vocabulary:
+                    if sentiment == "POS":
+                        self.condProb["POS"][token] += 1
+                    else:
+                        self.condProb["NEG"][token] += 1
+
+        # TODO Q2 (use switch for smoothing from self.smoothing)
+        # Laplace smoothing if specified
+        if self.smoothing:
+            for token in self.vocabulary:
+                self.condProb["POS"][token] += 1
+                self.condProb["NEG"][token] += 1
 
         # calculating priors
-        self.prior["POS"] = total_pos_reviews/len(reviews)
-        self.prior["NEG"] = total_neg_reviews/len(reviews)
+        self.prior["POS"] = np.log(total_pos_reviews/len(reviews))
+        self.prior["NEG"] = np.log(total_neg_reviews/len(reviews))
 
         # calculating conditional probabilities by calculating frequencies per class
         total_words_in_pos = sum(self.condProb["POS"].values())
         total_words_in_neg = sum(self.condProb["NEG"].values())
         for token in self.vocabulary:
-            if token in self.condProb["POS"]:
-                self.condProb["POS"][token] /= total_words_in_pos
-            if token in self.condProb["NEG"]:
-                self.condProb["NEG"][token] /= total_words_in_neg
-
-        # TODO Q2 (use switch for smoothing from self.smoothing)
+            if self.condProb["POS"][token] > 0:
+                self.condProb["POS"][token] = np.log(self.condProb["POS"][token]/total_words_in_pos)
+            if self.condProb["NEG"][token] > 0:
+                self.condProb["NEG"][token] = np.log(self.condProb["NEG"][token]/total_words_in_neg)
 
 
     def test(self,reviews):
@@ -150,15 +149,13 @@ class NaiveBayesText(Evaluation):
         """
         # TODO Q1
         for sentiment,review in reviews:
-            arg_pos = np.log(self.prior["POS"])
-            arg_neg = np.log(self.prior["NEG"])
+            arg_pos = self.prior["POS"]
+            arg_neg = self.prior["NEG"]
 
             for token in review:
                 if token in self.vocabulary:
-                    if token in self.condProb["POS"]:
-                        arg_pos += np.log(self.condProb["POS"][token])
-                    if token in self.condProb["NEG"]:
-                        arg_neg += np.log(self.condProb["NEG"][token])
+                    arg_pos += self.condProb["POS"][token]
+                    arg_neg += self.condProb["NEG"][token]
 
             if arg_pos > arg_neg and sentiment == "POS":
                 self.predictions.append("+")
