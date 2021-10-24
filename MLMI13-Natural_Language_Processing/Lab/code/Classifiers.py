@@ -173,9 +173,6 @@ class NaiveBayesText(Evaluation):
                 self.predictions.append("-")
 
 
-
-
-
 class SVMText(Evaluation):
     def __init__(self,bigrams,trigrams,discard_closed_class):
         """

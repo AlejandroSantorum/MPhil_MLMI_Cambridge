@@ -19,7 +19,25 @@ class Evaluation():
         """
         # reset predictions
         self.predictions=[]
+
         # TODO Q3
+        all_fold_predictions = []
+        n_folds = len(corpus.folds)
+        for i in range(n_folds):
+            # test fold
+            test_reviews = corpus.folds[i]
+            # building train set using the rest of the folds
+            train_reviews = []
+            for j in range(n_folds):
+                if i != j:
+                    train_reviews += corpus.folds[j]
+            
+            self.train(train_reviews)
+            self.test(test_reviews)
+            all_fold_predictions += self.predictions
+
+        self.predictions = all_fold_predictions
+            
 
     def getStdDeviation(self):
         """
