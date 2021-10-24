@@ -94,7 +94,51 @@ class NaiveBayesText(Evaluation):
         @type reviews: list of (string, list) tuples corresponding to (label, content)
         """
         # TODO Q1
+        self.extractVocabulary(reviews)
+        
+        total_pos_reviews = 0
+        total_neg_reviews = 0
+        self.condProb["POS"] = {}
+        self.condProb["NEG"] = {}
+
+        for sentiment,review in reviews:
+            if sentiment == "POS":
+                # calculating total number of positive reviews
+                total_pos_reviews += 1
+                # calculating appearences for conditional probabilities
+                for token in review:
+                    if token in self.vocabulary:
+                        if token in self.condProb["POS"]:
+                            self.condProb["POS"][token] += 1
+                        else:
+                            self.condProb["POS"][token] = 1
+
+            else:
+                # calculating total number of negative reviews
+                total_neg_reviews += 1
+                # calculating appearences for conditional probabilities
+                for token in review:
+                    if token in self.vocabulary:
+                        if token in self.condProb["NEG"]:
+                            self.condProb["NEG"][token] += 1
+                        else:
+                            self.condProb["NEG"][token] = 1
+
+        # calculating priors
+        self.prior["POS"] = total_pos_reviews/len(reviews)
+        self.prior["NEG"] = total_neg_reviews/len(reviews)
+
+        # calculating conditional probabilities by calculating frequencies per class
+        total_words_in_pos = sum(self.condProb["POS"].values())
+        total_words_in_neg = sum(self.condProb["NEG"].values())
+        for token in self.vocabulary:
+            if token in self.condProb["POS"]:
+                self.condProb["POS"][token] /= total_words_in_pos
+            if token in self.condProb["NEG"]:
+                self.condProb["NEG"][token] /= total_words_in_neg
+
         # TODO Q2 (use switch for smoothing from self.smoothing)
+
 
     def test(self,reviews):
         """
@@ -105,6 +149,45 @@ class NaiveBayesText(Evaluation):
         @type reviews: list of (string, list) tuples corresponding to (label, content)
         """
         # TODO Q1
+        for sentiment,review in reviews:
+            arg_pos = np.log(self.prior["POS"])
+            arg_neg = np.log(self.prior["NEG"])
+
+            for token in review:
+                if token in self.vocabulary:
+                    if token in self.condProb["POS"]:
+                        arg_pos += np.log(self.condProb["POS"][token])
+                    if token in self.condProb["NEG"]:
+                        arg_neg += np.log(self.condProb["NEG"][token])
+
+            '''
+            print("Review:", review)
+            print("Sentiment:", sentiment)
+            print("Arg POS:", arg_pos)
+            print("Arg NEG:", arg_neg)
+            '''
+
+            if arg_pos > arg_neg and sentiment == "POS":
+                self.predictions.append("+")
+            elif arg_pos < arg_neg and sentiment == "NEG":
+                self.predictions.append("-")
+            elif arg_pos == arg_neg:
+                # If posterior is equal for both classes, then we choose the class with highest prior
+                if self.prior["POS"] > self.prior["NEG"] and sentiment == "POS":
+                    self.predictions.append("+")
+                elif self.prior["POS"] < self.prior["NEG"] and sentiment == "NEG":
+                    self.predictions.append("+")
+                else:
+                    self.predictions.append("-")
+            else:
+                self.predictions.append("-")
+
+
+
+
+
+
+
 
 class SVMText(Evaluation):
     def __init__(self,bigrams,trigrams,discard_closed_class):
