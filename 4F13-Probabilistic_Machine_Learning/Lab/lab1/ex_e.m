@@ -6,7 +6,7 @@ n_train = size(x,1);
 sq_train = sqrt(n_train);
 
 % Building test points
-x_aux = -3:0.3:3;
+x_aux = -3:0.6:3;
 sq_test = size(x_aux,2);
 n_test = sq_test^2;
 [x_aux,y_aux] = meshgrid(x_aux);
@@ -30,16 +30,16 @@ nlZ1 = gp(hyp1_2, @infGaussLik, meanfunc, covfunc1, likfunc, x, y);
 
 fprintf('Negative Log Likelihood value at optimized hyperparams (GP1): %f\n', nlZ1);
 
-[mu_1 s2_1] =  gp(hyp1_2, @infGaussLik, meanfunc, covfunc1, likfunc, x, y, xs);
+[mu_1,s2_1] =  gp(hyp1_2, @infGaussLik, meanfunc, covfunc1, likfunc, x, y, xs);
 
-%subplot(2,1,1);
+subplot(1,2,1);
 mesh(reshape(xs(:,1),sq_test,sq_test),reshape(xs(:,2),sq_test,sq_test),reshape(mu_1,sq_test,sq_test));
 hold on;
 mesh(reshape(xs(:,1),sq_test,sq_test),reshape(xs(:,2),sq_test,sq_test),reshape(mu_1+2*sqrt(s2_1),sq_test,sq_test));
 hold on;
 mesh(reshape(xs(:,1),sq_test,sq_test),reshape(xs(:,2),sq_test,sq_test),reshape(mu_1-2*sqrt(s2_1),sq_test,sq_test));
-%subplot(2,1,2);
-%mesh(reshape(x(:,1),sq_train,sq_train),reshape(x(:,2),sq_train,sq_train),reshape(y,sq_train,sq_train));
+title("Fitting using first (simpler) GP model");
+
 
 %% Second GP model
 covfunc2 = {@covSum, {@covSEard, @covSEard}};
@@ -52,4 +52,14 @@ nlZ2 = gp(hyp1_2, @infGaussLik, meanfunc, covfunc1, likfunc, x, y);
 
 fprintf('Negative Log Likelihood value at optimized hyperparams (GP2): %f\n', nlZ2);
 
-[mu_2 s2_2] =  gp(hyp2_2, @infGaussLik, meanfunc, covfunc2, likfunc, x, y, xs);
+[mu_2,s2_2] =  gp(hyp2_2, @infGaussLik, meanfunc, covfunc2, likfunc, x, y, xs);
+
+subplot(1,2,2);
+mesh(reshape(xs(:,1),sq_test,sq_test),reshape(xs(:,2),sq_test,sq_test),reshape(mu_2,sq_test,sq_test));
+hold on;
+mesh(reshape(xs(:,1),sq_test,sq_test),reshape(xs(:,2),sq_test,sq_test),reshape(mu_2+2*sqrt(s2_2),sq_test,sq_test));
+hold on;
+mesh(reshape(xs(:,1),sq_test,sq_test),reshape(xs(:,2),sq_test,sq_test),reshape(mu_2-2*sqrt(s2_2),sq_test,sq_test));
+title("Fitting using second (complex) GP model");
+
+sgtitle('Plots comparing both GP models - including mean and std') 
