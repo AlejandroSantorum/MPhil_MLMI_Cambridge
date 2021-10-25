@@ -95,10 +95,15 @@ class NaiveBayesText(Evaluation):
         @type reviews: list of (string, list) tuples corresponding to (label, content)
         """
         # TODO Q1
+        # resetting self.vocabulary
+        self.vocabulary = set()
         self.extractVocabulary(reviews)
-        
+        # resetting self.prior
+        self.prior = {}
         total_pos_reviews = 0
         total_neg_reviews = 0
+        # resetting self.condProb
+        self.condProb = {}
         self.condProb["POS"] = self.create_vocab_dict()
         self.condProb["NEG"] = self.create_vocab_dict()
 

@@ -57,8 +57,12 @@ class MovieReviewCorpus():
             for line in f:
                 # omitting empty lines
                 if len(line) > 1:
-                    # line[:-1] to delete final \n, and then splitting by tabs  
-                    word_tag = tuple(line[:-1].split("\t"))
+                    # line[:-1] to delete final \n, and then splitting by tabs
+                    word_tag_list = line[:-1].split("\t")
+                    # stemming if specified at class constructor
+                    if self.stemmer:
+                        word_tag_list[0] = self.stemmer.stem(word_tag_list[0])
+                    word_tag = tuple(word_tag_list)
                     # adding to (word, tag) list
                     review_list.append(word_tag)
 
