@@ -12,32 +12,31 @@ covfunc = @covSEiso;        % Squared Exponental covariance function
 likfunc = @likGauss;        % Gaussian likelihood
 
 %% Specify support of hyperparameter search ("GridSearch")
-cov_log_ls = [-1 1];
-cov_log_ns = [-1 1];
+cov = [0.1 0.1; 0.7 0.5; 0.1 10; 0.7 5; 0.1 100; 1 10; 0.1 1000; 1 10];
 
 %% Training changing initial hyperparameters
 nsubplot = 0;
-for i = 1:length(cov_log_ls)
-    for j = 1:length(cov_log_ns)
-        % Set initial hyperparams
-        hyp = struct('mean', [], 'cov', [cov_log_ls(i) cov_log_ns(j)], 'lik', 0);
-        
-        % Set hyperparameters by optimizing the (log) marginal likelihood
-        hyp2 = minimize(hyp, @gp, -100, @infGaussLik, meanfunc, covfunc, likfunc, x, y);
-        
-        % Make predictions using these hyperparameters
-        [mu, s2] = gp(hyp2, @infGaussLik, meanfunc, covfunc, likfunc, x, y, xs);
-        
-        % Plotting
-        nsubplot = nsubplot+1;
-        subplot(2,2,nsubplot);
-        f = [mu+2*sqrt(s2); flip(mu-2*sqrt(s2),1)];
-        fill([xs; flip(xs,1)], f, [7 7 7]/8)
-        hold on;
-        plot(xs, mu);
-        plot(x, y, '+')
-        title("Lengthscale: "+cov_log_ls(i)+" , Noise: "+cov_log_ns(i));
-    end
+for i = 1:size(cov,1)
+    % Set initial hyperparams
+    hyp = struct('mean', [], 'cov', [log(cov(i,1)) log(cov(i,2))], 'lik', 0);
+
+    % Set hyperparameters by optimizing the (log) marginal likelihood
+    hyp2 = minimize(hyp, @gp, -100, @infGaussLik, meanfunc, covfunc, likfunc, x, y);
+
+    % Make predictions using these hyperparameters
+    [mu, s2] = gp(hyp2, @infGaussLik, meanfunc, covfunc, likfunc, x, y, xs);
+
+    % Plotting
+    nsubplot = nsubplot+1;
+    subplot(4,2,nsubplot);
+    f = [mu+2*sqrt(s2); flip(mu-2*sqrt(s2),1)];
+    fill([xs; flip(xs,1)], f, [7 7 7]/8)
+    hold on;
+    plot(xs, mu);
+    plot(x, y, '+')
+    xlabel("x");
+    ylabel("y");
+    title(nsubplot+") Lengthscale: "+cov(i,1)+" , Amplitude: "+cov(i,2));
 end
 
 sgtitle('Data fit for different hyperparameter values') 
