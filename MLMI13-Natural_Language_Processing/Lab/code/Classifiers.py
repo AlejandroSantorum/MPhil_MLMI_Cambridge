@@ -256,7 +256,8 @@ class SVMText(Evaluation):
 
     def train(self,reviews):
         """
-        train svm
+        train svm. This uses the sklearn SVM module, and further details can be found using
+        the sci-kit docs. You can try changing the SVM parameters. 
 
         @param reviews: training data
         @type reviews: list of (string, list) tuples corresponding to (label, content)
@@ -264,7 +265,8 @@ class SVMText(Evaluation):
         # function to determine features in training set.
         self.getFeatures(reviews)
 
-        # train SVM model
+        # reset SVM classifier and train SVM model
+        self.svm_classifier = svm.SVC()
         self.svm_classifier.fit(self.input_features, self.labels)
 
     def test(self,reviews):
