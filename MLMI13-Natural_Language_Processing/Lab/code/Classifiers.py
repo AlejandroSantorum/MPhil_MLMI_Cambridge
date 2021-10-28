@@ -98,6 +98,7 @@ class NaiveBayesText(Evaluation):
         # resetting self.vocabulary
         self.vocabulary = set()
         self.extractVocabulary(reviews)
+
         # resetting self.prior
         self.prior = {}
         total_pos_reviews = 0

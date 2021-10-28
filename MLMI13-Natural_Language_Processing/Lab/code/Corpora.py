@@ -29,24 +29,7 @@ class MovieReviewCorpus():
     
     def _read_txtfile(self, data_path, filename, sign):
         '''
-        with open(data_path+filename, 'r') as f:
-            for line in f:
-                if len(line) > 1:
-                    line_wo_final_period = line[:-2] # deliting \n and final period
-                    review_tuple = (sign, line_wo_final_period.split())
-                    #print(file, '-', review_tuple)
-                    self.reviews.append(review_tuple)
-                    
-                    if file[:3] == 'cv9':
-                        self.test.append(review_tuple)
-                    else:
-                        self.train.append(review_tuple)
-
-                    fold_num = int(file[2])
-                    if fold_num in self.folds:
-                        self.folds[fold_num].append(review_tuple)
-                    else:
-                        self.folds[fold_num] = [review_tuple]
+            ¿¿¿ TODO ???
         '''
         pass
 
@@ -62,9 +45,13 @@ class MovieReviewCorpus():
                     # stemming if specified at class constructor
                     if self.stemmer:
                         word_tag_list[0] = self.stemmer.stem(word_tag_list[0])
-                    word_tag = tuple(word_tag_list)
-                    # adding to (word, tag) list
-                    review_list.append(word_tag)
+                    if self.pos:
+                        word_tag = tuple(word_tag_list)
+                        # adding (word, tag) to list
+                        review_list.append(word_tag)
+                    else:
+                        # adding just the word to list
+                        review_list.append(word_tag_list[0])
 
             # adding review
             review = (sign, review_list)
@@ -77,7 +64,7 @@ class MovieReviewCorpus():
                 self.train.append(review)
 
             # adding review to its corresponding fold
-            fold_num = int(filename[2])
+            fold_num = int(filename[4])
             if fold_num in self.folds:
                 self.folds[fold_num].append(review)
             else:

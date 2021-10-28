@@ -44,7 +44,11 @@ class SentimentLexicon(Evaluation):
         # TODO Q0
         for sentiment,review in reviews:
             count = 0
-            for word,tag in review:
+            for token in review:
+                if len(token)==2: # token contains POS tag
+                    word = token[0]
+                else:
+                    word = token
                 if word in self.lexicon:
                     if self.lexicon[word][1] == 'positive':
                         if magnitude and self.lexicon[word][0] == 'strongsubj':

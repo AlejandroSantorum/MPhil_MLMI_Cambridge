@@ -21,7 +21,6 @@ class Evaluation():
         self.predictions=[]
 
         # TODO Q3
-        all_fold_predictions = []
         n_folds = len(corpus.folds)
         for i in range(n_folds):
             # test fold
@@ -34,9 +33,6 @@ class Evaluation():
             
             self.train(train_reviews)
             self.test(test_reviews)
-            all_fold_predictions += self.predictions
-
-        self.predictions = all_fold_predictions
             
 
     def getStdDeviation(self):
@@ -62,3 +58,4 @@ class Evaluation():
         # note: data set is balanced so just taking number of correctly classified over total
         # "+" = correctly classified and "-" = error
         return self.predictions.count("+")/float(len(self.predictions))
+
