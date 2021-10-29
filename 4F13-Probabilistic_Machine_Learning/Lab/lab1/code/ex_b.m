@@ -1,4 +1,4 @@
-%% Loading data for coursework1-a
+%% Loading data for coursework1-a,b
 data = load('cw1a.mat');
 % train data
 x = data.x;
@@ -12,7 +12,7 @@ covfunc = @covSEiso;        % Squared Exponental covariance function
 likfunc = @likGauss;        % Gaussian likelihood
 
 %% Specify support of hyperparameter search ("GridSearch")
-cov = [0.1 0.1; 0.7 0.5; 0.1 10; 0.7 5; 0.1 100; 1 10; 0.1 1000; 1 10];
+cov = [0.1 exp(1); 0.7 0.5; 0.1 100; 0.7 5; 0.1 1000; 1 exp(1)];
 
 %% Training changing initial hyperparameters
 nsubplot = 0;
@@ -28,7 +28,7 @@ for i = 1:size(cov,1)
 
     % Plotting
     nsubplot = nsubplot+1;
-    subplot(4,2,nsubplot);
+    subplot(3,2,nsubplot);
     f = [mu+2*sqrt(s2); flip(mu-2*sqrt(s2),1)];
     fill([xs; flip(xs,1)], f, [7 7 7]/8)
     hold on;

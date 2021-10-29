@@ -36,7 +36,6 @@ hold on;
 plot(xs, mu);
 % Plotting training data points
 plot(x, y, '+')
-
 xlabel("x");
 ylabel("y");
 title("Plot of the training data and the predictive mean at the test points together with the predictive 95% confidence bounds");

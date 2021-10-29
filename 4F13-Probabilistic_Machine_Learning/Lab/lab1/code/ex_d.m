@@ -23,5 +23,8 @@ y = chol(K)'*gpml_randn(0.15, n, n_functions);
 
 %% Plotting sampled functions
 plot(x, y)
+title("Sampled functions of the specified GP model");
+xlabel("x");
+ylabel("y");
 ylim([-3 3])
 
