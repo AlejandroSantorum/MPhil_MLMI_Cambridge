@@ -232,10 +232,25 @@ class SVMText(Evaluation):
             else:
                 text.append(term)
         if self.bigrams:
-            for bigram in ngrams(review,2): text.append(term)
+            for bigram in ngrams(review,2): text.append(bigram)
         if self.trigrams:
-            for trigram in ngrams(review,3): text.append(term)
+            for trigram in ngrams(review,3): text.append(trigram)
         return text
+
+    def create_vocab_dict(self):
+        vocab_to_id = {}
+        for word in self.vocabulary:
+            vocab_to_id[word] = 0
+        return vocab_to_id
+
+    def _buildFeature(self,review):
+        feature_dict = self.create_vocab_dict()
+        for token in review:
+            if token in self.vocabulary:
+                feature_dict[token] += 1
+
+        return list(feature_dict.values())
+
 
     def getFeatures(self,reviews):
         """
@@ -252,7 +267,17 @@ class SVMText(Evaluation):
         self.input_features = []
         self.labels = []
 
-        # TODO Q6.
+        # TODO Q6.0
+        self.extractVocabulary(reviews)
+
+        for sentiment, review in reviews:
+            # storing sentiment a.k.a. label
+            self.labels.append(sentiment)
+            # building feature, i.e., choosing tokens that are in the vocabulary
+            input_feat = self._buildFeature(review)
+            # storing feature
+            self.input_features.append(input_feat)
+
 
     def train(self,reviews):
         """
@@ -269,6 +294,7 @@ class SVMText(Evaluation):
         self.svm_classifier = svm.SVC()
         self.svm_classifier.fit(self.input_features, self.labels)
 
+
     def test(self,reviews):
         """
         test svm
@@ -278,3 +304,20 @@ class SVMText(Evaluation):
         """
 
         # TODO Q6.1
+        self.true_labels = []
+        self.test_features = []
+
+        for sentiment,review in reviews:
+            self.true_labels.append(sentiment)
+            test_feat = self._buildFeature(review)
+            self.test_features.append(test_feat)
+
+        self.pred_labels = self.svm_classifier.predict(self.test_features)
+
+        n_labels = len(self.true_labels)
+        for i in range(n_labels):
+            if self.pred_labels[i] == self.true_labels[i]:
+                self.predictions.append("+")
+            else:
+                self.predictions.append("-")
+        
