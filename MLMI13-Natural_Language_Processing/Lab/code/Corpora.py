@@ -45,6 +45,7 @@ class MovieReviewCorpus():
                     # stemming if specified at class constructor
                     if self.stemmer:
                         word_tag_list[0] = self.stemmer.stem(word_tag_list[0])
+
                     if self.pos:
                         word_tag = tuple(word_tag_list)
                         # adding (word, tag) to list

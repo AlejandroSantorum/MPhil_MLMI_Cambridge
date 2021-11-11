@@ -4,6 +4,8 @@ from nltk.util import ngrams
 from Analysis import Evaluation
 import numpy as np
 from sklearn import svm
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
 
 class NaiveBayesText(Evaluation):
     def __init__(self,smoothing,bigrams,trigrams,discard_closed_class):
@@ -237,19 +239,30 @@ class SVMText(Evaluation):
             for trigram in ngrams(review,3): text.append(trigram)
         return text
 
-    def create_vocab_dict(self):
-        vocab_to_id = {}
-        for word in self.vocabulary:
-            vocab_to_id[word] = 0
-        return vocab_to_id
 
-    def _buildFeature(self,review):
-        feature_dict = self.create_vocab_dict()
-        for token in review:
-            if token in self.vocabulary:
-                feature_dict[token] += 1
+    def _buildFeatures(self, reviews, mode='train'):
+        all_reviews = []
+        for sentiment, review in reviews:
+            # storing sentiment a.k.a. label
+            if mode=='train':
+                self.labels.append(sentiment)
+            else:
+                self.true_labels.append(sentiment)
 
-        return list(feature_dict.values())
+            # joining words to feed it to scikit-learn
+            all_reviews.append(" ".join(review))
+        
+        # counting occurrences
+        vectorizer = CountVectorizer(vocabulary=self.vocabulary)
+        x_counts = vectorizer.fit_transform(all_reviews)
+        # from occurrences to frequences
+        tf_transformer = TfidfTransformer()
+        x_tf = tf_transformer.fit_transform(x_counts)
+
+        if mode=='train':
+            self.input_features = x_tf
+        else:
+            self.test_features = x_tf
 
 
     def getFeatures(self,reviews):
@@ -269,14 +282,8 @@ class SVMText(Evaluation):
 
         # TODO Q6.0
         self.extractVocabulary(reviews)
+        self._buildFeatures(reviews, mode='train')
 
-        for sentiment, review in reviews:
-            # storing sentiment a.k.a. label
-            self.labels.append(sentiment)
-            # building feature, i.e., choosing tokens that are in the vocabulary
-            input_feat = self._buildFeature(review)
-            # storing feature
-            self.input_features.append(input_feat)
 
 
     def train(self,reviews):
@@ -307,11 +314,7 @@ class SVMText(Evaluation):
         self.true_labels = []
         self.test_features = []
 
-        for sentiment,review in reviews:
-            self.true_labels.append(sentiment)
-            test_feat = self._buildFeature(review)
-            self.test_features.append(test_feat)
-
+        self._buildFeatures(reviews, mode='test')
         self.pred_labels = self.svm_classifier.predict(self.test_features)
 
         n_labels = len(self.true_labels)
