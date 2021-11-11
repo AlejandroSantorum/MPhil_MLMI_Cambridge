@@ -26,13 +26,6 @@ class MovieReviewCorpus():
         # import movie reviews
         self.get_reviews()
 
-    
-    def _read_txtfile(self, data_path, filename, sign):
-        '''
-            ¿¿¿ TODO ???
-        '''
-        pass
-
 
     def _read_tagfile(self, data_path, filename, sign):
         with open(data_path+filename, 'r') as f:
@@ -82,14 +75,15 @@ class MovieReviewCorpus():
             for filename in all_files:
                 if filename[-3:] == extension:
                     self._read_tagfile(data_path, filename, sign)
+        else:
+            print("Corpora Error: given extension not suppported")
 
+        ''' >> NOT USING TXT FILES <<
         elif extension == 'txt':
             for filename in all_files:
                 if filename[-3:] == extension:
                     self._read_txtfile(data_path, filename)
-
-        else:
-            print("Corpora Error: given extension not suppported")
+        '''
 
 
     def get_reviews(self):
@@ -115,7 +109,3 @@ class MovieReviewCorpus():
 
         self._read_datafolder(extension='tag', sign='POS')
         self._read_datafolder(extension='tag', sign='NEG')
-
-
-        
-        

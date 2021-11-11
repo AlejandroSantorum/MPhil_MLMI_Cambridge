@@ -211,11 +211,15 @@ class SVMText(Evaluation):
         # restrict to nouns, adjectives, adverbs and verbs?
         self.discard_closed_class=discard_closed_class
 
+
     def extractVocabulary(self,reviews):
         self.vocabulary = set()
         for sentiment, review in reviews:
             for token in self.extractReviewTokens(review):
-                 self.vocabulary.add(token)
+                if type(token) is tuple:
+                    self.vocabulary.add("_".join(token))
+                else:
+                    self.vocabulary.add(token)
 
     def extractReviewTokens(self,review):
         """
@@ -244,24 +248,33 @@ class SVMText(Evaluation):
         all_reviews = []
         for sentiment, review in reviews:
             # storing sentiment a.k.a. label
-            if mode=='train':
+            if mode == 'train':
                 self.labels.append(sentiment)
             else:
                 self.true_labels.append(sentiment)
 
             # joining words to feed it to scikit-learn
-            all_reviews.append(" ".join(review))
-        
-        # counting occurrences
-        vectorizer = CountVectorizer(vocabulary=self.vocabulary)
-        x_counts = vectorizer.fit_transform(all_reviews)
-        # from occurrences to frequences
-        tf_transformer = TfidfTransformer()
-        x_tf = tf_transformer.fit_transform(x_counts)
+            if type(review[0]) is tuple:
+                joined_word_tag_list = ["_".join(word_tag_tuple) for word_tag_tuple in review]
+                joined_word_tag_list = [elem for elem in joined_word_tag_list if elem in self.vocabulary]
+                all_reviews.append(" ".join(joined_word_tag_list))
+            else:
+                filtered_word_list = [word for word in review if word in self.vocabulary]
+                all_reviews.append(" ".join(filtered_word_list))
 
-        if mode=='train':
+        if mode == 'train':
+            self.vectorizer = CountVectorizer()
+            self.tf_transformer = TfidfTransformer()
+            # counting occurrences
+            x_counts = self.vectorizer.fit_transform(all_reviews)
+            # from occurrences to frequences
+            x_tf = self.tf_transformer.fit_transform(x_counts)
             self.input_features = x_tf
         else:
+            # counting occurrences
+            x_counts = self.vectorizer.transform(all_reviews)
+            # from occurrences to frequences
+            x_tf = self.tf_transformer.transform(x_counts)
             self.test_features = x_tf
 
 
