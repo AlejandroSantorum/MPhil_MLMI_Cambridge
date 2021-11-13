@@ -26,11 +26,17 @@ def gibbs_sample(G, M, num_iters):
         # Jointly sample skills given performance differences
         m = np.zeros((M, 1))
         for p in range(M):
-            m[p] =  # TODO: COMPLETE THIS LINE
-        iS = np.zeros((M, M))  # Container for sum of precision matrices (likelihood terms)
+            # TODO: COMPLETE THIS LINE
+            # pseudocode: slide 5 of 'Gibbs sampling in TrueSkill'
+            # converting delta functions (boolean array) to integers to be able to sum/substract
+            m[p] = np.dot(t.transpose(), (p == G[:,0]).astype(int) - (p == G[:,1]).astype(int))
 
+        iS = np.zeros((M, M))
         for g in range(N):
-            # TODO: Build the iS matrix
+            iS[G[g,0],G[g,0]] += 1
+            iS[G[g,1],G[g,1]] += 1
+            iS[G[g,0],G[g,1]] -= 1
+            iS[G[g,1],G[g,0]] -= 1
 
         # Posterior precision matrix
         iSS = iS + np.diag(1. / pv)
