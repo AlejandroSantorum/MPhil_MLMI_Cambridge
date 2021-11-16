@@ -33,6 +33,7 @@ def gibbs_sample(G, M, num_iters):
 
         iS = np.zeros((M, M))
         for g in range(N):
+            # TODO: COMPLETE THIS
             iS[G[g,0],G[g,0]] += 1
             iS[G[g,1],G[g,1]] += 1
             iS[G[g,0],G[g,1]] -= 1
