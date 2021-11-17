@@ -1,3 +1,4 @@
+import sys
 import matplotlib.pyplot as plt
 
 def read_results(fpath):
@@ -9,8 +10,9 @@ def read_results(fpath):
             if line[:5] == "=====":
                 config = line.split(" ")[:-1]
                 mono_type = config[1] # e.g. FBK_Z_Init
-                n_gaussians = int(config[2][config[2].find('=')+1:])
-                xpoints.add(n_gaussians)
+                print(config[2])
+                value = int(config[2][config[2].find('=')+1:])
+                xpoints.add(value)
                 if mono_type not in res_dict:
                     res_dict[mono_type] = []
             elif line[:5] == "WORD:":
@@ -20,24 +22,27 @@ def read_results(fpath):
     return res_dict, sorted(xpoints)
 
 
-def plot_results(res_dict, xpoints, store_filepath):
+def plot_results(res_dict, xpoints, store_filepath, xaxis):
     plt.style.use('seaborn')
 
     for mono_type in res_dict:
         plt.plot(xpoints, res_dict[mono_type], '-o', label=mono_type)
     
     plt.legend()
-    plt.xlabel("Number of Gaussians")
+    plt.xlabel(xaxis)
     plt.ylabel("Accuracy")
     plt.savefig(store_filepath)
 
 
 
 if __name__ == '__main__':
-    FILEPATH = "./results/monophone_results.txt"
-    res_dict, xpoints = read_results(FILEPATH)
+    print(sys.argv)
+    fname_res = sys.argv[1]
+    fname_plot = sys.argv[2]
+    xaxis = " ".join(sys.argv[3:])
 
-    STORE_FILEPATH = "./imgs/monophone_results.png"
-    plot_results(res_dict, xpoints, STORE_FILEPATH)
+    res_dict, xpoints = read_results(fname_res)
+
+    plot_results(res_dict, xpoints, fname_plot, xaxis)
 
 

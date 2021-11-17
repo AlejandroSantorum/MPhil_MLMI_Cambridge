@@ -1,0 +1,45 @@
+------------------------------------
+../tools/steps/step-decode /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm84 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm24 FBK_Z_Init/decode-mono-hmm24
+------------------------------------

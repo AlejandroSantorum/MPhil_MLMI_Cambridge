@@ -1,0 +1,18 @@
+------------------------------------
+../tools/steps/step-mono -NUMMIXES 8 ../convert/fbk25d/env/environment_Z FBK_Z_FlatStart/mono
+------------------------------------
+------------------------------------
+../tools/steps/step-mono -NUMMIXES 4 ../convert/fbk25d/env/environment_Z FBK_Z_FlatStart/mono
+------------------------------------
+------------------------------------
+../tools/steps/step-mono -NUMMIXES 4 ../convert/fbk25d/env/environment_Z FBK_Z_FlatStart/mono
+------------------------------------
+------------------------------------
+../tools/steps/step-mono -NUMMIXES 4 ../convert/fbk25d/env/environment_Z FBK_Z_FlatStart/mono
+------------------------------------
+------------------------------------
+../tools/steps/step-mono -NUMMIXES 4 ../convert/fbk25d/env/environment_Z FBK_Z_FlatStart/mono
+------------------------------------
+------------------------------------
+../tools/steps/step-mono -NUMMIXES 4 ../convert/fbk25d/env/environment_Z FBK_Z_FlatStart/mono
+------------------------------------

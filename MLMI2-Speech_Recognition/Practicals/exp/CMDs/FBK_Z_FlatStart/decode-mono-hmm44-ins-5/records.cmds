@@ -1,0 +1,15 @@
+------------------------------------
+../tools/steps/step-decode -INSWORD -5 -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_FlatStart/mono hmm44 FBK_Z_FlatStart/decode-mono-hmm44-ins-5
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -INSWORD -5 -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_FlatStart/mono hmm44 FBK_Z_FlatStart/decode-mono-hmm44-ins-5
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -INSWORD -5 -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_FlatStart/mono hmm44 FBK_Z_FlatStart/decode-mono-hmm44-ins-5
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -INSWORD -5 -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_FlatStart/mono hmm44 FBK_Z_FlatStart/decode-mono-hmm44-ins-5
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -INSWORD -5 -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_FlatStart/mono hmm44 FBK_Z_FlatStart/decode-mono-hmm44-ins-5
+------------------------------------

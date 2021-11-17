@@ -1,0 +1,3 @@
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/FBK_D_Z_Init/mono hmm24 FBK_D_Z_Init/decode-mono-hmm24
+------------------------------------

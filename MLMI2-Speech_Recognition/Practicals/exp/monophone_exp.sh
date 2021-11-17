@@ -1,8 +1,10 @@
 
-fname_results=./results/monophone_results.txt
-maxMixGauss=4
+xaxis="Number of Gaussians"
+maxMixGauss=20
 
 ### MONOPHONES USING FILTER BANK
+fname_fbk_res=./results/monophone_FBK_res.txt
+fname_fbk_plot=./imgs/monophone_FBK_res.png
 # Lopping through initialisation mode
 for mode in Init FlatStart
 do
@@ -15,20 +17,25 @@ do
         for numGauss in $(seq 2 2 $maxMixGauss)
         do
             # Executing decoding (testing)
-            ../tools/steps/step-decode -BEAMWIDTH 200 $PWD/FBK${param}_${mode}/mono hmm${numGauss}4 FBK${param}_${mode}/decode-mono-hmm${numGauss}4
+            ../tools/steps/step-decode -BEAMWIDTH 300 $PWD/FBK${param}_${mode}/mono hmm${numGauss}4 FBK${param}_${mode}/decode-mono-hmm${numGauss}4
             # Fetching data
-            echo "===== FBK${param}_${mode} numberGaussians=${numGauss} =====" >> $fname_results
+            echo "===== FBK${param}_${mode} numberGaussians=${numGauss} =====" >> $fname_fbk_res
             resSent=$(grep 'SENT:' FBK${param}_${mode}/decode-mono-hmm${numGauss}4/test/LOG)
-            echo $resSent >> $fname_results
+            echo $resSent >> $fname_fbk_res
             resWord=$(grep 'WORD:' FBK${param}_${mode}/decode-mono-hmm${numGauss}4/test/LOG)
-            echo $resWord >> $fname_results
+            echo $resWord >> $fname_fbk_res
         done
     done
 done
+# Plotting results
+echo "Plotting Filter Bank results"
+python3 ./monophone_plots.py $fname_fbk_res $fname_fbk_plot $xaxis
 
 ### MONOPHONES USING MFCCs
+fname_mfc_res=./results/monophone_MFC_res.txt
+fname_mfc_plot=./imgs/monophone_MFC_res.png
 # Lopping through initialisation mode
-for mode in Init #FlatStart
+for mode in Init FlatStart
 do  
     # Looping through parameterisations
     for param in _E_Z _E_D_Z _E_D_A_Z
@@ -39,16 +46,16 @@ do
         for numGauss in $(seq 2 2 $maxMixGauss)
         do
             # Executing decoding (testing)
-            ../tools/steps/step-decode -BEAMWIDTH 200 $PWD/MFC${param}_${mode}/mono hmm${numGauss}4 MFC${param}_${mode}/decode-mono-hmm${numGauss}4
+            ../tools/steps/step-decode -BEAMWIDTH 300 $PWD/MFC${param}_${mode}/mono hmm${numGauss}4 MFC${param}_${mode}/decode-mono-hmm${numGauss}4
             # Fetching data
-            echo "===== MFC${param}_${mode} numberGaussians=${numGauss} =====" >> $fname_results
+            echo "===== MFC${param}_${mode} numberGaussians=${numGauss} =====" >> $fname_mfc_res
             resSent=$(grep 'SENT:' MFC${param}_${mode}/decode-mono-hmm${numGauss}4/test/LOG)
-            echo $resSent >> $fname_results
+            echo $resSent >> $fname_mfc_res
             resWord=$(grep 'WORD:' MFC${param}_${mode}/decode-mono-hmm${numGauss}4/test/LOG)
-            echo $resWord >> $fname_results
+            echo $resWord >> $fname_mfc_res
         done
     done
 done
-
 # Plotting results
-python3 ./monophone_plots.py
+echo "Plotting MFCCs results"
+python3 ./monophone_plots.py $fname_mfc_res $fname_mfc_plot $xaxis
