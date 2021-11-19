@@ -1,0 +1,6 @@
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/MFC_E_D_A_Z_FlatStart/mono hmm124 MFC_E_D_A_Z_FlatStart/decode-mono-hmm124
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/MFC_E_D_A_Z_FlatStart/mono hmm124 MFC_E_D_A_Z_FlatStart/decode-mono-hmm124
+------------------------------------

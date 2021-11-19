@@ -1,0 +1,16 @@
+############################################################
+# Environment
+############################################################
+
+# the directory with the tools
+setenv TIMITTOOLS /usr/local/teach/MLSALT2/tools
+
+# set the feature type to use: mfc13d has 12d MFCC + 1d energy 
+setenv FEATYPE mfc13d
+# differentials, for mfc13d, _E_Z, _E_D_Z, & _E_D_A_Z are available
+setenv FEADIFF _E_Z
+setenv FEADIM 13
+# the lib directory for the specified FEATYPE
+setenv TIMITCONV /usr/local/teach/MLSALT2/convert
+setenv TIMITLIB ${TIMITCONV}/${FEATYPE}/lib
+

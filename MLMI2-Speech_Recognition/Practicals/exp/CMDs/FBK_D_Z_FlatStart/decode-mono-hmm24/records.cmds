@@ -1,0 +1,6 @@
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/FBK_D_Z_FlatStart/mono hmm24 FBK_D_Z_FlatStart/decode-mono-hmm24
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/FBK_D_Z_FlatStart/mono hmm24 FBK_D_Z_FlatStart/decode-mono-hmm24
+------------------------------------

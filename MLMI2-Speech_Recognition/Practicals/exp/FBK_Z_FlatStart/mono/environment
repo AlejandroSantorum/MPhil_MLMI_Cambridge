@@ -1,0 +1,17 @@
+############################################################
+# Environment
+############################################################
+
+# the directory with the tools
+setenv TIMITTOOLS /usr/local/teach/MLSALT2/tools
+
+# set the feature type to use: fbk25d has 24d fBK + 1d energy 
+# fbk25d is actually used as 24d FBANK vector
+setenv FEATYPE fbk25d
+# differentials, for fbk25d, _Z, _D_Z, & _D_A_Z are available
+setenv FEADIFF _Z
+setenv FEADIM 24
+# the lib directory for the specified FEATYPE
+setenv TIMITCONV /usr/local/teach/MLSALT2/convert
+setenv TIMITLIB ${TIMITCONV}/${FEATYPE}/lib
+

@@ -1,0 +1,180 @@
+===== FBK_Z_Init numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=55.03, Acc=36.13 [H=28462, D=4299, S=18960, I=9775, N=51721]
+===== FBK_Z_Init numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=56.79, Acc=36.78 [H=29373, D=4180, S=18168, I=10350, N=51721]
+===== FBK_Z_Init numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=58.49, Acc=37.16 [H=30254, D=3818, S=17649, I=11033, N=51721]
+===== FBK_Z_Init numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=59.47, Acc=37.33 [H=30757, D=3709, S=17255, I=11450, N=51721]
+===== FBK_Z_Init numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=60.22, Acc=37.89 [H=31146, D=3590, S=16985, I=11550, N=51721]
+===== FBK_Z_Init numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=60.75, Acc=38.18 [H=31418, D=3429, S=16874, I=11670, N=51721]
+===== FBK_Z_Init numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=61.22, Acc=38.63 [H=31662, D=3384, S=16675, I=11680, N=51721]
+===== FBK_Z_Init numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=61.57, Acc=38.86 [H=31845, D=3352, S=16524, I=11747, N=51721]
+===== FBK_Z_Init numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=62.03, Acc=38.90 [H=32084, D=3316, S=16321, I=11963, N=51721]
+===== FBK_Z_Init numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=62.13, Acc=38.81 [H=32134, D=3380, S=16207, I=12063, N=51721]
+===== FBK_D_Z_Init numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=58.48, Acc=37.69 [H=30244, D=3309, S=18168, I=10751, N=51721]
+===== FBK_D_Z_Init numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=60.93, Acc=41.96 [H=31516, D=3395, S=16810, I=9812, N=51721]
+===== FBK_D_Z_Init numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=63.73, Acc=44.58 [H=32961, D=3170, S=15590, I=9906, N=51721]
+===== FBK_D_Z_Init numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=65.01, Acc=45.99 [H=33626, D=2929, S=15166, I=9841, N=51721]
+===== FBK_D_Z_Init numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=66.24, Acc=46.92 [H=34260, D=2782, S=14679, I=9990, N=51721]
+===== FBK_D_Z_Init numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=67.06, Acc=47.79 [H=34683, D=2622, S=14416, I=9966, N=51721]
+===== FBK_D_Z_Init numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=67.64, Acc=48.62 [H=34984, D=2650, S=14087, I=9836, N=51721]
+===== FBK_D_Z_Init numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=68.36, Acc=49.20 [H=35355, D=2645, S=13721, I=9908, N=51721]
+===== FBK_D_Z_Init numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=68.79, Acc=49.68 [H=35578, D=2630, S=13513, I=9884, N=51721]
+===== FBK_D_Z_Init numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=69.17, Acc=50.34 [H=35775, D=2534, S=13412, I=9737, N=51721]
+===== FBK_D_A_Z_Init numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=59.85, Acc=38.42 [H=30956, D=2831, S=17934, I=11084, N=51721]
+===== FBK_D_A_Z_Init numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=62.80, Acc=41.70 [H=32483, D=2693, S=16545, I=10915, N=51721]
+===== FBK_D_A_Z_Init numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=65.67, Acc=45.26 [H=33966, D=2481, S=15274, I=10559, N=51721]
+===== FBK_D_A_Z_Init numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=67.00, Acc=45.93 [H=34654, D=2275, S=14792, I=10896, N=51721]
+===== FBK_D_A_Z_Init numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=68.15, Acc=47.75 [H=35248, D=2181, S=14292, I=10553, N=51721]
+===== FBK_D_A_Z_Init numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=68.94, Acc=48.19 [H=35659, D=2117, S=13945, I=10733, N=51721]
+===== FBK_D_A_Z_Init numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=69.75, Acc=49.39 [H=36074, D=2107, S=13540, I=10531, N=51721]
+===== FBK_D_A_Z_Init numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=70.43, Acc=50.30 [H=36428, D=2066, S=13227, I=10412, N=51721]
+===== FBK_D_A_Z_Init numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=70.77, Acc=51.06 [H=36604, D=2048, S=13069, I=10193, N=51721]
+===== FBK_D_A_Z_Init numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=71.23, Acc=51.83 [H=36843, D=2059, S=12819, I=10038, N=51721]
+===== FBK_Z_FlatStart numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=55.46, Acc=33.47 [H=28686, D=4093, S=18942, I=11374, N=51721]
+===== FBK_Z_FlatStart numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=57.53, Acc=36.08 [H=29756, D=4006, S=17959, I=11096, N=51721]
+===== FBK_Z_FlatStart numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=58.71, Acc=36.42 [H=30364, D=3836, S=17521, I=11525, N=51721]
+===== FBK_Z_FlatStart numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=59.79, Acc=37.13 [H=30922, D=3684, S=17115, I=11716, N=51721]
+===== FBK_Z_FlatStart numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=60.50, Acc=36.98 [H=31289, D=3466, S=16966, I=12160, N=51721]
+===== FBK_Z_FlatStart numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=61.18, Acc=37.63 [H=31642, D=3375, S=16704, I=12179, N=51721]
+===== FBK_Z_FlatStart numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=61.51, Acc=37.89 [H=31813, D=3346, S=16562, I=12215, N=51721]
+===== FBK_Z_FlatStart numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=61.73, Acc=38.05 [H=31927, D=3268, S=16526, I=12246, N=51721]
+===== FBK_Z_FlatStart numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=62.14, Acc=38.29 [H=32142, D=3221, S=16358, I=12339, N=51721]
+===== FBK_Z_FlatStart numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=62.15, Acc=38.42 [H=32144, D=3207, S=16370, I=12271, N=51721]
+===== FBK_D_Z_FlatStart numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=57.24, Acc=36.52 [H=29603, D=3559, S=18559, I=10715, N=51721]
+===== FBK_D_Z_FlatStart numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=60.94, Acc=41.42 [H=31517, D=3461, S=16743, I=10093, N=51721]
+===== FBK_D_Z_FlatStart numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=63.26, Acc=44.46 [H=32717, D=3132, S=15872, I=9721, N=51721]
+===== FBK_D_Z_FlatStart numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=64.73, Acc=45.80 [H=33480, D=2996, S=15245, I=9791, N=51721]
+===== FBK_D_Z_FlatStart numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=65.97, Acc=46.82 [H=34122, D=2826, S=14773, I=9908, N=51721]
+===== FBK_D_Z_FlatStart numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=66.67, Acc=48.14 [H=34484, D=2790, S=14447, I=9587, N=51721]
+===== FBK_D_Z_FlatStart numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=67.59, Acc=49.07 [H=34958, D=2702, S=14061, I=9577, N=51721]
+===== FBK_D_Z_FlatStart numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=67.94, Acc=49.53 [H=35139, D=2680, S=13902, I=9523, N=51721]
+===== FBK_D_Z_FlatStart numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=68.41, Acc=50.18 [H=35382, D=2616, S=13723, I=9429, N=51721]
+===== FBK_D_Z_FlatStart numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=68.86, Acc=50.65 [H=35616, D=2581, S=13524, I=9421, N=51721]
+===== FBK_D_A_Z_FlatStart numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=59.67, Acc=37.57 [H=30863, D=2964, S=17894, I=11429, N=51721]
+===== FBK_D_A_Z_FlatStart numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=63.15, Acc=42.14 [H=32660, D=2613, S=16448, I=10867, N=51721]
+===== FBK_D_A_Z_FlatStart numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=65.73, Acc=43.88 [H=33994, D=2327, S=15400, I=11299, N=51721]
+===== FBK_D_A_Z_FlatStart numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=67.38, Acc=46.21 [H=34850, D=2151, S=14720, I=10949, N=51721]
+===== FBK_D_A_Z_FlatStart numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=68.49, Acc=47.90 [H=35423, D=2190, S=14108, I=10649, N=51721]
+===== FBK_D_A_Z_FlatStart numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=69.34, Acc=49.14 [H=35865, D=2175, S=13681, I=10450, N=51721]
+===== FBK_D_A_Z_FlatStart numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=69.86, Acc=49.79 [H=36133, D=2131, S=13457, I=10382, N=51721]
+===== FBK_D_A_Z_FlatStart numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=70.32, Acc=50.20 [H=36371, D=2081, S=13269, I=10409, N=51721]
+===== FBK_D_A_Z_FlatStart numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=70.89, Acc=51.07 [H=36667, D=2111, S=12943, I=10252, N=51721]
+===== FBK_D_A_Z_FlatStart numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=71.38, Acc=51.89 [H=36916, D=2103, S=12702, I=10077, N=51721]

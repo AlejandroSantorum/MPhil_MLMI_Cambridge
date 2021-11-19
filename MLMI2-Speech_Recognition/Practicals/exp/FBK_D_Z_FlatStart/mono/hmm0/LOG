@@ -1,0 +1,176 @@
+tools/htkbin/HHEd -A -D -V -T 1 -d hmm0/mono -w hmm0/MMF lib/edfiles/tie_alltrans.hed hmms.mlist 
+
+No HTK Configuration Parameters Set
+
+
+HTK Version Information
+Module     Version    Who    Date      : CVS Info
+HHEd       3.5.0      CUED   12/10/15  : $Id: HHEd.c,v 1.3 2015/10/12 12:07:24 cz277 Exp $
+HShell     3.5.0      CUED   12/10/15  : $Id: HShell.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HMem       3.5.0      CUED   12/10/15  : $Id: HMem.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HLabel     3.5.0      CUED   12/10/15  : $Id: HLabel.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HMath      3.5.0      CUED   12/10/15  : $Id: HMath.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HSigP      3.5.0      CUED   12/10/15  : $Id: HSigP.c,v 1.1.1.1 2006/10/11 09:54:58 jal58 Exp $
+HWave      3.5.0      CUED   12/10/15  : $Id: HWave.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HAudio     3.5.0      CUED   12/10/15  : $Id: HAudio.c,v 1.1.1.1 2006/10/11 09:54:57 jal58 Exp $
+HVQ        3.5.0      CUED   12/10/15  : $Id: HVQ.c,v 1.1.1.1 2006/10/11 09:54:59 jal58 Exp $
+HModel     3.5.0      CUED   12/10/15  : $Id: HModel.c,v 1.3 2015/10/12 12:07:24 cz277 Exp $
+HParm      3.5.0      CUED   12/10/15  : $Id: HParm.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HUtil      3.5.0      CUED   12/10/15  : $Id: HUtil.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HANNet     3.5.0      CUED   12/10/15  : $Id: HANNet.c,v 1.0 2015/10/12 12:07:24 cz277 Exp $
+
+HHEd
+ 48/48 Models Loaded [5 states max, 1 mixes max]
+
+FV: loading variance floor(s) from file hmm0/proto/vFloors
+loading vector varFloor1
+
+TI aa_t {}
+ Tie items
+
+TI ae_t {}
+ Tie items
+
+TI ah_t {}
+ Tie items
+
+TI ao_t {}
+ Tie items
+
+TI aw_t {}
+ Tie items
+
+TI ax_t {}
+ Tie items
+
+TI ay_t {}
+ Tie items
+
+TI b_t {}
+ Tie items
+
+TI ch_t {}
+ Tie items
+
+TI cl_t {}
+ Tie items
+
+TI d_t {}
+ Tie items
+
+TI dh_t {}
+ Tie items
+
+TI dx_t {}
+ Tie items
+
+TI eh_t {}
+ Tie items
+
+TI el_t {}
+ Tie items
+
+TI en_t {}
+ Tie items
+
+TI epi_t {}
+ Tie items
+
+TI er_t {}
+ Tie items
+
+TI ey_t {}
+ Tie items
+
+TI f_t {}
+ Tie items
+
+TI g_t {}
+ Tie items
+
+TI hh_t {}
+ Tie items
+
+TI ih_t {}
+ Tie items
+
+TI ix_t {}
+ Tie items
+
+TI iy_t {}
+ Tie items
+
+TI jh_t {}
+ Tie items
+
+TI k_t {}
+ Tie items
+
+TI l_t {}
+ Tie items
+
+TI m_t {}
+ Tie items
+
+TI n_t {}
+ Tie items
+
+TI ng_t {}
+ Tie items
+
+TI ow_t {}
+ Tie items
+
+TI oy_t {}
+ Tie items
+
+TI p_t {}
+ Tie items
+
+TI r_t {}
+ Tie items
+
+TI s_t {}
+ Tie items
+
+TI sh_t {}
+ Tie items
+
+TI sil_t {}
+ Tie items
+
+TI t_t {}
+ Tie items
+
+TI th_t {}
+ Tie items
+
+TI uh_t {}
+ Tie items
+
+TI uw_t {}
+ Tie items
+
+TI v_t {}
+ Tie items
+
+TI vcl_t {}
+ Tie items
+
+TI w_t {}
+ Tie items
+
+TI y_t {}
+ Tie items
+
+TI z_t {}
+ Tie items
+
+TI zh_t {}
+ Tie items
+
+Saving new HMM files ...
+Edit Complete
+
+No HTK Configuration Parameters Set
+

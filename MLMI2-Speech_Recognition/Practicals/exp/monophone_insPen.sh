@@ -38,7 +38,7 @@ do
     # Executing decoding (testing)
     ../tools/steps/step-decode -INSWORD $inspen -BEAMWIDTH 300 $PWD/MFC${param}_${mode}/mono hmm${numGaussMixes}4 MFC${param}_${mode}/decode-mono-hmm${numGaussMixes}4-ins${inspen}
     # Fetching data
-    echo "===== MFC${param}_${mode} insertionPenalty=${numGauss} =====" >> $fname_mfc_res
+    echo "===== MFC${param}_${mode} insertionPenalty=${inspen} =====" >> $fname_mfc_res
     resSent=$(grep 'SENT:' MFC${param}_${mode}/decode-mono-hmm${numGaussMixes}4-ins${inspen}/test/LOG)
     echo $resSent >> $fname_mfc_res
     resWord=$(grep 'WORD:' MFC${param}_${mode}/decode-mono-hmm${numGaussMixes}4-ins${inspen}/test/LOG)

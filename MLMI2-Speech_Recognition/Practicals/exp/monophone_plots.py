@@ -10,7 +10,6 @@ def read_results(fpath):
             if line[:5] == "=====":
                 config = line.split(" ")[:-1]
                 mono_type = config[1] # e.g. FBK_Z_Init
-                print(config[2])
                 value = int(config[2][config[2].find('=')+1:])
                 xpoints.add(value)
                 if mono_type not in res_dict:
@@ -36,7 +35,6 @@ def plot_results(res_dict, xpoints, store_filepath, xaxis):
 
 
 if __name__ == '__main__':
-    print(sys.argv)
     fname_res = sys.argv[1]
     fname_plot = sys.argv[2]
     xaxis = " ".join(sys.argv[3:])

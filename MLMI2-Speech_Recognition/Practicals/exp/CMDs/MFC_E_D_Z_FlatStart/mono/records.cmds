@@ -1,0 +1,6 @@
+------------------------------------
+../tools/steps/step-mono -NUMMIXES 20 ../convert/mfc13d/env/environment_E_D_Z MFC_E_D_Z_FlatStart/mono
+------------------------------------
+------------------------------------
+../tools/steps/step-mono -FLATSTART -NUMMIXES 20 ../convert/mfc13d/env/environment_E_D_Z MFC_E_D_Z_FlatStart/mono
+------------------------------------

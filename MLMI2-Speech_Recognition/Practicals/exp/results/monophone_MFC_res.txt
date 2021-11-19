@@ -1,0 +1,180 @@
+===== MFC_E_Z_Init numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=58.41, Acc=41.20 [H=30210, D=4473, S=17038, I=8903, N=51721]
+===== MFC_E_Z_Init numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=59.91, Acc=42.18 [H=30986, D=4161, S=16574, I=9169, N=51721]
+===== MFC_E_Z_Init numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=61.14, Acc=42.90 [H=31622, D=3993, S=16106, I=9432, N=51721]
+===== MFC_E_Z_Init numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=61.85, Acc=43.40 [H=31992, D=3899, S=15830, I=9543, N=51721]
+===== MFC_E_Z_Init numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=62.53, Acc=43.69 [H=32341, D=3758, S=15622, I=9742, N=51721]
+===== MFC_E_Z_Init numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=62.92, Acc=43.95 [H=32543, D=3733, S=15445, I=9813, N=51721]
+===== MFC_E_Z_Init numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=63.24, Acc=44.28 [H=32707, D=3708, S=15306, I=9804, N=51721]
+===== MFC_E_Z_Init numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=63.39, Acc=44.44 [H=32785, D=3659, S=15277, I=9798, N=51721]
+===== MFC_E_Z_Init numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=63.74, Acc=44.74 [H=32968, D=3629, S=15124, I=9827, N=51721]
+===== MFC_E_Z_Init numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=63.87, Acc=44.94 [H=33033, D=3615, S=15073, I=9790, N=51721]
+===== MFC_E_D_Z_Init numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=64.66, Acc=48.18 [H=33445, D=3686, S=14590, I=8526, N=51721]
+===== MFC_E_D_Z_Init numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=67.27, Acc=51.71 [H=34791, D=3451, S=13479, I=8048, N=51721]
+===== MFC_E_D_Z_Init numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=69.12, Acc=53.91 [H=35747, D=3204, S=12770, I=7863, N=51721]
+===== MFC_E_D_Z_Init numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=70.35, Acc=55.37 [H=36384, D=3077, S=12260, I=7744, N=51721]
+===== MFC_E_D_Z_Init numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=71.07, Acc=56.13 [H=36756, D=3038, S=11927, I=7724, N=51721]
+===== MFC_E_D_Z_Init numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=71.70, Acc=57.10 [H=37086, D=2912, S=11723, I=7555, N=51721]
+===== MFC_E_D_Z_Init numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=72.13, Acc=57.61 [H=37305, D=2888, S=11528, I=7506, N=51721]
+===== MFC_E_D_Z_Init numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=72.41, Acc=58.19 [H=37453, D=2830, S=11438, I=7356, N=51721]
+===== MFC_E_D_Z_Init numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=72.84, Acc=58.84 [H=37675, D=2804, S=11242, I=7240, N=51721]
+===== MFC_E_D_Z_Init numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=73.03, Acc=59.11 [H=37770, D=2798, S=11153, I=7197, N=51721]
+===== MFC_E_D_A_Z_Init numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=67.09, Acc=48.64 [H=34699, D=2894, S=14128, I=9543, N=51721]
+===== MFC_E_D_A_Z_Init numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=69.81, Acc=52.91 [H=36109, D=2751, S=12861, I=8742, N=51721]
+===== MFC_E_D_A_Z_Init numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=71.23, Acc=54.88 [H=36840, D=2596, S=12285, I=8453, N=51721]
+===== MFC_E_D_A_Z_Init numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=72.27, Acc=56.28 [H=37380, D=2490, S=11851, I=8270, N=51721]
+===== MFC_E_D_A_Z_Init numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=72.94, Acc=56.95 [H=37724, D=2398, S=11599, I=8271, N=51721]
+===== MFC_E_D_A_Z_Init numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=73.77, Acc=57.65 [H=38157, D=2316, S=11248, I=8341, N=51721]
+===== MFC_E_D_A_Z_Init numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=74.16, Acc=58.38 [H=38357, D=2281, S=11083, I=8164, N=51721]
+===== MFC_E_D_A_Z_Init numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=74.48, Acc=59.10 [H=38524, D=2225, S=10972, I=7956, N=51721]
+===== MFC_E_D_A_Z_Init numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=75.04, Acc=59.80 [H=38809, D=2172, S=10740, I=7882, N=51721]
+===== MFC_E_D_A_Z_Init numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=75.22, Acc=60.13 [H=38902, D=2181, S=10638, I=7802, N=51721]
+===== MFC_E_Z_FlatStart numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=58.98, Acc=39.73 [H=30504, D=4087, S=17130, I=9954, N=51721]
+===== MFC_E_Z_FlatStart numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=60.37, Acc=41.19 [H=31222, D=3919, S=16580, I=9918, N=51721]
+===== MFC_E_Z_FlatStart numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=61.22, Acc=42.23 [H=31666, D=3872, S=16183, I=9824, N=51721]
+===== MFC_E_Z_FlatStart numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=61.81, Acc=42.97 [H=31970, D=3826, S=15925, I=9747, N=51721]
+===== MFC_E_Z_FlatStart numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=62.43, Acc=43.46 [H=32292, D=3733, S=15696, I=9816, N=51721]
+===== MFC_E_Z_FlatStart numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=62.78, Acc=43.73 [H=32472, D=3605, S=15644, I=9852, N=51721]
+===== MFC_E_Z_FlatStart numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=63.20, Acc=43.96 [H=32690, D=3557, S=15474, I=9954, N=51721]
+===== MFC_E_Z_FlatStart numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=63.48, Acc=44.13 [H=32833, D=3535, S=15353, I=10006, N=51721]
+===== MFC_E_Z_FlatStart numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=63.68, Acc=44.24 [H=32937, D=3506, S=15278, I=10055, N=51721]
+===== MFC_E_Z_FlatStart numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=63.95, Acc=44.42 [H=33074, D=3489, S=15158, I=10098, N=51721]
+===== MFC_E_D_Z_FlatStart numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=64.52, Acc=49.46 [H=33371, D=3860, S=14490, I=7788, N=51721]
+===== MFC_E_D_Z_FlatStart numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=66.90, Acc=52.32 [H=34603, D=3583, S=13535, I=7543, N=51721]
+===== MFC_E_D_Z_FlatStart numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=68.85, Acc=54.40 [H=35611, D=3321, S=12789, I=7475, N=51721]
+===== MFC_E_D_Z_FlatStart numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=70.09, Acc=55.63 [H=36250, D=3201, S=12270, I=7478, N=51721]
+===== MFC_E_D_Z_FlatStart numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=70.91, Acc=56.45 [H=36676, D=3059, S=11986, I=7481, N=51721]
+===== MFC_E_D_Z_FlatStart numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=71.45, Acc=57.12 [H=36954, D=2973, S=11794, I=7413, N=51721]
+===== MFC_E_D_Z_FlatStart numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=72.01, Acc=57.66 [H=37243, D=2878, S=11600, I=7422, N=51721]
+===== MFC_E_D_Z_FlatStart numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=72.49, Acc=58.33 [H=37491, D=2802, S=11428, I=7322, N=51721]
+===== MFC_E_D_Z_FlatStart numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=72.71, Acc=58.72 [H=37606, D=2784, S=11331, I=7234, N=51721]
+===== MFC_E_D_Z_FlatStart numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=73.11, Acc=59.15 [H=37815, D=2765, S=11141, I=7223, N=51721]
+===== MFC_E_D_A_Z_FlatStart numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=67.47, Acc=49.31 [H=34898, D=2934, S=13889, I=9394, N=51721]
+===== MFC_E_D_A_Z_FlatStart numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=69.61, Acc=53.17 [H=36002, D=2808, S=12911, I=8504, N=51721]
+===== MFC_E_D_A_Z_FlatStart numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=71.08, Acc=54.96 [H=36763, D=2671, S=12287, I=8336, N=51721]
+===== MFC_E_D_A_Z_FlatStart numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=72.53, Acc=56.74 [H=37515, D=2509, S=11697, I=8168, N=51721]
+===== MFC_E_D_A_Z_FlatStart numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=73.31, Acc=57.59 [H=37916, D=2451, S=11354, I=8128, N=51721]
+===== MFC_E_D_A_Z_FlatStart numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=74.02, Acc=58.72 [H=38283, D=2409, S=11029, I=7910, N=51721]
+===== MFC_E_D_A_Z_FlatStart numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=74.53, Acc=59.39 [H=38549, D=2324, S=10848, I=7834, N=51721]
+===== MFC_E_D_A_Z_FlatStart numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=75.01, Acc=60.12 [H=38795, D=2246, S=10680, I=7701, N=51721]
+===== MFC_E_D_A_Z_FlatStart numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=75.38, Acc=60.56 [H=38989, D=2223, S=10509, I=7665, N=51721]
+===== MFC_E_D_A_Z_FlatStart numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=75.51, Acc=60.77 [H=39052, D=2198, S=10471, I=7623, N=51721]
