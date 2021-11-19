@@ -79,6 +79,7 @@ def BMM(A, B, K, alpha, gamma):
 
     return perplexity, swk
 
+
 if __name__ == '__main__':
     np.random.seed(1)
     # load data
