@@ -1,4 +1,5 @@
-import numpy, os
+import os
+import numpy as np
 from subprocess import call
 from gensim.models import Doc2Vec
 from gensim.test.utils import get_tmpfile
@@ -10,7 +11,7 @@ class SVMDoc2Vec(SVMText):
     """ 
     class for baseline extension using SVM with Doc2Vec pre-trained vectors
     """
-    def __init__(self,model):
+    def __init__(self,model_path=None):
         """
         initialisation of SVMDoc2Vec classifier.
 
@@ -19,7 +20,8 @@ class SVMDoc2Vec(SVMText):
         """
         self.svm_classifier = svm.SVC()
         self.predictions = []
-        self.model = model
+        if model_path:
+            self.model = Doc2Vec.load(model_path)
 
     def normalize(self,vector):
         """
@@ -33,19 +35,16 @@ class SVMDoc2Vec(SVMText):
         # TODO Q8
 
     # since using pre-trained vectors don't need to determine features
-    def getFeatures(self,reviews_embeddings):
+    def getFeatures(self):
         """
         infer document vector for each review and add it to the list of features.
         @param reviews: movie reviews
-        @type reviews: list of (string, list) tuples corresponding to (label, content)
         """
-
         self.input_features = []
         self.labels = []
 
-        # TODO Q8
 
-    def train(self, train_embeddings, train_labels):
+    def train(self, train_embeddings=None, train_labels=None):
         self.svm_classifier.fit(train_embeddings, train_labels)
 
     def test(self, test_embeddings, test_labels):
