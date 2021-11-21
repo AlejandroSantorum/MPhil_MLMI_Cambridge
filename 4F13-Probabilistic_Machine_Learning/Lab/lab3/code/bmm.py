@@ -3,7 +3,7 @@ import scipy.io as sio
 import numpy as np
 
 
-def BMM(A, B, K, alpha, gamma):
+def BMM(A, B, K, alpha, gamma, num_iters_gibbs=10):
 
     """
 
@@ -32,9 +32,10 @@ def BMM(A, B, K, alpha, gamma):
 
     sk_words = np.sum(swk, axis=0)  # number of words assigned to mixture k over all docs
 
-    num_iters_gibbs = 10
+    list_swk = []
     # Perform Gibbs sampling through all documents and words
     for iter in range(num_iters_gibbs):
+        list_swk.append(np.copy(swk))
         for d in range(D):
 
             training_documents = np.where(A[:, 0] == d+1)  # get all occurrences of document d in trh training data
@@ -77,7 +78,7 @@ def BMM(A, B, K, alpha, gamma):
 
     perplexity = np.exp(-lp/nd)  # perplexity
 
-    return perplexity, swk
+    return perplexity, swk, np.array(list_swk)
 
 
 if __name__ == '__main__':
@@ -90,7 +91,7 @@ if __name__ == '__main__':
     K = 20  # number of clusters
     alpha = 10  # parameter of the Dirichlet over mixture components
     gamma = .1  # parameter of the Dirichlet over words
-    perplexity, swk = BMM(A, B, K, alpha, gamma)
+    perplexity, swk, _ = BMM(A, B, K, alpha, gamma, num_iters_gibbs=10)
     print(perplexity)
     I = 20
     indices = np.argsort(-swk, axis=0)
