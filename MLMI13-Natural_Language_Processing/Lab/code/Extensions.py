@@ -48,11 +48,11 @@ class SVMDoc2Vec(SVMText):
         self.svm_classifier.fit(train_embeddings, train_labels)
 
     def test(self, test_embeddings, test_labels):
-        pred_labels = self.svm_classifier.predict(test_embeddings)
+        self.pred_labels = self.svm_classifier.predict(test_embeddings)
 
         n_labels = len(test_labels)
         for i in range(n_labels):
-            if test_labels[i] == pred_labels[i]:
+            if test_labels[i] == self.pred_labels[i]:
                 self.predictions.append("+")
             else:
                 self.predictions.append("-")
