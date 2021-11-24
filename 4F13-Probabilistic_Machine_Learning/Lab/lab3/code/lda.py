@@ -3,7 +3,7 @@ import numpy as np
 from scipy.sparse import coo_matrix as sparse
 from sampleDiscrete import sampleDiscrete
 
-def LDA(A, B, K, alpha, gamma):
+def LDA(A, B, K, alpha, gamma, num_gibbs_iters=10):
 
     """
     Latent Dirichlet Allocation
@@ -42,9 +42,12 @@ def LDA(A, B, K, alpha, gamma):
         s.append(sparse(z))  # sparse representation: z contains many zero entries
 
     sk = np.sum(skd, axis=1)  # word to topic assignment counts accross all documents
+
+    skd_list = []
+    entropies = []
     # This makes a number of Gibbs sampling sweeps through all docs and words, it may take a bit to run
-    num_gibbs_iters = 10
     for iter in range(num_gibbs_iters):
+        skd_list.append(np.copy(skd))
         for d in range(D):
             z = s[d].todense()  # unique word topic assigmnet counts for document d
             words_in_doc_d = A[np.where(A[:, 0] == d + 1), 1][0] - 1
@@ -68,6 +71,18 @@ def LDA(A, B, K, alpha, gamma):
                         skd[kk, d] += 1
 
             s[d] = sparse(z)  # store back into sparse structure
+        
+        betas = np.array([(swk[:, topic_ID] + gamma) / (np.sum(swk[:, topic_ID] + gamma)) for topic_ID in range(K)])
+
+        # Added code to calculate word entropies per iteration 
+        aux_entropies = []
+        for k in range(K):
+            word_entropy = 0
+    
+            for w in range(W):
+                word_entropy += -1*betas[k,w]*np.log2(betas[k,w])
+            aux_entropies.append(word_entropy)
+        entropies.append(aux_entropies)
 
 
     # compute the perplexity for all words in the test set B
@@ -86,7 +101,6 @@ def LDA(A, B, K, alpha, gamma):
 
         Skd = np.sum(z, axis=0)
         # perform some iterations of Gibbs sampling for test document d
-        num_gibbs_iters = 10
         for iters in range(num_gibbs_iters):
             for w in words_in_d:  # w are the words in doc d
                 a = z[w, :].copy()  # number of times word w is assigned to each topic in doc d
@@ -111,7 +125,7 @@ def LDA(A, B, K, alpha, gamma):
 
     perplexity = np.exp(-lp/nd)  # perplexity
 
-    return perplexity, swk
+    return perplexity, swk, np.array(skd_list), np.array(entropies)
 
 
 if __name__ == '__main__':
