@@ -32,10 +32,10 @@ def BMM(A, B, K, alpha, gamma, num_iters_gibbs=10):
 
     sk_words = np.sum(swk, axis=0)  # number of words assigned to mixture k over all docs
 
-    list_swk = []
+    list_sk_docs = []
     # Perform Gibbs sampling through all documents and words
     for iter in range(num_iters_gibbs):
-        list_swk.append(np.copy(swk))
+        list_sk_docs.append(np.copy(sk_docs.reshape(K)))
         for d in range(D):
 
             training_documents = np.where(A[:, 0] == d+1)  # get all occurrences of document d in trh training data
@@ -78,7 +78,7 @@ def BMM(A, B, K, alpha, gamma, num_iters_gibbs=10):
 
     perplexity = np.exp(-lp/nd)  # perplexity
 
-    return perplexity, swk, np.array(list_swk)
+    return perplexity, swk, np.array(list_sk_docs)
 
 
 if __name__ == '__main__':
