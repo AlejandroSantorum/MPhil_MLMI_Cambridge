@@ -1,0 +1,3 @@
+------------------------------------
+../tools/steps/step-dnntrain -GPUID 0 -vvv ../convert/fbk25d/env/environment_D_A_Z /homes/as3159/MLMI2/pracgmm/exp/FBK_D_A_Z_FlatStart/align-mono-hmm84/align/timit_train.mlf /homes/as3159/MLMI2/pracgmm/exp/FBK_D_A_Z_FlatStart/mono/hmm84/MMF /homes/as3159/MLMI2/pracgmm/exp/FBK_D_A_Z_FlatStart/mono/hmms.mlist MH0-FBK/dnntrain
+------------------------------------

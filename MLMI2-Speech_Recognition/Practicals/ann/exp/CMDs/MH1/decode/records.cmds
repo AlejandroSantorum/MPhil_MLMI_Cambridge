@@ -1,0 +1,3 @@
+------------------------------------
+../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracann/exp/MH1/dnntrain hmm0 MH1/decode
+------------------------------------

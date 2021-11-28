@@ -1,0 +1,345 @@
+tools/htkbin/HNTrainSGD.GPU -B -A -D -V -T 3 -C basic.cfg -C finetune.cfg -S lib/flists/dnn.train.scp -N lib/flists/dnn.cv.scp -l LABEL -I train.mlf -H hmm0/init/MMF -M hmm0 hmms.mlist 
+
+HTK Configuration Parameters[28]
+  Module/Tool     Parameter                  Value
+#                 GPUID                          0
+#                 WEIGHTDECAY             0.001000
+#                 UPDATETARGETPEN              TRUE
+#                 UPDATEMODE            BATCHLEVEL
+#                 UPDATECLIP              0.320000
+#                 STOPDIFF                0.000100
+#                 SHUFFLEKIND             QUICKNET
+#                 RAMPSTART               0.000500
+#                 NEWBOBCRITERION               ACC
+#                 MOMENTUM                0.500000
+#                 MINIBATCHSIZE                800
+#                 MINEPOCHNUM                   12
+#                 MAXEPOCHNUM                   16
+#                 LRSCHEDULER               NEWBOB
+#                 LOGPRIOROBSV         -135.000000
+#                 LEARNRATE               0.000500
+# HNCACHE         TRACE                          1
+# HMATH           TRACE                          1
+# HCUDA           TRACE                          1
+# HANNET          TRACE                          1
+#                 DATACACHESIZE          200000000
+#                 DATAACCESSKIND         FRAMERAND
+#                 CRITERION                   XENT
+# HPARM           VARSCALEFN      lib/info/ident_cvn_E_D_A_Z
+# HPARM           VARSCALEPATHMASK             *.%%%
+# HPARM           VARSCALEMASK               *.%%%
+# HPARM           VARSCALEDIR     lib/cvn/cvn_E_D_A_Z
+#                 TARGETKIND          MFCC_E_D_A_Z
+
+
+HTK Version Information
+Module     Version    Who    Date      : CVS Info
+HNTrainSGD 3.5.0      CUED   12/10/15  : $Id: HNTrainSGD.c,v 1.0 2015/10/12 12:07:24 cz277 Exp $
+HShell     3.5.0      CUED   12/10/15  : $Id: HShell.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HMem       3.5.0      CUED   12/10/15  : $Id: HMem.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HMath      3.5.0      CUED   12/10/15  : $Id: HMath.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HSigP      3.5.0      CUED   12/10/15  : $Id: HSigP.c,v 1.1.1.1 2006/10/11 09:54:58 jal58 Exp $
+HWave      3.5.0      CUED   12/10/15  : $Id: HWave.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HLabel     3.5.0      CUED   12/10/15  : $Id: HLabel.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HAudio     3.5.0      CUED   12/10/15  : $Id: HAudio.c,v 1.1.1.1 2006/10/11 09:54:57 jal58 Exp $
+HANNet     3.5.0      CUED   12/10/15  : $Id: HANNet.c,v 1.0 2015/10/12 12:07:24 cz277 Exp $
+HCUDA      3.5.0      CUED   12/10/15  : $Id: HCUDA.cu,v 1.0 2015/10/12 12:07:23 cz277 Exp $
+HModel     3.5.0      CUED   12/10/15  : $Id: HModel.c,v 1.3 2015/10/12 12:07:24 cz277 Exp $
+HParm      3.5.0      CUED   12/10/15  : $Id: HParm.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HUtil      3.5.0      CUED   12/10/15  : $Id: HUtil.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HFBLat     3.5.0      CUED   12/10/15  : $Id: HFBLat.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HExactMPE  3.5.0      CUED   12/10/15  : $Id: HExactMPE.c,v 1.1.1.1 2006/10/11 09:54:57 jal58 Exp $
+HArc       3.5.0      CUED   12/10/15  : $Id: HArc.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HDict      3.5.0      CUED   12/10/15  : $Id: HDict.c,v 1.1.1.1 2006/10/11 09:54:57 jal58 Exp $
+HLat       3.5.0      CUED   12/10/15  : $Id: HLat.c,v 1.2 2015/12/18 18:18:18 xl207 Exp $
+HNet       3.5.0      CUED   12/10/15  : $Id: HNet.c,v 1.2 2015/12/18 18:18:18 xl207 Exp $
+HAdapt     3.5.0      CUED   12/10/15  : $Id: HAdapt.c,v 1.3 2015/10/12 12:07:24 cz277 Exp $
+HNCache    3.5.0      CUED   12/10/15  : $Id: HNCache.c,v 1.0 2015/10/12 12:07:24 cz277 Exp $
+
+CUDA driver version 11000
+CUDA runtime version 10020
+CUBLAS library version 10203
+GPU 0: Tesla K40c, 11441MB, SM = 3.5 [Selected]
+
+Reading ANN models...
+ANN model structure:
+ANN "DNN":
+	2. PERCEPTRON layer "layerin" (351 dim X 500 dim)
+		Input feature mixture "layerin_feature" (351 dim), operation CONCATENATION
+			Input feature stream 1 (39 dim, [1, 39]), context shift {-4, -3, -2, -1, +0, +1, +2, +3, +4}
+		Weight matrix "layerin_weight" (500 dim X 351 dim) [UPDATABLE]
+		Bias vector "layerin_bias" (500 dim) [UPDATABLE]
+		Activation function "RELU"
+
+	3. PERCEPTRON layer "layer3" (500 dim X 500 dim)
+		Input feature mixture "layer3_feature" (500 dim), operation CONCATENATION
+			ANN layer "layerin" outputs (500 dim, [1, 500]), context shift {+0}
+		Weight matrix "layer3_weight" (500 dim X 500 dim) [UPDATABLE]
+		Bias vector "layer3_bias" (500 dim) [UPDATABLE]
+		Activation function "RELU"
+
+	4. PERCEPTRON layer "layer4" (500 dim X 500 dim)
+		Input feature mixture "layer4_feature" (500 dim), operation CONCATENATION
+			ANN layer "layer3" outputs (500 dim, [1, 500]), context shift {+0}
+		Weight matrix "layer4_weight" (500 dim X 500 dim) [UPDATABLE]
+		Bias vector "layer4_bias" (500 dim) [UPDATABLE]
+		Activation function "RELU"
+
+	5. PERCEPTRON layer "layer5" (500 dim X 500 dim)
+		Input feature mixture "layer5_feature" (500 dim), operation CONCATENATION
+			ANN layer "layer4" outputs (500 dim, [1, 500]), context shift {+0}
+		Weight matrix "layer5_weight" (500 dim X 500 dim) [UPDATABLE]
+		Bias vector "layer5_bias" (500 dim) [UPDATABLE]
+		Activation function "RELU"
+
+	6. PERCEPTRON layer "layer6" (500 dim X 500 dim)
+		Input feature mixture "layer6_feature" (500 dim), operation CONCATENATION
+			ANN layer "layer5" outputs (500 dim, [1, 500]), context shift {+0}
+		Weight matrix "layer6_weight" (500 dim X 500 dim) [UPDATABLE]
+		Bias vector "layer6_bias" (500 dim) [UPDATABLE]
+		Activation function "RELU"
+
+	7. PERCEPTRON layer "layerout" (500 dim X 144 dim) [OUTPUT]
+		Input feature mixture "layerout_feature" (500 dim), operation CONCATENATION
+			ANN layer "layer6" outputs (500 dim, [1, 500]), context shift {+0}
+		Weight matrix "layerout_weight" (144 dim X 500 dim) [UPDATABLE]
+		Bias vector "layerout_bias" (144 dim) [UPDATABLE]
+		Activation function "SOFTMAX"
+
+3504 utterances (1067753 samples) in the training set
+192 utterances (57070 samples) in the validation set
+(More than) 33MB space allocated in GPU 0 memory
+
+Epoch 1 ******************************
+	Processing training set...
+		Train Accuracy = 36.53% [390069 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 5.000000e-04
+		Training time cost = 11.93s
+	Processing validation set...
+		Validation Accuracy = 52.61% [30024 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.41s
+
+
+Epoch 2 ******************************
+	Processing training set...
+		Train Accuracy = 58.42% [623735 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 5.000000e-04
+		Training time cost = 9.66s
+	Processing validation set...
+		Validation Accuracy = 57.97% [33082 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 3 ******************************
+	Processing training set...
+		Train Accuracy = 62.68% [669286 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 5.000000e-04
+		Training time cost = 9.66s
+	Processing validation set...
+		Validation Accuracy = 59.46% [33931 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 4 ******************************
+	Processing training set...
+		Train Accuracy = 65.39% [698237 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 5.000000e-04
+		Training time cost = 9.66s
+	Processing validation set...
+		Validation Accuracy = 60.15% [34326 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 5 ******************************
+	Processing training set...
+		Train Accuracy = 67.42% [719830 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 5.000000e-04
+		Training time cost = 9.66s
+	Processing validation set...
+		Validation Accuracy = 60.95% [34784 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 6 ******************************
+	Processing training set...
+		Train Accuracy = 69.07% [737491 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 5.000000e-04
+		Training time cost = 9.66s
+	Processing validation set...
+		Validation Accuracy = 61.10% [34872 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 7 ******************************
+	Processing training set...
+		Train Accuracy = 70.47% [752452 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 5.000000e-04
+		Training time cost = 9.65s
+	Processing validation set...
+		Validation Accuracy = 60.65% [34613 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 8 ******************************
+	Reload HMMSet generated by epoch 6
+	Processing training set...
+		Train Accuracy = 73.69% [786875 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 2.500000e-04
+		Training time cost = 9.65s
+	Processing validation set...
+		Validation Accuracy = 62.34% [35575 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 9 ******************************
+	Processing training set...
+		Train Accuracy = 75.47% [805791 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 2.500000e-04
+		Training time cost = 9.66s
+	Processing validation set...
+		Validation Accuracy = 61.79% [35265 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 10 ******************************
+	Reload HMMSet generated by epoch 8
+	Processing training set...
+		Train Accuracy = 77.10% [823260 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 1.250000e-04
+		Training time cost = 9.65s
+	Processing validation set...
+		Validation Accuracy = 63.01% [35960 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 11 ******************************
+	Processing training set...
+		Train Accuracy = 78.30% [836057 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 1.250000e-04
+		Training time cost = 9.66s
+	Processing validation set...
+		Validation Accuracy = 62.61% [35733 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 12 ******************************
+	Reload HMMSet generated by epoch 10
+	Processing training set...
+		Train Accuracy = 79.17% [845390 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 6.250000e-05
+		Training time cost = 9.65s
+	Processing validation set...
+		Validation Accuracy = 63.30% [36123 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 13 ******************************
+	Processing training set...
+		Train Accuracy = 79.97% [853889 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 6.250000e-05
+		Training time cost = 9.66s
+	Processing validation set...
+		Validation Accuracy = 63.09% [36008 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 14 ******************************
+	Reload HMMSet generated by epoch 12
+	Processing training set...
+		Train Accuracy = 80.26% [856935 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 3.125000e-05
+		Training time cost = 9.68s
+	Processing validation set...
+		Validation Accuracy = 63.47% [36223 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 15 ******************************
+	Processing training set...
+		Train Accuracy = 80.95% [864358 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 1.562500e-05
+		Training time cost = 9.69s
+	Processing validation set...
+		Validation Accuracy = 63.61% [36300 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Epoch 16 ******************************
+	Processing training set...
+		Train Accuracy = 81.38% [868891 right out of 1067753 samples]
+		Batch count = 1335, Update count = 1335
+		Learning rate = 7.812500e-06
+		Training time cost = 9.69s
+	Processing validation set...
+		Validation Accuracy = 63.50% [36241 right out of 57070 samples]
+		Batch count = 192
+		Validation time cost = 0.29s
+
+
+Finish Training ***********************
+	16020 updates processed in total
+
+
+
+
+HTK Configuration Parameters[28]
+  Module/Tool     Parameter                  Value
+                  GPUID                          0
+                  WEIGHTDECAY             0.001000
+                  UPDATETARGETPEN              TRUE
+                  UPDATEMODE            BATCHLEVEL
+                  UPDATECLIP              0.320000
+                  STOPDIFF                0.000100
+                  SHUFFLEKIND             QUICKNET
+                  RAMPSTART               0.000500
+                  NEWBOBCRITERION               ACC
+                  MOMENTUM                0.500000
+                  MINIBATCHSIZE                800
+                  MINEPOCHNUM                   12
+                  MAXEPOCHNUM                   16
+                  LRSCHEDULER               NEWBOB
+                  LOGPRIOROBSV         -135.000000
+                  LEARNRATE               0.000500
+  HNCACHE         TRACE                          1
+  HMATH           TRACE                          1
+# HCUDA           TRACE                          1
+  HANNET          TRACE                          1
+                  DATACACHESIZE          200000000
+                  DATAACCESSKIND         FRAMERAND
+                  CRITERION                   XENT
+  HPARM           VARSCALEFN      lib/info/ident_cvn_E_D_A_Z
+  HPARM           VARSCALEPATHMASK             *.%%%
+  HPARM           VARSCALEMASK               *.%%%
+  HPARM           VARSCALEDIR     lib/cvn/cvn_E_D_A_Z
+                  TARGETKIND          MFCC_E_D_A_Z
+

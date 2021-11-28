@@ -1,0 +1,3 @@
+------------------------------------
+../tools/steps/step-decode -INSWORD -10 -CORETEST -BEAMWIDTH 200 /homes/as3159/MLMI2/pracann/exp/MH0/dnntrain hmm0 MH0/decode-insPen-10
+------------------------------------

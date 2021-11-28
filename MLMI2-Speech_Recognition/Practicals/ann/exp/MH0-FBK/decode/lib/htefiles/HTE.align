@@ -1,0 +1,10 @@
+#!/bin/tcsh
+
+# HVite parameters
+set HVTRACE = 1			# tracing level
+set HVVOC = lib/dicts/phone.dct		# dictionary
+set HVALIGN
+set HVSTATEALIGN
+
+
+# automatically generated below

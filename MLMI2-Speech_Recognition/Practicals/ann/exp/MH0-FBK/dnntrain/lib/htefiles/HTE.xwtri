@@ -1,0 +1,10 @@
+#!/bin/tcsh
+
+set HETRACE = 1
+set HEMINWEIGHT = 2.0
+set HESTATS = stats
+set HEMINEG = 0
+set HEUPD = tmvw
+
+# automatically generated below
+

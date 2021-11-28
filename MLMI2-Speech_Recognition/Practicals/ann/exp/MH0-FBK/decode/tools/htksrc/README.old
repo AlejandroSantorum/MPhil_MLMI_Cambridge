@@ -1,0 +1,135 @@
+Hidden Markov Toolkit (HTK) 3.5 Beta
+                ====================================
+
+Use of this software is governed by a license agreement, the terms and
+conditions of which are set forth in the file LICENSE in the
+top-level HTK installation directory.  Please read this file carefully
+as use of this software implies acceptance of the conditions described
+therein.
+
+
+Introduction
+============
+
+HTK is a toolkit that has been primarily for research use in automatic 
+speech recognition.  Since 2000, HTK has been developed and distributed 
+by the Machine Intelligence Laboratory (formerly known as the Speech Vision 
+and Robotics Group) at Cambridge University Engineering Department 
+(http://mi.eng.cam.ac.uk).
+
+Please visit the HTK website at the following address for more
+information about HTK and the history of its development:
+
+    http://htk.eng.cam.ac.uk/
+
+A number of mailing lists have been established to help users build
+and understand HTK, for details see
+
+    http://htk.eng.cam.ac.uk/mailing/subscribe_mail.shtml
+
+
+License
+=======
+
+HTK is made available free of charge and can be downloaded from the
+HTK website. However it may not be redistributed, i.e. you must 
+register at the website and download it from there. 
+
+Details about the terms under which HTK is made available can
+be found in the LICENSE file.
+
+Note that the HDecode tool must be downloaded separately and
+has a separate license agreement.
+
+
+Compiling & Installing HTK under UNIX/Linux, OS X or Cygwin
+===========================================================
+
+HTK 3.5 comes with three sets of Makefiles enabling compilation for:
+
+1. CPU (standard)
+2. CPU using MKL (Intel Math Kernel library)
+3. NVIDIA GPUs (Graphic Processing Unit) using the NVIDIA CUDA compiler NVCC
+
+These alternative Makefiles are located in each of the following directories:
+
+HTKLib, HLMLib, HTKTools, HLMTools
+
+Examine the MakefileCPU, MakefileMKL and  MakefileNVCC 
+files in each of these directories and change the default 
+locations of CPU/GPU compilers and libraries to match the
+locations on the system for which HTK 3.5 is to be installed.
+
+In order to compile either the standard CPU version, or 
+the CPU version with MKL support or GPU version execute one of the following
+
+1. make -f MakefileCPU all
+2. make -f MakefileMKL all 
+3. make -f MakefileNVCC all
+
+in turn in each of HTKLib, HLMLib, HTKTools and HLMTools.
+Having compiled one of the branches (CPU/MKL/NVCC), the 
+relevant HTK tools can be installed executing one of the following
+
+1. make -f MakefileCPU install
+2. make -f MakefileMKL install
+3. make -f MakefileNVCC install
+
+commands in both the HTKTools and HLMTools directories. By default HTK 
+tools will be installed in bin.cpu, bin.mkl or bin.gpu depending 
+on the branch. 
+
+Prior to compiling a new branch it is important to clean the distribution
+
+1. make -f MakefileCPU clean
+2. make -f MakefileMKL clean
+3. make -f MakefileNVCC clean
+
+
+HDecode
+=======
+
+If you are also building HDecode (available from the HTK website, under a
+different licence from HTK), you will firstly need to unpack the HDecode
+source code (in the same directory in which you unpacked the HTK
+sources). Then follow the steps above for first building HTK, and then execute 
+the following command in HTKLVRec directory:
+
+1. make -f MakefileCPU all
+2. make -f MakefileCPU install
+
+or
+
+1. make -f MakefileMKL all
+2. make -f MakefileMKL install
+
+or
+
+1. make -f MakefileNVCC all
+2. make -f MakefileNVCC install
+
+depending on whether HTK is compiled for CPU, CPU with MKL support or GPU.
+
+
+Compiling & Installing HTK under Windows
+========================================
+HTK 3.5 has not yet been tested under Windows. 
+
+
+Testing the Installation
+========================
+As an initial test of the installation please run the HTK demonstration 
+using the configuration file samples/HTKDemo/configs/monPlainM1S1.dcf. 
+There is a README file in the samples/HTKDemo directory that explains 
+the operation of the demonstration in detail but, in short, you need 
+to run the demonstration script passing it the configuration file 
+samples/HTKDemo/configs/monPlainM1S1.dcf as input. 
+To test the language modelling tools you should follow the tutorial
+in the HTK book, using the files in the LMTutorial/ directory.
+
+In addition to basic testing of the HTK installation, it is also possible 
+to build several HTK systems for the Resource Management (RM) task. 
+These systems range in complexity from simpler Gaussian mixture model 
+based HMMs to more complex artificial neural network based systems. 
+The RM recipe is located in samples/RMHTK directory and is documented 
+as a part of tutorial chapter in the HTK book.

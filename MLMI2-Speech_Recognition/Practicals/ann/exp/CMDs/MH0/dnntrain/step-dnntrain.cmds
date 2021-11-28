@@ -1,0 +1,9 @@
+------------------------------------
+../tools/steps/step-dnntrain -vvv ../convert/mfc13d/env/environment_E_D_A_Z /homes/as3159/MLMI2/pracgmm/exp/MFC_E_D_A_Z_FlatStart/align-mono-hmm84/align/timit_train.mlf /homes/as3159/MLMI2/pracgmm/exp/MFC_E_D_A_Z_FlatStart/mono/hmm84/MMF /homes/as3159/MLMI2/pracgmm/exp/MFC_E_D_A_Z_FlatStart/mono/hmms.mlist MH0/dnntrain
+------------------------------------
+------------------------------------
+../tools/steps/step-dnntrain -vvv -GPUID 0 ../convert/mfc13d/env/environment_E_D_A_Z /homes/as3159/MLMI2/pracgmm/exp/MFC_E_D_A_Z_FlatStart/align-mono-hmm84/align/timit_train.mlf /homes/as3159/MLMI2/pracgmm/exp/MFC_E_D_A_Z_FlatStart/mono/hmm84/MMF /homes/as3159/MLMI2/pracgmm/exp/MFC_E_D_A_Z_FlatStart/mono/hmms.mlist MH0/dnntrain
+------------------------------------
+------------------------------------
+../tools/steps/step-dnntrain -vvv -GPUID 0 ../convert/mfc13d/env/environment_E_D_A_Z /homes/as3159/MLMI2/pracgmm/exp/MFC_E_D_A_Z_FlatStart/align-mono-hmm84/align/timit_train.mlf /homes/as3159/MLMI2/pracgmm/exp/MFC_E_D_A_Z_FlatStart/mono/hmm84/MMF /homes/as3159/MLMI2/pracgmm/exp/MFC_E_D_A_Z_FlatStart/mono/hmms.mlist MH0/dnntrain
+------------------------------------

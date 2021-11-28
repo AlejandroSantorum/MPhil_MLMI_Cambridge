@@ -1,0 +1,12 @@
+------------------------------------
+../tools/steps/step-decode -INSWORD -5 -CORETEST -BEAMWIDTH 200 /homes/as3159/MLMI2/pracann/exp/MH0/dnntrain hmm0 MH0/decode-insPen-5
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -INSWORD -5 -CORETEST -BEAMWIDTH 200 /homes/as3159/MLMI2/pracann/exp/MH0/dnntrain hmm0 MH0/decode-insPen-5
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -INSWORD -5 -CORETEST -BEAMWIDTH 200 /homes/as3159/MLMI2/pracann/exp/MH0/dnntrain hmm0 MH0/decode-insPen-5
+------------------------------------
+------------------------------------
+../tools/steps/step-decode -INSWORD -5 -CORETEST -BEAMWIDTH 200 /homes/as3159/MLMI2/pracann/exp/MH0/dnntrain hmm0 MH0/decode-insPen-5
+------------------------------------

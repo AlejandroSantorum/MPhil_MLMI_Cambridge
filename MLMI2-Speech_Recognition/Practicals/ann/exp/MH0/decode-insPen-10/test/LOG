@@ -1,0 +1,1886 @@
+HVite started at Wed 24 Nov 16:17:23 GMT 2021
+tools/htkbin/HVite -A -D -V -C viterbi.cfg -H decodeHMMs/MMF -J decodeHMMs -i test/timit_core.mlf -X rec -T 1 -t 200 -s 5.0 -p -10 -C basic.cfg -w lib/wdnets/phoneloop.net -S lib/flists/test.core.scp lib/dicts/phone.dct hmms.mlist 
+
+HTK Configuration Parameters[11]
+  Module/Tool     Parameter                  Value
+# HPARM           VARSCALEFN      lib/info/ident_cvn_E_D_A_Z
+# HPARM           VARSCALEPATHMASK             *.%%%
+# HPARM           VARSCALEMASK               *.%%%
+# HPARM           VARSCALEDIR     lib/cvn/cvn_E_D_A_Z
+#                 TARGETKIND          MFCC_E_D_A_Z
+#                 ALLOWXWRDEXP               FALSE
+#                 FORCECXTEXP                FALSE
+# HNET            MARKLOGHMM                 FALSE
+# HNET            TRACE                          1
+# HMODEL          TRACE                        512
+# HSHELL          NONUMESCAPES                TRUE
+
+
+HTK Version Information
+Module     Version    Who    Date      : CVS Info
+HVite      3.5.0      CUED   12/10/15  : $Id: HVite.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HShell     3.5.0      CUED   12/10/15  : $Id: HShell.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HMem       3.5.0      CUED   12/10/15  : $Id: HMem.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HLabel     3.5.0      CUED   12/10/15  : $Id: HLabel.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HMath      3.5.0      CUED   12/10/15  : $Id: HMath.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HSigP      3.5.0      CUED   12/10/15  : $Id: HSigP.c,v 1.1.1.1 2006/10/11 09:54:58 jal58 Exp $
+HWave      3.5.0      CUED   12/10/15  : $Id: HWave.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HAudio     3.5.0      CUED   12/10/15  : $Id: HAudio.c,v 1.1.1.1 2006/10/11 09:54:57 jal58 Exp $
+HVQ        3.5.0      CUED   12/10/15  : $Id: HVQ.c,v 1.1.1.1 2006/10/11 09:54:59 jal58 Exp $
+HModel     3.5.0      CUED   12/10/15  : $Id: HModel.c,v 1.3 2015/10/12 12:07:24 cz277 Exp $
+HANNet     3.5.0      CUED   12/10/15  : $Id: HANNet.c,v 1.0 2015/10/12 12:07:24 cz277 Exp $
+HParm      3.5.0      CUED   12/10/15  : $Id: HParm.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HDict      3.5.0      CUED   12/10/15  : $Id: HDict.c,v 1.1.1.1 2006/10/11 09:54:57 jal58 Exp $
+HNet       3.5.0      CUED   12/10/15  : $Id: HNet.c,v 1.2 2015/12/18 18:18:18 xl207 Exp $
+HRec       3.5.0      CUED   12/10/15  : $Id: HRec.c,v 1.2 2015/10/12 12:07:24 cx277 Exp $
+HUtil      3.5.0      CUED   12/10/15  : $Id: HUtil.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HAdapt     3.5.0      CUED   12/10/15  : $Id: HAdapt.c,v 1.3 2015/10/12 12:07:24 cz277 Exp $
+HMap       3.5.0      CUED   12/10/15  : $Id: HMap.c,v 1.1.1.1 2006/10/11 09:54:57 jal58 Exp $
+HNCache    3.5.0      CUED   12/10/15  : $Id: HNCache.c,v 1.0 2015/10/12 12:07:24 cz277 Exp $
+
+MKL version 11.1.2 (build 20140122)
+Intel(R) 64 architecture
+MKL thread number = 1
+
+Read 48 physical / 48 logical HMMs
+Hybrid ANN set: ANN "DNN":
+	2. PERCEPTRON layer "layerin" (351 dim X 500 dim)
+		Input feature mixture "layerin_feature" (351 dim), operation CONCATENATION
+			Input feature stream 1 (39 dim, [1, 39]), context shift {-4, -3, -2, -1, +0, +1, +2, +3, +4}
+		Weight matrix "layerin_weight" (500 dim X 351 dim) [UPDATABLE]
+		Bias vector "layerin_bias" (500 dim) [UPDATABLE]
+		Activation function "RELU"
+
+	3. PERCEPTRON layer "layer3" (500 dim X 500 dim)
+		Input feature mixture "layer3_feature" (500 dim), operation CONCATENATION
+			ANN layer "layerin" outputs (500 dim, [1, 500]), context shift {+0}
+		Weight matrix "layer3_weight" (500 dim X 500 dim) [UPDATABLE]
+		Bias vector "layer3_bias" (500 dim) [UPDATABLE]
+		Activation function "RELU"
+
+	4. PERCEPTRON layer "layer4" (500 dim X 500 dim)
+		Input feature mixture "layer4_feature" (500 dim), operation CONCATENATION
+			ANN layer "layer3" outputs (500 dim, [1, 500]), context shift {+0}
+		Weight matrix "layer4_weight" (500 dim X 500 dim) [UPDATABLE]
+		Bias vector "layer4_bias" (500 dim) [UPDATABLE]
+		Activation function "RELU"
+
+	5. PERCEPTRON layer "layer5" (500 dim X 500 dim)
+		Input feature mixture "layer5_feature" (500 dim), operation CONCATENATION
+			ANN layer "layer4" outputs (500 dim, [1, 500]), context shift {+0}
+		Weight matrix "layer5_weight" (500 dim X 500 dim) [UPDATABLE]
+		Bias vector "layer5_bias" (500 dim) [UPDATABLE]
+		Activation function "RELU"
+
+	6. PERCEPTRON layer "layer6" (500 dim X 500 dim)
+		Input feature mixture "layer6_feature" (500 dim), operation CONCATENATION
+			ANN layer "layer5" outputs (500 dim, [1, 500]), context shift {+0}
+		Weight matrix "layer6_weight" (500 dim X 500 dim) [UPDATABLE]
+		Bias vector "layer6_bias" (500 dim) [UPDATABLE]
+		Activation function "RELU"
+
+	7. PERCEPTRON layer "layerout" (500 dim X 144 dim) [OUTPUT]
+		Input feature mixture "layerout_feature" (500 dim), operation CONCATENATION
+			ANN layer "layer6" outputs (500 dim, [1, 500]), context shift {+0}
+		Weight matrix "layerout_weight" (144 dim X 500 dim) [UPDATABLE]
+		Bias vector "layerout_bias" (144 dim) [UPDATABLE]
+		Activation function "SOFTMAX"
+
+Proccesing data through the cache
+Read lattice with 53 nodes / 147 arcs
+Performing network expansion
+Created network with 105 nodes / 199 links
+File: dr1_felc0_si1386_000_550.mfc
+sil ih n w ey jh sh epi en ix g ow sh iy ey sh ax n z dh iy ih n d ix s t r iy b aa r k ix n z ax z ix y uw n eh w ax dh ax s en g el y ng y ix n sil  ==  [550 frames] -132.6669 [Ac=-72386.8 LM=-580.0] (Act=100.4)
+	Forwarding time is 0.104400
+	Decoding time is 0.007478
+	Cache loading time is 0.000612
+File: dr1_felc0_si2016_000_338.mfc
+sil hh iy v ao n ow z r ow cl s sil dh ax b ow cl s k ah m ah n s t aw cl k sil  ==  [338 frames] -132.4753 [Ac=-44466.7 LM=-310.0] (Act=100.1)
+	Forwarding time is 0.063481
+	Decoding time is 0.004651
+	Cache loading time is 0.000394
+File: dr1_felc0_si756_000_417.mfc
+sil m ix t ih r iy el s sil s uh r ih m ix cl m aa l ng k l ey sil r eh d w oy dx ao r b aa f sil  ==  [417 frames] -132.6401 [Ac=-54930.9 LM=-380.0] (Act=100.3)
+	Forwarding time is 0.077578
+	Decoding time is 0.005636
+	Cache loading time is 0.000479
+File: dr1_felc0_sx126_000_289.mfc
+sil aa dx ix th ih sh el n t ih l ax jh ix n s ix s f er r iy ow sil  ==  [289 frames] -132.5953 [Ac=-38060.0 LM=-260.0] (Act=99.9)
+	Forwarding time is 0.053839
+	Decoding time is 0.003858
+	Cache loading time is 0.000329
+File: dr1_felc0_sx216_000_218.mfc
+sil dh ax s epi m aa l b oy p uh t ax w ah m ah n hh uh k sil  ==  [218 frames] -132.4609 [Ac=-28636.5 LM=-240.0] (Act=99.5)
+	Forwarding time is 0.040442
+	Decoding time is 0.002887
+	Cache loading time is 0.000247
+File: dr1_felc0_sx306_000_248.mfc
+sil ah ch ow z en th y uw el b iy t ah m jh eh n r el s sil  ==  [248 frames] -132.4968 [Ac=-32629.2 LM=-230.0] (Act=99.7)
+	Forwarding time is 0.046252
+	Decoding time is 0.003311
+	Cache loading time is 0.000284
+File: dr1_felc0_sx36_000_350.mfc
+sil ow l ix dh ix m ow s t ix k ah m th l sh ax f aa r dx ah s ix vcl t ih n p aa th ix l er dx iy sil  ==  [350 frames] -133.0068 [Ac=-46162.4 LM=-390.0] (Act=100.2)
+	Forwarding time is 0.065183
+	Decoding time is 0.004725
+	Cache loading time is 0.000404
+File: dr1_felc0_sx396_000_380.mfc
+sil dh ix f ih sh p ix g eh n t w iy p r ih n t uw k l ih n s er v en s ax v ax s epi m ao l ey k sil  ==  [380 frames] -132.7641 [Ac=-50040.3 LM=-410.0] (Act=100.2)
+	Forwarding time is 0.070507
+	Decoding time is 0.005039
+	Cache loading time is 0.000432
+File: dr1_mdab0_si1039_000_392.mfc
+sil hh iy hh ah z n eh v er hh m s eh l f t ah dx ih hh iy f ow w uh ch t epi iy hh ey dx ih vcl p sil w uh ch ix v ah s hh ae s sil  ==  [392 frames] -132.6653 [Ac=-51514.8 LM=-490.0] (Act=100.2)
+	Forwarding time is 0.073607
+	Decoding time is 0.005307
+	Cache loading time is 0.000446
+File: dr1_mdab0_si1669_000_204.mfc
+sil b iy s ay dx uh d ix n d ow n ax d ix ax f ay er s eh l f sil  ==  [204 frames] -133.0329 [Ac=-26878.7 LM=-260.0] (Act=99.4)
+	Forwarding time is 0.038322
+	Decoding time is 0.002738
+	Cache loading time is 0.000233
+File: dr1_mdab0_si2299_000_258.mfc
+sil s ah m t ah z iy k ao s ay dx w ax th epi ah f aa ax z b iy ix t ow sil  ==  [258 frames] -132.9137 [Ac=-34001.7 LM=-290.0] (Act=99.8)
+	Forwarding time is 0.048084
+	Decoding time is 0.003472
+	Cache loading time is 0.000289
+File: dr1_mdab0_sx139_000_234.mfc
+sil dh ax b ah ng g ax l ow w ax s p ah s l ey s uh ch w ih dx uh d ih v ix sh ao r sil  ==  [234 frames] -132.8377 [Ac=-30744.0 LM=-340.0] (Act=99.6)
+	Forwarding time is 0.043201
+	Decoding time is 0.003079
+	Cache loading time is 0.000269
+File: dr1_mdab0_sx229_000_129.mfc
+sil ay iy l th iy v ao ow p oy n ax t sil  ==  [129 frames] -133.1826 [Ac=-17020.6 LM=-160.0] (Act=98.5)
+	Forwarding time is 0.023946
+	Decoding time is 0.001719
+	Cache loading time is 0.000144
+File: dr1_mdab0_sx319_000_242.mfc
+sil ey b ih g l ay dx l iy ae b el t ix dh ix f ao m iy aa r d sil  ==  [242 frames] -132.8697 [Ac=-31894.5 LM=-260.0] (Act=99.7)
+	Forwarding time is 0.045125
+	Decoding time is 0.003263
+	Cache loading time is 0.000280
+File: dr1_mdab0_sx409_000_286.mfc
+sil iy dx iy ng s b ih dx eh jh epi n ay w iy k r iy s en s t r ix th r ae sh ow s l iy sil  ==  [286 frames] -132.9715 [Ac=-37679.8 LM=-350.0] (Act=99.9)
+	Forwarding time is 0.053547
+	Decoding time is 0.003850
+	Cache loading time is 0.000328
+File: dr1_mdab0_sx49_000_218.mfc
+sil ae t w eh l ay t ax m ax z epi ao th ey el hh ah sh ax b l iy sil  ==  [218 frames] -132.6565 [Ac=-28659.1 LM=-260.0] (Act=99.5)
+	Forwarding time is 0.041112
+	Decoding time is 0.002973
+	Cache loading time is 0.000252
+File: dr1_mwbt0_si1553_000_474.mfc
+sil hh aw oy eh v ax dh l ih dx er r iy m iy d aa vcl ae t ix vcl b ay s eh v el d ah z ax n l ah ch r n epi s ah p er z sil  ==  [474 frames] -132.5207 [Ac=-62344.8 LM=-470.0] (Act=100.3)
+	Forwarding time is 0.088580
+	Decoding time is 0.006409
+	Cache loading time is 0.000545
+File: dr1_mwbt0_si2183_000_187.mfc
+sil b ow k s ah f ah sh en uh cl s sil  ==  [187 frames] -132.3834 [Ac=-24605.7 LM=-150.0] (Act=99.2)
+	Forwarding time is 0.035091
+	Decoding time is 0.002458
+	Cache loading time is 0.000205
+File: dr1_mwbt0_si923_000_294.mfc
+sil t uh m eh n iy ae k s p er cl s dh ih s t r eh n w ah z ix n eh v ah dx ax b l sil  ==  [294 frames] -132.5704 [Ac=-38625.7 LM=-350.0] (Act=99.9)
+	Forwarding time is 0.056514
+	Decoding time is 0.003886
+	Cache loading time is 0.000321
+File: dr1_mwbt0_sx113_000_331.mfc
+sil ey m ah s k y l ah ae vcl d ax m ow n sil ix z g uh d f oy y ix b ae k sil  ==  [331 frames] -132.2962 [Ac=-43480.1 LM=-310.0] (Act=100.0)
+	Forwarding time is 0.063727
+	Decoding time is 0.004390
+	Cache loading time is 0.000377
+File: dr1_mwbt0_sx203_000_311.mfc
+sil dh ix k aa z w ey eh n d ix dh ah b r ah p l iy sil eh cl dh ax sh uw ao r sil  ==  [311 frames] -132.5562 [Ac=-40915.0 LM=-310.0] (Act=100.0)
+	Forwarding time is 0.060180
+	Decoding time is 0.004123
+	Cache loading time is 0.000361
+File: dr1_mwbt0_sx23_000_315.mfc
+sil dh ow z epi m uw z ih sh ih n z hh ae m ax n ay z epi ay v el l ax s oy iy sil  ==  [315 frames] -132.4349 [Ac=-41407.0 LM=-310.0] (Act=100.0)
+	Forwarding time is 0.060572
+	Decoding time is 0.004135
+	Cache loading time is 0.000357
+File: dr1_mwbt0_sx293_000_360.mfc
+sil th w iy z t ey cl th ih z t er dx iy t ey b uh k aa th t ax dh ix k w iy n er z f ax m ey iy sil  ==  [360 frames] -132.4974 [Ac=-47309.1 LM=-390.0] (Act=100.1)
+	Forwarding time is 0.069512
+	Decoding time is 0.004799
+	Cache loading time is 0.000416
+File: dr1_mwbt0_sx383_000_388.mfc
+sil dh ix k aa p ix cl k l iy dx er z sil sh ae n p uw dh aw r ao r iy ah n t ax r aa g sil  ==  [388 frames] -132.5377 [Ac=-51074.6 LM=-350.0] (Act=100.2)
+	Forwarding time is 0.074892
+	Decoding time is 0.005160
+	Cache loading time is 0.000448
+File: dr2_fpas0_si1272_000_184.mfc
+sil l aa vcl ix ch er ey ae s t er v f ih z ih k s sil  ==  [184 frames] -132.9932 [Ac=-24260.7 LM=-210.0] (Act=99.2)
+	Forwarding time is 0.035223
+	Decoding time is 0.002435
+	Cache loading time is 0.000212
+File: dr2_fpas0_si2204_000_384.mfc
+sil p r dx iy s uw l uh m ix k y v ao ng k eh r ix f ow l dh eh m b r ow z ax w aa k iy n s t eh k sil  ==  [384 frames] -132.9283 [Ac=-50624.5 LM=-420.0] (Act=100.1)
+	Forwarding time is 0.074108
+	Decoding time is 0.005141
+	Cache loading time is 0.000431
+File: dr2_fpas0_si944_000_234.mfc
+sil ix hh ax f aa m ix z r eh t ix dh ax r eh m ax s epi iy p eh ey d sil  ==  [234 frames] -132.8952 [Ac=-30817.5 LM=-280.0] (Act=99.7)
+	Forwarding time is 0.045342
+	Decoding time is 0.003112
+	Cache loading time is 0.000263
+File: dr2_fpas0_sx134_000_292.mfc
+sil d ix s ah m b r n jh eh ng y r eh r n ay s epi m ah n s t ix s b ah n ih m ay ey m iy sil  ==  [292 frames] -132.8693 [Ac=-38417.8 LM=-380.0] (Act=99.9)
+	Forwarding time is 0.056418
+	Decoding time is 0.003854
+	Cache loading time is 0.000331
+File: dr2_fpas0_sx224_000_159.mfc
+sil hh ow g uh dx ix z y er ix n d er ix n s sil  ==  [159 frames] -132.8303 [Ac=-20930.0 LM=-190.0] (Act=99.2)
+	Forwarding time is 0.030461
+	Decoding time is 0.002098
+	Cache loading time is 0.000176
+File: dr2_fpas0_sx314_000_292.mfc
+sil ey th d iy b ao m ao r jh ah n er s dh er b ng aw n iy vcl f er w aw f eh er sil  ==  [292 frames] -132.7693 [Ac=-38448.6 LM=-320.0] (Act=99.9)
+	Forwarding time is 0.056461
+	Decoding time is 0.003905
+	Cache loading time is 0.000344
+File: dr2_fpas0_sx404_000_276.mfc
+sil b ay b er n p ey p r n el iy z en ix d ih vcl b ao v f aa er sil  ==  [276 frames] -132.5337 [Ac=-36309.3 LM=-270.0] (Act=99.8)
+	Forwarding time is 0.053811
+	Decoding time is 0.003643
+	Cache loading time is 0.000315
+File: dr2_fpas0_sx44_000_223.mfc
+sil b ah z k ix b ao k ix n b iy n eh n t ix t ey ng ng s b ao er sil sil  ==  [223 frames] -133.0355 [Ac=-29376.9 LM=-290.0] (Act=99.5)
+	Forwarding time is 0.043697
+	Decoding time is 0.002983
+	Cache loading time is 0.000252
+File: dr2_mtas1_si1473_000_145.mfc
+sil y ow iy dx ih n ah f sil hh ah n iy sil  ==  [145 frames] -133.1333 [Ac=-19144.3 LM=-160.0] (Act=98.8)
+	Forwarding time is 0.028209
+	Decoding time is 0.001912
+	Cache loading time is 0.000164
+File: dr2_mtas1_si2098_000_316.mfc
+sil hh iy g iy v ih sh ao r g hh aa r d l ae f ix n l uh t ih hh er n ow ix ng l iy sil  ==  [316 frames] -132.4711 [Ac=-41520.9 LM=-340.0] (Act=100.0)
+	Forwarding time is 0.061052
+	Decoding time is 0.004197
+	Cache loading time is 0.000361
+File: dr2_mtas1_si838_000_263.mfc
+sil ix ng k r iy s ih ng t ih m b ow el ax v y uw p r aa dx ix cl d ix v eh l dh ax cl sil  ==  [263 frames] -132.7477 [Ac=-34562.7 LM=-350.0] (Act=99.8)
+	Forwarding time is 0.050973
+	Decoding time is 0.003526
+	Cache loading time is 0.000314
+File: dr2_mtas1_sx118_000_280.mfc
+sil k ax m b ay ey n ao l dh iy ng g r iy y ix n z ix n ax l aa r jh p el sil  ==  [280 frames] -132.6200 [Ac=-36823.6 LM=-310.0] (Act=99.8)
+	Forwarding time is 0.054003
+	Decoding time is 0.003725
+	Cache loading time is 0.000317
+File: dr2_mtas1_sx208_000_349.mfc
+sil r aa b s ae cl b ay dh ax p ao ax d cl ix n s k eh ch cl k ax s t r ey g iy s sil  ==  [349 frames] -132.4689 [Ac=-45891.6 LM=-340.0] (Act=100.0)
+	Forwarding time is 0.067250
+	Decoding time is 0.004639
+	Cache loading time is 0.000388
+File: dr2_mtas1_sx28_000_246.mfc
+sil b ey g eh cl g aa r d f er w ah n g ah l m epi ax v g ae s sil  ==  [246 frames] -132.4220 [Ac=-32305.8 LM=-270.0] (Act=99.6)
+	Forwarding time is 0.047758
+	Decoding time is 0.003345
+	Cache loading time is 0.000292
+File: dr2_mtas1_sx298_000_316.mfc
+sil ay vcl r eh dh ax n ah b ay dh iy sh uw z ix b iy ow v er ch aa r ch t sil  ==  [316 frames] -132.2351 [Ac=-41496.3 LM=-290.0] (Act=100.0)
+	Forwarding time is 0.060739
+	Decoding time is 0.004175
+	Cache loading time is 0.000350
+File: dr2_mtas1_sx388_000_402.mfc
+sil hh er r ay d hh ae n sil ey cl s sil w ax n eh v er dh ix b er m eh t er cl p r eh sh er ch ey n jh ix z sil  ==  [402 frames] -132.5131 [Ac=-52850.3 LM=-420.0] (Act=100.2)
+	Forwarding time is 0.077335
+	Decoding time is 0.005334
+	Cache loading time is 0.000454
+File: dr2_mwew0_si1361_000_253.mfc
+sil w ah dx ix n ih s epi w ah n s eh cl sh en w ix w eh ow k ax n d ao dx ix dx er z sil  ==  [253 frames] -132.6443 [Ac=-33219.0 LM=-340.0] (Act=99.7)
+	Forwarding time is 0.048896
+	Decoding time is 0.003356
+	Cache loading time is 0.000292
+File: dr2_mwew0_si1991_000_401.mfc
+sil l ow cl b iy p el el r ow n ix s t r iy t ix n k ah s dh uw m z ih n m ae s k s epi ix n eh v ix ng ax m ao sil  ==  [401 frames] -132.7409 [Ac=-52769.1 LM=-460.0] (Act=100.2)
+	Forwarding time is 0.076983
+	Decoding time is 0.005336
+	Cache loading time is 0.000449
+File: dr2_mwew0_si731_000_198.mfc
+sil ax f y uw y uw z l ey dx er dh ix d ow m f eh l ax n sil  ==  [198 frames] -132.5210 [Ac=-25999.2 LM=-240.0] (Act=99.5)
+	Forwarding time is 0.038186
+	Decoding time is 0.002653
+	Cache loading time is 0.000223
+File: dr2_mwew0_sx101_000_392.mfc
+sil d ih n ix g aa r en ch ih l g ix n d eh k er ey cl dh er k w eh s er m z f r ao ao ax d ey z sil  ==  [392 frames] -132.7456 [Ac=-51636.3 LM=-400.0] (Act=100.2)
+	Forwarding time is 0.075611
+	Decoding time is 0.005243
+	Cache loading time is 0.000467
+File: dr2_mwew0_sx11_000_166.mfc
+sil iy l l aw er r eh r l ay sil  ==  [166 frames] -132.4299 [Ac=-21853.4 LM=-130.0] (Act=99.1)
+	Forwarding time is 0.032086
+	Decoding time is 0.002178
+	Cache loading time is 0.000192
+File: dr2_mwew0_sx191_000_251.mfc
+sil w uh d r ao l f ow n iy ae k iy z ey sh en z ih w ah n z sil  ==  [251 frames] -132.4014 [Ac=-32972.7 LM=-260.0] (Act=99.7)
+	Forwarding time is 0.048228
+	Decoding time is 0.003306
+	Cache loading time is 0.000286
+File: dr2_mwew0_sx281_000_332.mfc
+sil k ao r iy n t r ih zh p l ey t eh vcl w ix d iy ch b ao l z f er aw r z sil  ==  [332 frames] -132.5461 [Ac=-43685.3 LM=-320.0] (Act=100.0)
+	Forwarding time is 0.064048
+	Decoding time is 0.004405
+	Cache loading time is 0.000376
+File: dr2_mwew0_sx371_000_288.mfc
+sil r ey cl n aw m ih n ae p iy dh ix b ah s th ae f er b ih z n dh ax s epi m er jh er z sil  ==  [288 frames] -132.5698 [Ac=-37820.1 LM=-360.0] (Act=99.9)
+	Forwarding time is 0.055714
+	Decoding time is 0.004710
+	Cache loading time is 0.000322
+File: dr3_fpkt0_si1538_000_311.mfc
+sil ax k eh r jh k ah n sh b ay z d ih m w ay cl z dh el t er ng th uw dh ix g l uw n sil  ==  [311 frames] -132.7796 [Ac=-40944.5 LM=-350.0] (Act=100.0)
+	Forwarding time is 0.060029
+	Decoding time is 0.004769
+	Cache loading time is 0.000367
+File: dr3_fpkt0_si2168_000_196.mfc
+sil dh ey m ey k ah s k en f ao r m ax s l ah cl g uh vcl sil  ==  [196 frames] -132.6225 [Ac=-25754.0 LM=-240.0] (Act=99.3)
+	Forwarding time is 0.037520
+	Decoding time is 0.002978
+	Cache loading time is 0.000235
+File: dr3_fpkt0_si908_000_225.mfc
+sil w iy aw ih z epi aw w iy m ix d ay v ax th er b uw vcl s aa n sil  ==  [225 frames] -132.8722 [Ac=-29636.3 LM=-260.0] (Act=99.6)
+	Forwarding time is 0.043574
+	Decoding time is 0.003319
+	Cache loading time is 0.000264
+File: dr3_fpkt0_sx188_000_220.mfc
+sil hh uh w aa th r ay th iy n l ix m dx ih dx ih k s p eh s ix k aw cl sil  ==  [220 frames] -132.8777 [Ac=-28943.1 LM=-290.0] (Act=99.6)
+	Forwarding time is 0.041990
+	Decoding time is 0.003216
+	Cache loading time is 0.000261
+File: dr3_fpkt0_sx278_000_319.mfc
+sil t ix f ay l er hh ih z p er s t iy ch ih k ey zh en ih r iy z dh ax w ao s t r iy jh er n el sil  ==  [319 frames] -132.7322 [Ac=-41951.6 LM=-390.0] (Act=100.0)
+	Forwarding time is 0.061047
+	Decoding time is 0.004655
+	Cache loading time is 0.000372
+File: dr3_fpkt0_sx368_000_307.mfc
+sil l ao r ih s k aa s t ix n iy dx ix vcl b l ay g l ah z ix b iy k en p l iy l iy l ix g ix cl sil  ==  [307 frames] -132.8433 [Ac=-40382.9 LM=-400.0] (Act=100.0)
+	Forwarding time is 0.059154
+	Decoding time is 0.004532
+	Cache loading time is 0.000354
+File: dr3_fpkt0_sx8_000_280.mfc
+sil w ay y l w r iy ow v er s ih l iy ay d ix n s sil  ==  [280 frames] -132.5221 [Ac=-36886.2 LM=-220.0] (Act=99.9)
+	Forwarding time is 0.053824
+	Decoding time is 0.004092
+	Cache loading time is 0.000316
+File: dr3_fpkt0_sx98_000_183.mfc
+sil g eh s dh ix k w eh sh ix n f r ah n iy ae n s er sil  ==  [183 frames] -132.8117 [Ac=-24074.5 LM=-230.0] (Act=99.2)
+	Forwarding time is 0.035125
+	Decoding time is 0.002640
+	Cache loading time is 0.000207
+File: dr3_mjmp0_si1535_000_233.mfc
+sil hh iy t r ae vcl el vcl l eh s t ih z p iy sh uh d f ey l sil  ==  [233 frames] -132.4780 [Ac=-30617.4 LM=-250.0] (Act=99.7)
+	Forwarding time is 0.044849
+	Decoding time is 0.003382
+	Cache loading time is 0.000268
+File: dr3_mjmp0_si1791_000_466.mfc
+sil n ow dh ax m ae w ax z n aa d ch ah n p sil sil hh iy w oy n d er hh aw iy g eh t ay dx ow p w ix th ih s t r ey vcl zh er sil  ==  [466 frames] -132.6738 [Ac=-61336.0 LM=-490.0] (Act=100.3)
+	Forwarding time is 0.089866
+	Decoding time is 0.006410
+	Cache loading time is 0.000539
+File: dr3_mjmp0_si905_000_267.mfc
+sil hh ix z w er cl b iy g ae n jh ih s ix k s t ey z ae f t uh d ax f l ah vcl sil  ==  [267 frames] -132.7259 [Ac=-35107.8 LM=-330.0] (Act=99.8)
+	Forwarding time is 0.051232
+	Decoding time is 0.003473
+	Cache loading time is 0.000297
+File: dr3_mjmp0_sx185_000_210.mfc
+sil g iy jh uw b ae ey n iy k ao dx er ey ow v er ow s sil  ==  [210 frames] -132.6262 [Ac=-27631.5 LM=-220.0] (Act=99.5)
+	Forwarding time is 0.040540
+	Decoding time is 0.002702
+	Cache loading time is 0.000232
+File: dr3_mjmp0_sx275_000_275.mfc
+sil s d iy v ao r b r ey cl r ey vcl k ae zh m er s epi w ey dx er sil  ==  [275 frames] -132.3242 [Ac=-36119.2 LM=-270.0] (Act=99.9)
+	Forwarding time is 0.053227
+	Decoding time is 0.003513
+	Cache loading time is 0.000307
+File: dr3_mjmp0_sx365_000_387.mfc
+sil dh ix g ah n m ix n m k eh cl t ix z v ih cl t ax m k ao er dx eh t eh m p oy cl f ix th r iy aw er z sil  ==  [387 frames] -132.6080 [Ac=-50889.3 LM=-430.0] (Act=100.2)
+	Forwarding time is 0.074185
+	Decoding time is 0.005003
+	Cache loading time is 0.000434
+File: dr3_mjmp0_sx5_000_158.mfc
+sil sh iy ih s t eh dx er z eh n ay ae m sil  ==  [158 frames] -132.6747 [Ac=-20792.6 LM=-170.0] (Act=98.9)
+	Forwarding time is 0.030446
+	Decoding time is 0.002016
+	Cache loading time is 0.000174
+File: dr3_mjmp0_sx95_000_307.mfc
+sil hh iy g l aa dx eh z ih n aw l ix g ih dx er zh er t ah p ax k ao r ah cl t ay l z sil  ==  [307 frames] -132.5403 [Ac=-40339.9 LM=-350.0] (Act=100.0)
+	Forwarding time is 0.059484
+	Decoding time is 0.003996
+	Cache loading time is 0.000359
+File: dr3_mlnt0_si1574_000_476.mfc
+sil dh l ay s epi w ao m d er r aw m dh ax b ow l ax b en eh t ow z ih n w ih ch hh iy m aa cl sil d ey cl b ay cl b r eh t sil  ==  [476 frames] -132.6340 [Ac=-62643.8 LM=-490.0] (Act=100.3)
+	Forwarding time is 0.092912
+	Decoding time is 0.006301
+	Cache loading time is 0.000535
+File: dr3_mlnt0_si1902_000_185.mfc
+sil dh ax p ao s ix ng en g l ow ax v ix s ix vcl er r eh cl t sil  ==  [185 frames] -132.7801 [Ac=-24314.3 LM=-250.0] (Act=99.3)
+	Forwarding time is 0.035887
+	Decoding time is 0.002409
+	Cache loading time is 0.000211
+File: dr3_mlnt0_si642_000_407.mfc
+sil d eh p aa s epi er t uw z d eh p l ae dx er z epi eh ch eh er ae n aa p hh aa m th ae n sil  ==  [407 frames] -132.4253 [Ac=-53537.1 LM=-360.0] (Act=100.2)
+	Forwarding time is 0.078891
+	Decoding time is 0.005381
+	Cache loading time is 0.000464
+File: dr3_mlnt0_sx102_000_365.mfc
+sil s p eh sh uh t ae s f ao r s ix z ax r eh s k y uw hh aa s t ix jh ix z f er m k ix vcl n ae p er s sil  ==  [365 frames] -132.6268 [Ac=-47978.8 LM=-430.0] (Act=100.2)
+	Forwarding time is 0.070448
+	Decoding time is 0.004827
+	Cache loading time is 0.000406
+File: dr3_mlnt0_sx12_000_230.mfc
+sil w ow v l aa b ix n w er ey y ow el dh ih l iy sil  ==  [230 frames] -132.6738 [Ac=-30305.0 LM=-210.0] (Act=99.7)
+	Forwarding time is 0.044372
+	Decoding time is 0.002975
+	Cache loading time is 0.000259
+File: dr3_mlnt0_sx192_000_231.mfc
+sil s d r aa r hh ae z r aw dx er f ae sh ix m d ih sh iy er sil  ==  [231 frames] -132.6325 [Ac=-30388.1 LM=-250.0] (Act=99.6)
+	Forwarding time is 0.044916
+	Decoding time is 0.003051
+	Cache loading time is 0.000261
+File: dr3_mlnt0_sx282_000_317.mfc
+sil dh ix t uw th er iy f er g aa t ix k aa m w ax n r aa jh er s t uw th d eh l aa aw t sil  ==  [317 frames] -132.7448 [Ac=-41720.1 LM=-360.0] (Act=100.0)
+	Forwarding time is 0.061228
+	Decoding time is 0.004146
+	Cache loading time is 0.000363
+File: dr3_mlnt0_sx372_000_309.mfc
+sil d eh vcl d ay g r aw m ey k s ae n z k ow n l iy ae f t er m ay ch s t ah dx iy sil  ==  [309 frames] -132.5742 [Ac=-40615.4 LM=-350.0] (Act=100.0)
+	Forwarding time is 0.059501
+	Decoding time is 0.004036
+	Cache loading time is 0.000372
+File: dr4_fjlm0_si1043_000_340.mfc
+sil n aa s ax p r ay ah z ix ng l iy sil dh ih s ix p r aw ch sh cl d ih vcl n aw w er k sil  ==  [340 frames] -132.5960 [Ac=-44732.6 LM=-350.0] (Act=100.1)
+	Forwarding time is 0.065956
+	Decoding time is 0.004487
+	Cache loading time is 0.000397
+File: dr4_fjlm0_si1673_000_314.mfc
+sil w eh ng th ey ng k hh iy th ay cl sil dh n ah b ey n ow z ah b ae dx ey y ae cl sil  ==  [314 frames] -132.6243 [Ac=-41324.0 LM=-320.0] (Act=100.0)
+	Forwarding time is 0.060543
+	Decoding time is 0.004117
+	Cache loading time is 0.000352
+File: dr4_fjlm0_si2303_000_404.mfc
+sil ih n sh ao er cl ih n t ix b ao r ix n ao r v er l f r ey z sil s l ay eh sh t iy m er sil  ==  [404 frames] -132.5242 [Ac=-53169.8 LM=-370.0] (Act=100.2)
+	Forwarding time is 0.078330
+	Decoding time is 0.005395
+	Cache loading time is 0.000458
+File: dr4_fjlm0_sx143_000_338.mfc
+sil dh ix s aw n d ix jh uw dx eh s er zh p iy g el s g eh er d ae n l ow cl sil  ==  [338 frames] -132.7757 [Ac=-44568.2 LM=-310.0] (Act=100.0)
+	Forwarding time is 0.065734
+	Decoding time is 0.004427
+	Cache loading time is 0.000387
+File: dr4_fjlm0_sx233_000_250.mfc
+sil hh ay l ey eh n th r ey w ey m iy ng dh ix s ay ey m th ae ng sil  ==  [250 frames] -132.5882 [Ac=-32887.1 LM=-260.0] (Act=99.7)
+	Forwarding time is 0.048035
+	Decoding time is 0.003239
+	Cache loading time is 0.000286
+File: dr4_fjlm0_sx323_000_282.mfc
+sil dh ax s aa p er zh ih n ih d iy ih m s er m er r aa v ih ng aa n t ay aw m sil  ==  [282 frames] -132.8613 [Ac=-37146.9 LM=-320.0] (Act=99.9)
+	Forwarding time is 0.054416
+	Decoding time is 0.003685
+	Cache loading time is 0.000309
+File: dr4_fjlm0_sx413_000_338.mfc
+sil dh ae f epi iy s w iy ih sh epi n iy dx ax p w ix cl s k aa r f sil m ae ch t er s g er cl sil  ==  [338 frames] -132.5829 [Ac=-44443.0 LM=-370.0] (Act=100.0)
+	Forwarding time is 0.065243
+	Decoding time is 0.004452
+	Cache loading time is 0.000389
+File: dr4_fjlm0_sx53_000_308.mfc
+sil ey dh ix n ah s eh m p el v ow k eh b ih l eh r ey k ix n t ay ng s ih m el s sil  ==  [308 frames] -132.8186 [Ac=-40568.1 LM=-340.0] (Act=99.9)
+	Forwarding time is 0.060480
+	Decoding time is 0.004075
+	Cache loading time is 0.000350
+File: dr4_mlll0_si1363_000_497.mfc
+sil s ah v l iy z p ix k ix l ey sh en z epi m eh s ah m eh r cl sil sil ah dh er zh er s ah v w ah dx ix m b ih vcl y uw s sil  ==  [497 frames] -132.6260 [Ac=-65435.1 LM=-480.0] (Act=100.4)
+	Forwarding time is 0.096158
+	Decoding time is 0.006531
+	Cache loading time is 0.000567
+File: dr4_mlll0_si1993_000_246.mfc
+sil sil sh uh jh sh iy w ey k ih m sil  ==  [246 frames] -132.6547 [Ac=-32493.1 LM=-140.0] (Act=100.2)
+	Forwarding time is 0.047948
+	Decoding time is 0.003273
+	Cache loading time is 0.000278
+File: dr4_mlll0_si733_000_433.mfc
+sil sil t uw v oy p ah ng sh r iy n er k ey ng ix n t ix m iy s t eh s dh ax m sil sil  ==  [433 frames] -132.5169 [Ac=-57049.8 LM=-330.0] (Act=100.6)
+	Forwarding time is 0.083418
+	Decoding time is 0.005707
+	Cache loading time is 0.000479
+File: dr4_mlll0_sx103_000_232.mfc
+sil k ao n ih b ix uh s f er m eh dx ih k ow s ix z t en epi s sil  ==  [232 frames] -132.9624 [Ac=-30587.3 LM=-260.0] (Act=99.7)
+	Forwarding time is 0.044714
+	Decoding time is 0.003015
+	Cache loading time is 0.000260
+File: dr4_mlll0_sx13_000_271.mfc
+sil s epi w ih ng y ao r m ix z hh ay z ix k ih en sil  ==  [271 frames] -132.6573 [Ac=-35740.1 LM=-210.0] (Act=99.8)
+	Forwarding time is 0.052481
+	Decoding time is 0.003565
+	Cache loading time is 0.000302
+File: dr4_mlll0_sx193_000_347.mfc
+sil sil w ay b ay oy l sil w en y ow zh uw z m aa ey en sil  ==  [347 frames] -132.3387 [Ac=-45701.5 LM=-220.0] (Act=100.4)
+	Forwarding time is 0.066478
+	Decoding time is 0.004509
+	Cache loading time is 0.000390
+File: dr4_mlll0_sx283_000_380.mfc
+sil sil p l ih n d p er hh uh dx ao r g ih z ey sh ix n s p m ow cl b er th k ix jh r el sil  ==  [380 frames] -132.6533 [Ac=-50048.3 LM=-360.0] (Act=100.5)
+	Forwarding time is 0.073443
+	Decoding time is 0.005020
+	Cache loading time is 0.000435
+File: dr4_mlll0_sx373_000_278.mfc
+sil ah b ao r iy n ao v el z ix s ax p er vcl s iy k y en p eh l sil  ==  [278 frames] -132.5711 [Ac=-36584.8 LM=-270.0] (Act=99.9)
+	Forwarding time is 0.053679
+	Decoding time is 0.003645
+	Cache loading time is 0.000328
+File: dr4_mtls0_si1370_000_408.mfc
+sil w ih m ey s ey dh eh hh ih s p r aw m ax m w ax z t ay vcl n ow s t sil dh ah cl dh eh cl hh iy r f y uw z t r iy cl m ix cl sil  ==  [408 frames] -132.6891 [Ac=-53627.2 LM=-510.0] (Act=100.2)
+	Forwarding time is 0.079048
+	Decoding time is 0.005332
+	Cache loading time is 0.000477
+File: dr4_mtls0_si2000_000_285.mfc
+sil w iy z ng g y dx uh cl ih f ix d ih ey d sil hh iy s uh vcl t ay sh ix v ey sil  ==  [285 frames] -132.9196 [Ac=-37572.1 LM=-310.0] (Act=99.9)
+	Forwarding time is 0.055390
+	Decoding time is 0.003764
+	Cache loading time is 0.000328
+File: dr4_mtls0_si740_000_216.mfc
+sil d uw w ax th aw cl f eh cl s iy t ey b el hh ax aa ax th z sil  ==  [216 frames] -132.8616 [Ac=-28448.1 LM=-250.0] (Act=99.5)
+	Forwarding time is 0.041665
+	Decoding time is 0.002826
+	Cache loading time is 0.000249
+File: dr4_mtls0_sx110_000_338.mfc
+sil dh ax b ae s k oy t ax m er en epi ix z t ix s ao w eh k s t er p r aw p ax n s sil  ==  [338 frames] -132.7254 [Ac=-44511.2 LM=-350.0] (Act=100.1)
+	Forwarding time is 0.064824
+	Decoding time is 0.004381
+	Cache loading time is 0.000376
+File: dr4_mtls0_sx200_000_252.mfc
+sil r aw f k en t r ow dh ix s t aw p ao ch f er n ax p iy ch er z sil  ==  [252 frames] -132.7494 [Ac=-33172.8 LM=-280.0] (Act=99.7)
+	Forwarding time is 0.048565
+	Decoding time is 0.003296
+	Cache loading time is 0.000290
+File: dr4_mtls0_sx20_000_299.mfc
+sil sh y w ao w eh ao er m th iy s iy w el ah n ow f er aa z sil  ==  [299 frames] -132.6076 [Ac=-39399.7 LM=-250.0] (Act=99.9)
+	Forwarding time is 0.058047
+	Decoding time is 0.003908
+	Cache loading time is 0.000343
+File: dr4_mtls0_sx290_000_317.mfc
+sil dh ih s p er sh er ix s p d ih cl dh ih n f el m t ix f uh p er z p eh cl t ax v b ah ay er sil  ==  [317 frames] -132.8559 [Ac=-41725.3 LM=-390.0] (Act=100.0)
+	Forwarding time is 0.061726
+	Decoding time is 0.004140
+	Cache loading time is 0.000377
+File: dr4_mtls0_sx380_000_219.mfc
+sil w ay t aa r jh epi m ah n iy f er s eh ch g aa r p ix ch sil  ==  [219 frames] -132.4563 [Ac=-28757.9 LM=-250.0] (Act=99.5)
+	Forwarding time is 0.042146
+	Decoding time is 0.002838
+	Cache loading time is 0.000248
+File: dr5_fnlp0_si1308_000_576.mfc
+sil ih n d ey dx iy ih dx ih z p aa s ax b ow t ix s eh p r ey iy dx l ah cl t aa n p eh er m eh ng eh n ey vcl f ax m n ih k l iy r ah f eh cl s sil  ==  [576 frames] -132.6656 [Ac=-75835.4 LM=-580.0] (Act=100.6)
+	Forwarding time is 0.111270
+	Decoding time is 0.007632
+	Cache loading time is 0.000647
+File: dr5_fnlp0_si1938_000_322.mfc
+sil dh ay dx ih cl w ih n d ow z k l ah jh uw el p ay cl dh uw dh ix d eh m p oy er sil  ==  [322 frames] -132.5045 [Ac=-42336.4 LM=-330.0] (Act=100.0)
+	Forwarding time is 0.061907
+	Decoding time is 0.004211
+	Cache loading time is 0.000358
+File: dr5_fnlp0_si678_000_203.mfc
+sil f eh l v ay s ih n r iy k ix en th ih dx er d sil  ==  [203 frames] -132.7760 [Ac=-26743.5 LM=-210.0] (Act=99.5)
+	Forwarding time is 0.039104
+	Decoding time is 0.002642
+	Cache loading time is 0.000230
+File: dr5_fnlp0_sx138_000_360.mfc
+sil sil p ix k ah n z iy k ah th t ix m er s p ih l th ax m ng s b ih vcl th ax v p er f uw m sil  ==  [360 frames] -132.7735 [Ac=-47418.5 LM=-380.0] (Act=100.3)
+	Forwarding time is 0.069352
+	Decoding time is 0.004772
+	Cache loading time is 0.000405
+File: dr5_fnlp0_sx228_000_227.mfc
+sil dh uh v iy p oy ay ng ow v er l uh cl dh iy eh s hh ix n sil  ==  [227 frames] -132.8251 [Ac=-29911.3 LM=-240.0] (Act=99.6)
+	Forwarding time is 0.043582
+	Decoding time is 0.002934
+	Cache loading time is 0.000251
+File: dr5_fnlp0_sx318_000_371.mfc
+sil sil p l ey s t ih vcl m ah m p ix t ey dx ah z ah b el f ao f r ao s t sil  ==  [371 frames] -132.5046 [Ac=-48849.2 LM=-310.0] (Act=100.4)
+	Forwarding time is 0.071586
+	Decoding time is 0.004859
+	Cache loading time is 0.000415
+File: dr5_fnlp0_sx408_000_308.mfc
+sil aa d v ah vcl dh ih s ah vcl p w ey p eh dx aa hh eh v ih n iy n ah v ch eh iy ng ch sil  ==  [308 frames] -132.6561 [Ac=-40518.1 LM=-340.0] (Act=100.0)
+	Forwarding time is 0.059160
+	Decoding time is 0.004009
+	Cache loading time is 0.000360
+File: dr5_fnlp0_sx48_000_348.mfc
+sil sil g eh m ah dh ae aw g uh hh r ae cl b r ng ix ng ix m hh eh dx iy k eh vcl s sil  ==  [348 frames] -132.5332 [Ac=-45801.5 LM=-320.0] (Act=100.4)
+	Forwarding time is 0.067371
+	Decoding time is 0.004644
+	Cache loading time is 0.000400
+File: dr5_mbpm0_si1577_000_195.mfc
+sil b r aw n ay z ay b r aw m ax s t ae sh sil  ==  [195 frames] -132.3343 [Ac=-25615.2 LM=-190.0] (Act=99.4)
+	Forwarding time is 0.037733
+	Decoding time is 0.002581
+	Cache loading time is 0.000242
+File: dr5_mbpm0_si1584_000_378.mfc
+sil r eh cl ch er w er z aa f ax m k y er ix s ao th en t eh cl dh ix d eh s k w eh sh ch en z p dh ix iy n eh v er d ih vcl sil  ==  [378 frames] -132.8102 [Ac=-49712.3 LM=-490.0] (Act=100.1)
+	Forwarding time is 0.072626
+	Decoding time is 0.004960
+	Cache loading time is 0.000424
+File: dr5_mbpm0_si947_000_307.mfc
+sil sil f y uw r er l er ih z er p er t eh k ix vcl b ah z ow n ix ng sil sil  ==  [307 frames] -132.6449 [Ac=-40432.0 LM=-290.0] (Act=100.2)
+	Forwarding time is 0.058841
+	Decoding time is 0.004001
+	Cache loading time is 0.000348
+File: dr5_mbpm0_sx137_000_370.mfc
+sil sil t er d ih sh ix n er k w er s p r eh l ax p r uw v el f r ah n d er ey jh epi m eh r jh sil  ==  [370 frames] -132.4943 [Ac=-48632.9 LM=-390.0] (Act=100.4)
+	Forwarding time is 0.071403
+	Decoding time is 0.004868
+	Cache loading time is 0.000417
+File: dr5_mbpm0_sx227_000_175.mfc
+sil ih t eh l th y er d ix k uh k ax th aw ch er v er sil  ==  [175 frames] -132.7152 [Ac=-23005.2 LM=-220.0] (Act=99.2)
+	Forwarding time is 0.033833
+	Decoding time is 0.002318
+	Cache loading time is 0.000218
+File: dr5_mbpm0_sx317_000_231.mfc
+sil dh ix k r eh n b r ey b aa g ix cl s epi er ey p er dx iy ix n aa dx ax m sil  ==  [231 frames] -132.7253 [Ac=-30349.5 LM=-310.0] (Act=99.6)
+	Forwarding time is 0.045064
+	Decoding time is 0.003021
+	Cache loading time is 0.000273
+File: dr5_mbpm0_sx407_000_253.mfc
+sil l ae f t eh n cl s en s ih ng ih f ao r ch ax m s epi m aw l z ax p ay n y m sil  ==  [253 frames] -132.7464 [Ac=-33244.9 LM=-340.0] (Act=99.7)
+	Forwarding time is 0.048820
+	Decoding time is 0.003298
+	Cache loading time is 0.000290
+File: dr5_mbpm0_sx47_000_214.mfc
+sil m aa m s t ah ng l ih d ix z l ay k s ae p ax t ay z er s sil  ==  [214 frames] -132.8905 [Ac=-28168.6 LM=-270.0] (Act=99.5)
+	Forwarding time is 0.041127
+	Decoding time is 0.002769
+	Cache loading time is 0.000249
+File: dr5_mklt0_si1213_000_246.mfc
+sil m aw ow n ix cl s b ey ix jh ix z f ao vcl s ix m p l er l ay en z sil  ==  [246 frames] -133.3193 [Ac=-32506.6 LM=-290.0] (Act=99.7)
+	Forwarding time is 0.047928
+	Decoding time is 0.003251
+	Cache loading time is 0.000288
+File: dr5_mklt0_si1843_000_322.mfc
+sil ch uw zh r ey dx ix f ao hh er g r uh dx ix v eh ch er z en dh iy r aa v el l ax v er m ow v el p ao cl sil  ==  [322 frames] -132.6953 [Ac=-42307.9 LM=-420.0] (Act=100.0)
+	Forwarding time is 0.062381
+	Decoding time is 0.004289
+	Cache loading time is 0.000378
+File: dr5_mklt0_si583_000_226.mfc
+sil d ih s epi w ih k ix n s ih f ax th eh dx ix k l iy ah n s t ey ae sil  ==  [226 frames] -132.9582 [Ac=-29758.6 LM=-290.0] (Act=99.6)
+	Forwarding time is 0.043688
+	Decoding time is 0.002997
+	Cache loading time is 0.000252
+File: dr5_mklt0_sx133_000_262.mfc
+sil p iy t uw r iy er z ix k n b ih ng ix f ao k w ih k l aa ax ch sil sil  ==  [262 frames] -132.9881 [Ac=-34552.9 LM=-290.0] (Act=99.8)
+	Forwarding time is 0.050843
+	Decoding time is 0.003477
+	Cache loading time is 0.000303
+File: dr5_mklt0_sx223_000_218.mfc
+sil p uh k ax b ih ch ax b l ao cl t ey dx w ax n d g er r ay ch sil  ==  [218 frames] -132.6682 [Ac=-28651.7 LM=-270.0] (Act=99.5)
+	Forwarding time is 0.042162
+	Decoding time is 0.002888
+	Cache loading time is 0.000268
+File: dr5_mklt0_sx313_000_320.mfc
+sil r aa f ae f ao m z en dh ax b ao ch epi ax f ao y g uw aw cl sil sil  ==  [320 frames] -132.4042 [Ac=-42099.3 LM=-270.0] (Act=100.0)
+	Forwarding time is 0.061612
+	Decoding time is 0.004211
+	Cache loading time is 0.000359
+File: dr5_mklt0_sx403_000_273.mfc
+sil hh ax w r d r ey v k en s ih s t ax v ow m ix s k er s ix m b l l z en z sil  ==  [273 frames] -132.9429 [Ac=-35953.4 LM=-340.0] (Act=99.8)
+	Forwarding time is 0.052721
+	Decoding time is 0.003594
+	Cache loading time is 0.000307
+File: dr5_mklt0_sx43_000_200.mfc
+sil eh l dx ix dh ih p iy p el er ao th ax n ix k s k l uw d d sil  ==  [200 frames] -132.9822 [Ac=-26336.4 LM=-260.0] (Act=99.4)
+	Forwarding time is 0.038651
+	Decoding time is 0.002614
+	Cache loading time is 0.000229
+File: dr6_fmgd0_si1564_000_442.mfc
+sil ah z dh ih n r iy w uh z b aw n ih vcl b ay s epi n ey cl r eh l f ae n z ix z ae n dh eh w er b r ey z ix ng k ae dx l sil  ==  [442 frames] -132.5304 [Ac=-58078.5 LM=-500.0] (Act=100.3)
+	Forwarding time is 0.085245
+	Decoding time is 0.005756
+	Cache loading time is 0.000498
+File: dr6_fmgd0_si2194_000_470.mfc
+sil hh iy eh vcl f ao l ih n t uw uh s ow ah f jh y aa vcl sil ix n aw dh uh jh aa b w ix z g el ao n ix n iy w ix s t r ae n d ix vcl sil  ==  [470 frames] -132.5654 [Ac=-61785.8 LM=-520.0] (Act=100.3)
+	Forwarding time is 0.090847
+	Decoding time is 0.006244
+	Cache loading time is 0.000535
+File: dr6_fmgd0_si934_000_346.mfc
+sil ax th ao er iy s ey p eh dx l s t er z aa r ey p r ay m t aa r vcl ix cl sil sil  ==  [346 frames] -132.6087 [Ac=-45562.6 LM=-320.0] (Act=100.1)
+	Forwarding time is 0.066515
+	Decoding time is 0.004503
+	Cache loading time is 0.000389
+File: dr6_fmgd0_sx124_000_373.mfc
+sil aa jh ix k s epi m ey dx ix p y uw dx er er b y uw dx ax f el sil  ==  [373 frames] -132.3533 [Ac=-49107.8 LM=-260.0] (Act=100.2)
+	Forwarding time is 0.071741
+	Decoding time is 0.004883
+	Cache loading time is 0.000422
+File: dr6_fmgd0_sx214_000_301.mfc
+sil dh ix m oy n ng g uw ah n ax s b ay dx er w ae vcl dh l ix s ih n g ih n ax s ah n sil  ==  [301 frames] -132.6455 [Ac=-39576.3 LM=-350.0] (Act=99.9)
+	Forwarding time is 0.058683
+	Decoding time is 0.004000
+	Cache loading time is 0.000337
+File: dr6_fmgd0_sx304_000_278.mfc
+sil ch iy ch t aa k ix en f r ah n ax f er s t ay n eh w el n sil  ==  [278 frames] -132.5680 [Ac=-36593.9 LM=-260.0] (Act=99.8)
+	Forwarding time is 0.053840
+	Decoding time is 0.003664
+	Cache loading time is 0.000310
+File: dr6_fmgd0_sx34_000_234.mfc
+sil d aw cl d uw ch er l iy s t er dx iy d ih sh ix z sil  ==  [234 frames] -132.6251 [Ac=-30814.3 LM=-220.0] (Act=99.7)
+	Forwarding time is 0.045205
+	Decoding time is 0.003020
+	Cache loading time is 0.000267
+File: dr6_fmgd0_sx394_000_234.mfc
+sil k aw s iy m ey k z b ow m z en t iy th s t r ao m sil  ==  [234 frames] -132.7744 [Ac=-30829.2 LM=-240.0] (Act=99.7)
+	Forwarding time is 0.045120
+	Decoding time is 0.003043
+	Cache loading time is 0.000258
+File: dr6_mcmj0_si1094_000_374.mfc
+sil m eh r k ix n uw z t ih p er iy v y uw er z epi ay t ix k ao l ix z t ey z epi n iy ow ay s t ax cl sil  ==  [374 frames] -132.7844 [Ac=-49241.4 LM=-420.0] (Act=100.1)
+	Forwarding time is 0.072574
+	Decoding time is 0.004935
+	Cache loading time is 0.000432
+File: dr6_mcmj0_si464_000_387.mfc
+sil dh ax t r aa s t eh t ih v k ah dx ix ng b ae cl s t eh n ix ng ix z en ax n p ay z ix n w ax n f ae n ih g ah v n ah sil  ==  [387 frames] -132.9539 [Ac=-50953.1 LM=-500.0] (Act=100.2)
+	Forwarding time is 0.074531
+	Decoding time is 0.005105
+	Cache loading time is 0.000450
+File: dr6_mcmj0_si602_000_387.mfc
+sil b ix dh ih sh uh cl s uh v er s ow n ae aw dh ix m ix d aw m g eh s ih m ix s eh v er z eh n ix m ao r sil  ==  [387 frames] -132.8953 [Ac=-51000.5 LM=-430.0] (Act=100.2)
+	Forwarding time is 0.074877
+	Decoding time is 0.005149
+	Cache loading time is 0.000464
+File: dr6_mcmj0_sx104_000_196.mfc
+sil ix s d ow ah d ay m f ah m ax b eh vcl er sil  ==  [196 frames] -132.5123 [Ac=-25782.4 LM=-190.0] (Act=99.4)
+	Forwarding time is 0.037564
+	Decoding time is 0.002538
+	Cache loading time is 0.000209
+File: dr6_mcmj0_sx14_000_292.mfc
+sil f ao r cl dh er z dh eh z ix g z ae m iy v y uw eh v iy f ao m ix n ah sil  ==  [292 frames] -132.6785 [Ac=-38432.1 LM=-310.0] (Act=100.0)
+	Forwarding time is 0.056521
+	Decoding time is 0.003837
+	Cache loading time is 0.000359
+File: dr6_mcmj0_sx194_000_193.mfc
+sil dh ey n z ao oy ey cl w ah n ay r d ih s en sil  ==  [193 frames] -132.8266 [Ac=-25435.5 LM=-200.0] (Act=99.4)
+	Forwarding time is 0.037291
+	Decoding time is 0.002501
+	Cache loading time is 0.000219
+File: dr6_mcmj0_sx284_000_363.mfc
+sil jh ae f aa dx y uw aa r y uw dx ix f ey v er ae v er s eh n t er f y uw jh p er ch en s sil  ==  [363 frames] -132.5302 [Ac=-47738.5 LM=-370.0] (Act=100.2)
+	Forwarding time is 0.069900
+	Decoding time is 0.004776
+	Cache loading time is 0.000409
+File: dr6_mcmj0_sx374_000_223.mfc
+sil jh aa n k l iy ng z epi sh aa f eh zh f ao er v ih v ix n sil  ==  [223 frames] -132.6863 [Ac=-29339.0 LM=-250.0] (Act=99.5)
+	Forwarding time is 0.043170
+	Decoding time is 0.002916
+	Cache loading time is 0.000254
+File: dr6_mjdh0_si1354_000_479.mfc
+sil w ix th ih n el l ao r jh er s ow sh el s ih s t ax m ao r g ix s t r ah k sh r ow f ah g f epi m el s ah vcl s ix s t m z sil  ==  [479 frames] -132.7666 [Ac=-63075.2 LM=-520.0] (Act=100.3)
+	Forwarding time is 0.092709
+	Decoding time is 0.006370
+	Cache loading time is 0.000543
+File: dr6_mjdh0_si1984_000_131.mfc
+sil ix n w dx ay s dh ey w er sil  ==  [131 frames] -132.8041 [Ac=-17267.3 LM=-130.0] (Act=98.6)
+	Forwarding time is 0.025281
+	Decoding time is 0.001691
+	Cache loading time is 0.000161
+File: dr6_mjdh0_si724_000_255.mfc
+sil ix z ix sh t r iy m ay ng r ay f el f ae s t en w ah m ey d sil  ==  [255 frames] -132.5019 [Ac=-33518.0 LM=-270.0] (Act=99.8)
+	Forwarding time is 0.048838
+	Decoding time is 0.003314
+	Cache loading time is 0.000290
+File: dr6_mjdh0_sx184_000_212.mfc
+sil dh ix k ae ch epi iy aw w oy s er t epi w y er z sil  ==  [212 frames] -132.5677 [Ac=-27894.4 LM=-210.0] (Act=99.5)
+	Forwarding time is 0.041013
+	Decoding time is 0.002759
+	Cache loading time is 0.000255
+File: dr6_mjdh0_sx274_000_312.mfc
+sil th uh f w ix s uw v b ah v ax w uh ch y r iy s epi en ax s ao sh sil  ==  [312 frames] -132.6469 [Ac=-41105.8 LM=-280.0] (Act=100.0)
+	Forwarding time is 0.060293
+	Decoding time is 0.004103
+	Cache loading time is 0.000359
+File: dr6_mjdh0_sx364_000_440.mfc
+sil iy ch ah n t aa m l iy ng k ax m l ao s k el ax n s ay dx w uh th ax p r iy cl dh aw n ax f ix hh iy dx iy ng s ix s d m p ao r cl sil  ==  [440 frames] -132.7022 [Ac=-57849.0 LM=-540.0] (Act=100.2)
+	Forwarding time is 0.085739
+	Decoding time is 0.005792
+	Cache loading time is 0.000519
+File: dr6_mjdh0_sx4_000_230.mfc
+sil jh ey m ey r n m ao r m oy b ay w er k ix ng k hh ao r d sil  ==  [230 frames] -132.5321 [Ac=-30222.4 LM=-260.0] (Act=99.6)
+	Forwarding time is 0.044380
+	Decoding time is 0.002996
+	Cache loading time is 0.000263
+File: dr6_mjdh0_sx94_000_271.mfc
+sil y ah m g s t uw z l v k aa n ix vcl k ae d uw sh t r iy t s sil  ==  [271 frames] -132.7581 [Ac=-35697.4 LM=-280.0] (Act=99.8)
+	Forwarding time is 0.052724
+	Decoding time is 0.003547
+	Cache loading time is 0.000303
+File: dr7_fdhc0_si1559_000_338.mfc
+sil dh ih zh uw l iy v iy z ix p r aa k s ix n ey dx ih d w eh dx iy w ix s f iy l iy ng w ix th ih n ix m s eh l f sil  ==  [338 frames] -132.8166 [Ac=-44422.0 LM=-470.0] (Act=100.0)
+	Forwarding time is 0.065119
+	Decoding time is 0.004415
+	Cache loading time is 0.000390
+File: dr7_fdhc0_si2189_000_223.mfc
+sil y uw s ao dh ax m ao w iy z dh ix g eh dh er dh ow z iy er z sil  ==  [223 frames] -132.7535 [Ac=-29344.0 LM=-260.0] (Act=99.6)
+	Forwarding time is 0.042916
+	Decoding time is 0.002891
+	Cache loading time is 0.000250
+File: dr7_fdhc0_si929_000_284.mfc
+sil b uh cl s eh ch k ey z ih z w er ix n dh ax p ae aa s eh n y uw zh uw el sil  ==  [284 frames] -132.4569 [Ac=-37307.8 LM=-310.0] (Act=99.9)
+	Forwarding time is 0.055122
+	Decoding time is 0.003711
+	Cache loading time is 0.000325
+File: dr7_fdhc0_sx119_000_301.mfc
+sil dh ix m ih s k l ah w ix z r iy t r ae cl t ih vcl w ih th ix n ax p ow l eh jh iy sil  ==  [301 frames] -132.7431 [Ac=-39605.7 LM=-350.0] (Act=99.9)
+	Forwarding time is 0.058103
+	Decoding time is 0.003938
+	Cache loading time is 0.000345
+File: dr7_fdhc0_sx209_000_255.mfc
+sil m ay k ow k uh l uh d ix b eh jh uw m w ao l ix th k r ey ah ay n z sil  ==  [255 frames] -132.7569 [Ac=-33553.0 LM=-300.0] (Act=99.7)
+	Forwarding time is 0.049293
+	Decoding time is 0.003329
+	Cache loading time is 0.000285
+File: dr7_fdhc0_sx299_000_319.mfc
+sil sh ey n iy ng p r iy m ix z ax p aa p iy l er ay dx ih m ah n hh l ax w iy n sil  ==  [319 frames] -132.6368 [Ac=-41981.1 LM=-330.0] (Act=100.0)
+	Forwarding time is 0.061547
+	Decoding time is 0.004148
+	Cache loading time is 0.000366
+File: dr7_fdhc0_sx29_000_252.mfc
+sil hh l cl g r ey vcl d ix p ih k ix p eh k ax v b ix t ey dx ow z sil  ==  [252 frames] -132.6925 [Ac=-33158.5 LM=-280.0] (Act=99.7)
+	Forwarding time is 0.048729
+	Decoding time is 0.003294
+	Cache loading time is 0.000286
+File: dr7_fdhc0_sx389_000_244.mfc
+sil b ey ah dx ih b ih ng hh aw s ix n dh er m ow cl k ah n t iy s ay d sil  ==  [244 frames] -132.5675 [Ac=-32056.5 LM=-290.0] (Act=99.7)
+	Forwarding time is 0.046728
+	Decoding time is 0.003161
+	Cache loading time is 0.000284
+File: dr7_mgrt0_si1450_000_619.mfc
+sil m iy t s sil sil dh er r ey uw ey sh en p r aa s eh s ix ng hh ah v m iy t hh eh z r ix s iy d ix k s t eh n f uw v ih n eh s t ix g ey sh en sil  ==  [619 frames] -132.4426 [Ac=-81402.0 LM=-580.0] (Act=100.5)
+	Forwarding time is 0.120175
+	Decoding time is 0.008199
+	Cache loading time is 0.000716
+File: dr7_mgrt0_si2080_000_229.mfc
+sil hh iy w uh vcl m aa k eh r iy ix b r iy f k ey s sil  ==  [229 frames] -132.6915 [Ac=-30166.4 LM=-220.0] (Act=99.6)
+	Forwarding time is 0.044061
+	Decoding time is 0.002975
+	Cache loading time is 0.000279
+File: dr7_mgrt0_si820_000_610.mfc
+sil b ay eh dh ae n t sil w ax n f iy l z eh cl m ey vcl eh dx iy vcl f ao r s ix z sil aa er zh jh ih n ow k hh ae z uw l eh k er k el f ao r s ix ix s sil  ==  [610 frames] -132.5673 [Ac=-80276.0 LM=-590.0] (Act=100.5)
+	Forwarding time is 0.117564
+	Decoding time is 0.008032
+	Cache loading time is 0.000699
+File: dr7_mgrt0_sx100_000_491.mfc
+sil p r ah jh eh vcl d ix v eh l m ih n p sil w ax z p er s iy dx ng t uw s l l iy sil sil  ==  [491 frames] -132.5457 [Ac=-64729.9 LM=-350.0] (Act=100.3)
+	Forwarding time is 0.095475
+	Decoding time is 0.006496
+	Cache loading time is 0.000558
+File: dr7_mgrt0_sx10_000_299.mfc
+sil ah hh y er g r ey jh hh ay er ax er dx l ao r dh ax n ae n s iy z sil  ==  [299 frames] -132.6019 [Ac=-39368.0 LM=-280.0] (Act=100.0)
+	Forwarding time is 0.057585
+	Decoding time is 0.003897
+	Cache loading time is 0.000342
+File: dr7_mgrt0_sx190_000_287.mfc
+sil s er v z ix k uw ow s l ao hh ae f sh er ay ae d iy ow oy l sil  ==  [287 frames] -132.6672 [Ac=-37815.5 LM=-260.0] (Act=99.9)
+	Forwarding time is 0.055659
+	Decoding time is 0.003727
+	Cache loading time is 0.000341
+File: dr7_mgrt0_sx280_000_196.mfc
+sil dh iy ow ey s ix z epi w ah z ix m er aa ay jh sil  ==  [196 frames] -132.4247 [Ac=-25755.2 LM=-200.0] (Act=99.4)
+	Forwarding time is 0.037554
+	Decoding time is 0.002524
+	Cache loading time is 0.000219
+File: dr7_mgrt0_sx370_000_334.mfc
+sil dh ah n ao l zh k r aa l uh m g r l z epi m ao r ah n ow oy ey ng iy ch d ey sil  ==  [334 frames] -132.6122 [Ac=-43962.5 LM=-330.0] (Act=100.0)
+	Forwarding time is 0.064258
+	Decoding time is 0.004339
+	Cache loading time is 0.000379
+File: dr7_mnjm0_si1580_000_298.mfc
+sil y ao w oy s ey m th ax hh aw m ah n iy uw cl ix n en z p aa k ax sil sil  ==  [298 frames] -132.9117 [Ac=-39317.7 LM=-290.0] (Act=99.9)
+	Forwarding time is 0.057450
+	Decoding time is 0.003862
+	Cache loading time is 0.000348
+File: dr7_mnjm0_si2210_000_202.mfc
+sil dh ow r iy th er n ae g r ah s f w ah s el eh n ax sil  ==  [202 frames] -132.9503 [Ac=-26626.0 LM=-230.0] (Act=99.4)
+	Forwarding time is 0.039025
+	Decoding time is 0.002668
+	Cache loading time is 0.000244
+File: dr7_mnjm0_si950_000_545.mfc
+sil ae s ah ch sil ih w ax z b iy aa m p ao l ax th eh cl s ax n hh ae n ow n iy dx er t ax s ax dh ax k ey sh en sil b ay ey m ae th ix jh sil  ==  [545 frames] -132.4496 [Ac=-71655.0 LM=-530.0] (Act=100.4)
+	Forwarding time is 0.104843
+	Decoding time is 0.007112
+	Cache loading time is 0.000638
+File: dr7_mnjm0_sx140_000_288.mfc
+sil ae vcl ih k ao t el p r aa dx ah cl s aa r ao n iy v ax l iy dh ix s ch ax v ix dh ix vcl sil  ==  [288 frames] -132.9934 [Ac=-37942.1 LM=-360.0] (Act=99.9)
+	Forwarding time is 0.055813
+	Decoding time is 0.003804
+	Cache loading time is 0.000337
+File: dr7_mnjm0_sx230_000_353.mfc
+sil ah l ay l uw ey hh ih er b ax r aa sh en l ay z hh ao l eh er z sil  ==  [353 frames] -132.3992 [Ac=-46466.9 LM=-270.0] (Act=100.1)
+	Forwarding time is 0.067902
+	Decoding time is 0.004594
+	Cache loading time is 0.000395
+File: dr7_mnjm0_sx320_000_379.mfc
+sil dh eh n eh er s ah n ah g ao g ax sil m eh n aa b ih uw uh s uw w ao k ix ng th ih s dh ix n s sil  ==  [379 frames] -132.7041 [Ac=-49904.8 LM=-390.0] (Act=100.2)
+	Forwarding time is 0.073133
+	Decoding time is 0.004952
+	Cache loading time is 0.000430
+File: dr7_mnjm0_sx410_000_273.mfc
+sil g r ey vcl b ay z f ah s epi m ih l k iy ch epi w iy cl dh ey m ao n ix ng sil  ==  [273 frames] -132.4424 [Ac=-35846.8 LM=-310.0] (Act=99.8)
+	Forwarding time is 0.052947
+	Decoding time is 0.003565
+	Cache loading time is 0.000307
+File: dr7_mnjm0_sx50_000_338.mfc
+sil k eh dx ax s t r aa f ix k eh k ax n aa m ix k ah p ae cl s epi dh ix g l eh cl dh ax p ao r sil  ==  [338 frames] -132.6682 [Ac=-44451.8 LM=-390.0] (Act=100.1)
+	Forwarding time is 0.064736
+	Decoding time is 0.004405
+	Cache loading time is 0.000386
+File: dr8_fmld0_si2185_000_356.mfc
+sil sh iy s ih ch aa r k t eh v n ow b ow n z ix n sh r ih m cl s epi w ae m b eh k r vcl sil sil  ==  [356 frames] -132.6274 [Ac=-46835.4 LM=-380.0] (Act=100.1)
+	Forwarding time is 0.068896
+	Decoding time is 0.004702
+	Cache loading time is 0.000409
+File: dr8_fmld0_si822_000_363.mfc
+sil n el cl th er dx ah k sh ix m ey b iy ng k r iy s b ay dx iy ae th ae n f eh cl t ix p r r p er iy z ix v dh ix s t er g sil  ==  [363 frames] -132.9359 [Ac=-47755.7 LM=-500.0] (Act=100.1)
+	Forwarding time is 0.070757
+	Decoding time is 0.004810
+	Cache loading time is 0.000437
+File: dr8_fmld0_si925_000_210.mfc
+sil ah hh iy dh ix z ix k ah s t ix d iy ih z w ay v d ix b ao r s t ix v sil  ==  [210 frames] -133.1667 [Ac=-27655.0 LM=-310.0] (Act=99.5)
+	Forwarding time is 0.040902
+	Decoding time is 0.002774
+	Cache loading time is 0.000243
+File: dr8_fmld0_sx115_000_237.mfc
+sil dh iy ix m l el n d ix t ih k s dh ih k r ae k l uh s aa l ax g ow sil  ==  [237 frames] -132.9765 [Ac=-31215.4 LM=-300.0] (Act=99.6)
+	Forwarding time is 0.045631
+	Decoding time is 0.003100
+	Cache loading time is 0.000271
+File: dr8_fmld0_sx205_000_305.mfc
+sil dh ax l ix t er p er s eh l er cl s p eh cl t ih t uw ow b ey g ah v er ix n ao dx er z sil  ==  [305 frames] -132.7778 [Ac=-40127.2 LM=-370.0] (Act=100.0)
+	Forwarding time is 0.059245
+	Decoding time is 0.004053
+	Cache loading time is 0.000364
+File: dr8_fmld0_sx25_000_189.mfc
+sil ow m l ey l oy er s l ah v m ah iy ix n eh er s sil  ==  [189 frames] -132.9834 [Ac=-24913.9 LM=-220.0] (Act=99.3)
+	Forwarding time is 0.036235
+	Decoding time is 0.002427
+	Cache loading time is 0.000211
+File: dr8_fmld0_sx295_000_308.mfc
+sil ih f k ih r ow k ah m s t ax m ay ow hh eh v er r ey n jh f er m iy dx iy ix t uw sil  ==  [308 frames] -132.6225 [Ac=-40497.7 LM=-350.0] (Act=100.0)
+	Forwarding time is 0.059183
+	Decoding time is 0.004002
+	Cache loading time is 0.000337
+File: dr8_fmld0_sx385_000_189.mfc
+sil hh ix sh ow d er f eh l t ax z ix f ix cl w er b r ah p ax n sil  ==  [189 frames] -133.1147 [Ac=-24888.7 LM=-270.0] (Act=99.3)
+	Forwarding time is 0.036287
+	Decoding time is 0.002447
+	Cache loading time is 0.000221
+File: dr8_mjln0_si1449_000_431.mfc
+sil ch iy f ih n t er th ix n r ey dx y uh s t eh r l ax z ey sh ih n r ix z aa ay vcl dh ix n ix m el ax t er s th er v er s ix z sil  ==  [431 frames] -132.7891 [Ac=-56712.1 LM=-520.0] (Act=100.3)
+	Forwarding time is 0.082838
+	Decoding time is 0.005647
+	Cache loading time is 0.000507
+File: dr8_mjln0_si2079_000_210.mfc
+sil dh ey ih vcl s l ae cl dh ey er f ay s sil  ==  [210 frames] -132.4809 [Ac=-27651.0 LM=-170.0] (Act=99.4)
+	Forwarding time is 0.040300
+	Decoding time is 0.002690
+	Cache loading time is 0.000229
+File: dr8_mjln0_si819_000_452.mfc
+sil dh ey er f ao r s ix z ax m ao r l ey ng en b ih n ih n l eh cl t ih s ih dx iy sil eh n l eh s th ix n ih n m ae ng th ih z ax m sil  ==  [452 frames] -132.8015 [Ac=-59496.3 LM=-530.0] (Act=100.3)
+	Forwarding time is 0.087299
+	Decoding time is 0.005920
+	Cache loading time is 0.000526
+File: dr8_mjln0_sx189_000_295.mfc
+sil dh ix s t r oy eh v r iy f ay aw r ax l ey dx ix vcl t ix m ay ao dx ix cl s sil  ==  [295 frames] -132.3913 [Ac=-38735.4 LM=-320.0] (Act=99.9)
+	Forwarding time is 0.056845
+	Decoding time is 0.003852
+	Cache loading time is 0.000335
+File: dr8_mjln0_sx279_000_357.mfc
+sil aw th ix dh ix b ih l uw iy t ax w ao r k w ix aw th ix p er v ih zh ix n hh ix z n ow w er v iy sil  ==  [357 frames] -132.5960 [Ac=-46936.8 LM=-400.0] (Act=100.1)
+	Forwarding time is 0.068734
+	Decoding time is 0.004673
+	Cache loading time is 0.000405
+File: dr8_mjln0_sx369_000_287.mfc
+sil aa vcl p ey p er dx ow v ix dh ax dh ih v ng uw m eh r el z sil  ==  [287 frames] -132.3179 [Ac=-37725.2 LM=-250.0] (Act=99.9)
+	Forwarding time is 0.055487
+	Decoding time is 0.003733
+	Cache loading time is 0.000342
+File: dr8_mjln0_sx99_000_314.mfc
+sil m ih d iy v el th ix s ay dx iy w ix th ey z t aa n hh ay er aa r k iy s sil  ==  [314 frames] -132.5283 [Ac=-41303.9 LM=-310.0] (Act=100.0)
+	Forwarding time is 0.060396
+	Decoding time is 0.004088
+	Cache loading time is 0.000366
+File: dr8_mjln0_sx9_000_247.mfc
+sil w er w er y w aa w iy w er w eh ng sil  ==  [247 frames] -132.3927 [Ac=-32531.0 LM=-170.0] (Act=99.7)
+	Forwarding time is 0.047473
+	Decoding time is 0.003230
+	Cache loading time is 0.000277
+File: dr8_mpam0_si1189_000_253.mfc
+sil iy vcl f y ow g ah n z er k ae vcl ch er dx ix en p ax z ix sh en sil  ==  [253 frames] -132.5356 [Ac=-33261.5 LM=-270.0] (Act=99.9)
+	Forwarding time is 0.048899
+	Decoding time is 0.003317
+	Cache loading time is 0.000300
+File: dr8_mpam0_si1819_000_284.mfc
+sil hh y r ah vcl d ih z ay s l iy p ax l iy w ix th epi w ah n hh y uw jh p ao el sil  ==  [284 frames] -132.4121 [Ac=-37275.0 LM=-330.0] (Act=99.9)
+	Forwarding time is 0.055411
+	Decoding time is 0.003781
+	Cache loading time is 0.000331
+File: dr8_mpam0_si1961_000_440.mfc
+sil ax s eh cl k ih vcl t w ih ch t ix sh er jh epi l iy v sil ix n iy f ow cl dh ax b r iy th cl b er ax m ix z ah b er aa r m sil  ==  [440 frames] -132.5434 [Ac=-57829.1 LM=-490.0] (Act=100.3)
+	Forwarding time is 0.084995
+	Decoding time is 0.006122
+	Cache loading time is 0.000506
+File: dr8_mpam0_sx109_000_292.mfc
+sil sh ax s epi l ih cl d en z p r ey n d er ah ng k ao m dh ix s t iy vcl s l ow p sil  ==  [292 frames] -132.7672 [Ac=-38428.0 LM=-340.0] (Act=99.9)
+	Forwarding time is 0.056299
+	Decoding time is 0.003825
+	Cache loading time is 0.000333
+File: dr8_mpam0_sx199_000_350.mfc
+sil y ah m ch ih l dx er n ch uh dx ax v ao r d ix ch p ow zh er t ax k ix n t ey jh z t ix z uw z en z sil  ==  [350 frames] -132.5236 [Ac=-45963.3 LM=-420.0] (Act=100.1)
+	Forwarding time is 0.068223
+	Decoding time is 0.004614
+	Cache loading time is 0.000407
+File: dr8_mpam0_sx19_000_235.mfc
+sil ax l uw n ix m s ow v el w er k ix n ao f en b iy f l eh m z iy sil  ==  [235 frames] -132.6970 [Ac=-30893.8 LM=-290.0] (Act=99.6)
+	Forwarding time is 0.045292
+	Decoding time is 0.003094
+	Cache loading time is 0.000269
+File: dr8_mpam0_sx289_000_269.mfc
+sil w ah dh er p er v b el ao sh ix z er v er y uw z f el en s y aa dx el sil  ==  [269 frames] -132.4502 [Ac=-35329.1 LM=-300.0] (Act=99.8)
+	Forwarding time is 0.052079
+	Decoding time is 0.003551
+	Cache loading time is 0.000321
+File: dr8_mpam0_sx379_000_250.mfc
+sil p ae m g ih v z d r ah dx ix ng l ah s en z el n th er s d uh uw z sil  ==  [250 frames] -132.8683 [Ac=-32917.1 LM=-300.0] (Act=99.7)
+	Forwarding time is 0.048397
+	Decoding time is 0.003308
+	Cache loading time is 0.000297
+
+HTK Configuration Parameters[11]
+  Module/Tool     Parameter                  Value
+  HPARM           VARSCALEFN      lib/info/ident_cvn_E_D_A_Z
+  HPARM           VARSCALEPATHMASK             *.%%%
+  HPARM           VARSCALEMASK               *.%%%
+  HPARM           VARSCALEDIR     lib/cvn/cvn_E_D_A_Z
+                  TARGETKIND          MFCC_E_D_A_Z
+                  ALLOWXWRDEXP               FALSE
+                  FORCECXTEXP                FALSE
+  HNET            MARKLOGHMM                 FALSE
+  HNET            TRACE                          1
+  HMODEL          TRACE                        512
+  HSHELL          NONUMESCAPES                TRUE
+
+tools/htkbin/HVite finished at Wed 24 Nov 16:17:36 GMT 2021
+
+tools/htkbin/HLEd -A -D -V -T 1 -X rec -i test/timit_core.mergesil.mlf lib/edfiles/merge_sil.led test/timit_core.mlf 
+
+No HTK Configuration Parameters Set
+
+
+HTK Version Information
+Module     Version    Who    Date      : CVS Info
+HLEd       3.5.0      CUED   12/10/15  : $Id: HLEd.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HShell     3.5.0      CUED   12/10/15  : $Id: HShell.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HMem       3.5.0      CUED   12/10/15  : $Id: HMem.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HMath      3.5.0      CUED   12/10/15  : $Id: HMath.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HWave      3.5.0      CUED   12/10/15  : $Id: HWave.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HLabel     3.5.0      CUED   12/10/15  : $Id: HLabel.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HDict      3.5.0      CUED   12/10/15  : $Id: HDict.c,v 1.1.1.1 2006/10/11 09:54:57 jal58 Exp $
+
+Editing file: dr1_felc0_si1386_000_550.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_si2016_000_338.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_si756_000_417.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_sx126_000_289.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_sx216_000_218.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_sx306_000_248.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_sx36_000_350.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_sx396_000_380.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_si1039_000_392.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_si1669_000_204.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_si2299_000_258.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_sx139_000_234.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_sx229_000_129.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_sx319_000_242.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_sx409_000_286.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_sx49_000_218.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_si1553_000_474.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_si2183_000_187.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_si923_000_294.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_sx113_000_331.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_sx203_000_311.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_sx23_000_315.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_sx293_000_360.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_sx383_000_388.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_si1272_000_184.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_si2204_000_384.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_si944_000_234.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_sx134_000_292.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_sx224_000_159.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_sx314_000_292.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_sx404_000_276.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_sx44_000_223.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr2_mtas1_si1473_000_145.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_si2098_000_316.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_si838_000_263.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_sx118_000_280.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_sx208_000_349.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_sx28_000_246.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_sx298_000_316.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_sx388_000_402.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_si1361_000_253.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_si1991_000_401.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_si731_000_198.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_sx101_000_392.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_sx11_000_166.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_sx191_000_251.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_sx281_000_332.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_sx371_000_288.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_si1538_000_311.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_si2168_000_196.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_si908_000_225.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_sx188_000_220.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_sx278_000_319.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_sx368_000_307.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_sx8_000_280.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_sx98_000_183.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_si1535_000_233.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_si1791_000_466.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr3_mjmp0_si905_000_267.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_sx185_000_210.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_sx275_000_275.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_sx365_000_387.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_sx5_000_158.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_sx95_000_307.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_si1574_000_476.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_si1902_000_185.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_si642_000_407.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_sx102_000_365.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_sx12_000_230.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_sx192_000_231.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_sx282_000_317.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_sx372_000_309.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_si1043_000_340.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_si1673_000_314.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_si2303_000_404.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_sx143_000_338.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_sx233_000_250.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_sx323_000_282.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_sx413_000_338.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_sx53_000_308.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_mlll0_si1363_000_497.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr4_mlll0_si1993_000_246.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr4_mlll0_si733_000_433.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 2 merges
+Editing file: dr4_mlll0_sx103_000_232.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_mlll0_sx13_000_271.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_mlll0_sx193_000_347.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr4_mlll0_sx283_000_380.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr4_mlll0_sx373_000_278.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_si1370_000_408.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_si2000_000_285.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_si740_000_216.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_sx110_000_338.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_sx200_000_252.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_sx20_000_299.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_sx290_000_317.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_sx380_000_219.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_si1308_000_576.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_si1938_000_322.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_si678_000_203.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_sx138_000_360.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr5_fnlp0_sx228_000_227.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_sx318_000_371.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr5_fnlp0_sx408_000_308.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_sx48_000_348.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr5_mbpm0_si1577_000_195.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_si1584_000_378.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_si947_000_307.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 2 merges
+Editing file: dr5_mbpm0_sx137_000_370.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr5_mbpm0_sx227_000_175.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_sx317_000_231.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_sx407_000_253.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_sx47_000_214.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_si1213_000_246.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_si1843_000_322.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_si583_000_226.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_sx133_000_262.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr5_mklt0_sx223_000_218.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_sx313_000_320.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr5_mklt0_sx403_000_273.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_sx43_000_200.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_si1564_000_442.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_si2194_000_470.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_si934_000_346.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr6_fmgd0_sx124_000_373.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_sx214_000_301.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_sx304_000_278.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_sx34_000_234.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_sx394_000_234.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_si1094_000_374.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_si464_000_387.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_si602_000_387.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_sx104_000_196.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_sx14_000_292.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_sx194_000_193.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_sx284_000_363.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_sx374_000_223.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_si1354_000_479.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_si1984_000_131.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_si724_000_255.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_sx184_000_212.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_sx274_000_312.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_sx364_000_440.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_sx4_000_230.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_sx94_000_271.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_si1559_000_338.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_si2189_000_223.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_si929_000_284.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_sx119_000_301.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_sx209_000_255.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_sx299_000_319.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_sx29_000_252.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_sx389_000_244.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_si1450_000_619.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr7_mgrt0_si2080_000_229.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_si820_000_610.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_sx100_000_491.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr7_mgrt0_sx10_000_299.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_sx190_000_287.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_sx280_000_196.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_sx370_000_334.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_si1580_000_298.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr7_mnjm0_si2210_000_202.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_si950_000_545.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_sx140_000_288.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_sx230_000_353.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_sx320_000_379.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_sx410_000_273.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_sx50_000_338.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_si2185_000_356.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 1 merges
+Editing file: dr8_fmld0_si822_000_363.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_si925_000_210.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_sx115_000_237.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_sx205_000_305.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_sx25_000_189.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_sx295_000_308.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_sx385_000_189.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_si1449_000_431.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_si2079_000_210.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_si819_000_452.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_sx189_000_295.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_sx279_000_357.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_sx369_000_287.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_sx99_000_314.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_sx9_000_247.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_si1189_000_253.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_si1819_000_284.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_si1961_000_440.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_sx109_000_292.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_sx199_000_350.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_sx19_000_235.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_sx289_000_269.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_sx379_000_250.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+
+No HTK Configuration Parameters Set
+
+tools/htkbin/HLEd -A -D -V -T 1 -X rec -i test/timit_core.mergesil_phoneexpand.mlf lib/edfiles/phoneexpand.led test/timit_core.mergesil.mlf 
+
+No HTK Configuration Parameters Set
+
+
+HTK Version Information
+Module     Version    Who    Date      : CVS Info
+HLEd       3.5.0      CUED   12/10/15  : $Id: HLEd.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HShell     3.5.0      CUED   12/10/15  : $Id: HShell.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HMem       3.5.0      CUED   12/10/15  : $Id: HMem.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HMath      3.5.0      CUED   12/10/15  : $Id: HMath.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HWave      3.5.0      CUED   12/10/15  : $Id: HWave.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HLabel     3.5.0      CUED   12/10/15  : $Id: HLabel.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
+HDict      3.5.0      CUED   12/10/15  : $Id: HDict.c,v 1.1.1.1 2006/10/11 09:54:57 jal58 Exp $
+
+Editing file: dr1_felc0_si1386_000_550.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_si2016_000_338.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_si756_000_417.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_sx126_000_289.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_sx216_000_218.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_sx306_000_248.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_sx36_000_350.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr1_felc0_sx396_000_380.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_si1039_000_392.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_si1669_000_204.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_si2299_000_258.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_sx139_000_234.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_sx229_000_129.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_sx319_000_242.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_sx409_000_286.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr1_mdab0_sx49_000_218.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_si1553_000_474.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_si2183_000_187.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_si923_000_294.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_sx113_000_331.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_sx203_000_311.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_sx23_000_315.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_sx293_000_360.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr1_mwbt0_sx383_000_388.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_si1272_000_184.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_si2204_000_384.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_si944_000_234.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_sx134_000_292.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_sx224_000_159.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_sx314_000_292.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_sx404_000_276.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr2_fpas0_sx44_000_223.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_si1473_000_145.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_si2098_000_316.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_si838_000_263.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_sx118_000_280.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_sx208_000_349.rec
+   9 adds; 0 deletes; 9 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_sx28_000_246.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_sx298_000_316.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr2_mtas1_sx388_000_402.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_si1361_000_253.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_si1991_000_401.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_si731_000_198.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_sx101_000_392.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_sx11_000_166.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_sx191_000_251.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_sx281_000_332.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr2_mwew0_sx371_000_288.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_si1538_000_311.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_si2168_000_196.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_si908_000_225.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_sx188_000_220.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_sx278_000_319.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_sx368_000_307.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_sx8_000_280.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr3_fpkt0_sx98_000_183.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_si1535_000_233.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_si1791_000_466.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_si905_000_267.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_sx185_000_210.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_sx275_000_275.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_sx365_000_387.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_sx5_000_158.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr3_mjmp0_sx95_000_307.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_si1574_000_476.rec
+   9 adds; 0 deletes; 9 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_si1902_000_185.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_si642_000_407.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_sx102_000_365.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_sx12_000_230.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_sx192_000_231.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_sx282_000_317.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr3_mlnt0_sx372_000_309.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_si1043_000_340.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_si1673_000_314.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_si2303_000_404.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_sx143_000_338.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_sx233_000_250.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_sx323_000_282.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_sx413_000_338.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr4_fjlm0_sx53_000_308.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr4_mlll0_si1363_000_497.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr4_mlll0_si1993_000_246.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr4_mlll0_si733_000_433.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr4_mlll0_sx103_000_232.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr4_mlll0_sx13_000_271.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr4_mlll0_sx193_000_347.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr4_mlll0_sx283_000_380.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr4_mlll0_sx373_000_278.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_si1370_000_408.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_si2000_000_285.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_si740_000_216.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_sx110_000_338.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_sx200_000_252.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_sx20_000_299.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_sx290_000_317.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr4_mtls0_sx380_000_219.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_si1308_000_576.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_si1938_000_322.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_si678_000_203.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_sx138_000_360.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_sx228_000_227.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_sx318_000_371.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_sx408_000_308.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr5_fnlp0_sx48_000_348.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_si1577_000_195.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_si1584_000_378.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_si947_000_307.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_sx137_000_370.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_sx227_000_175.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_sx317_000_231.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_sx407_000_253.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr5_mbpm0_sx47_000_214.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_si1213_000_246.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_si1843_000_322.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_si583_000_226.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_sx133_000_262.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_sx223_000_218.rec
+   9 adds; 0 deletes; 9 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_sx313_000_320.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_sx403_000_273.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr5_mklt0_sx43_000_200.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_si1564_000_442.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_si2194_000_470.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_si934_000_346.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_sx124_000_373.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_sx214_000_301.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_sx304_000_278.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_sx34_000_234.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr6_fmgd0_sx394_000_234.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_si1094_000_374.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_si464_000_387.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_si602_000_387.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_sx104_000_196.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_sx14_000_292.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_sx194_000_193.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_sx284_000_363.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr6_mcmj0_sx374_000_223.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_si1354_000_479.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_si1984_000_131.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_si724_000_255.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_sx184_000_212.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_sx274_000_312.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_sx364_000_440.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_sx4_000_230.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr6_mjdh0_sx94_000_271.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_si1559_000_338.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_si2189_000_223.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_si929_000_284.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_sx119_000_301.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_sx209_000_255.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_sx299_000_319.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_sx29_000_252.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr7_fdhc0_sx389_000_244.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_si1450_000_619.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_si2080_000_229.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_si820_000_610.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_sx100_000_491.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_sx10_000_299.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_sx190_000_287.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_sx280_000_196.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr7_mgrt0_sx370_000_334.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_si1580_000_298.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_si2210_000_202.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_si950_000_545.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_sx140_000_288.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_sx230_000_353.rec
+   1 adds; 0 deletes; 1 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_sx320_000_379.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_sx410_000_273.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr7_mnjm0_sx50_000_338.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_si2185_000_356.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_si822_000_363.rec
+   9 adds; 0 deletes; 9 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_si925_000_210.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_sx115_000_237.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_sx205_000_305.rec
+   7 adds; 0 deletes; 7 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_sx25_000_189.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_sx295_000_308.rec
+   5 adds; 0 deletes; 5 replaces; 0 changes; 0 merges
+Editing file: dr8_fmld0_sx385_000_189.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_si1449_000_431.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_si2079_000_210.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_si819_000_452.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_sx189_000_295.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_sx279_000_357.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_sx369_000_287.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_sx99_000_314.rec
+   3 adds; 0 deletes; 3 replaces; 0 changes; 0 merges
+Editing file: dr8_mjln0_sx9_000_247.rec
+   0 adds; 0 deletes; 0 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_si1189_000_253.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_si1819_000_284.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_si1961_000_440.rec
+   8 adds; 0 deletes; 8 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_sx109_000_292.rec
+   6 adds; 0 deletes; 6 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_sx199_000_350.rec
+   10 adds; 0 deletes; 10 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_sx19_000_235.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_sx289_000_269.rec
+   2 adds; 0 deletes; 2 replaces; 0 changes; 0 merges
+Editing file: dr8_mpam0_sx379_000_250.rec
+   4 adds; 0 deletes; 4 replaces; 0 changes; 0 merges
+
+No HTK Configuration Parameters Set
+
+Running tools/htkbin/HResults at Wed 24 Nov 16:17:37 GMT 2021
+tools/htkbin/HResults -A -I lib/mlabs/test_phoneexpand.mlf -e sil cl -e sil vcl -e sil epi -e el l -e en n -e sh zh -e ao aa -e ih ix -e ah ax lib/mlists/mono+sil.mlist test/timit_core.mergesil_phoneexpand.mlf 
+====================== HTK Results Analysis =======================
+  Date: Wed Nov 24 16:17:37 2021
+  Ref : lib/mlabs/test_phoneexpand.mlf
+  Rec : test/timit_core.mergesil_phoneexpand.mlf
+------------------------ Overall Results --------------------------
+SENT: %Correct=0.52 [H=1, S=191, N=192]
+WORD: %Corr=76.86, Acc=74.80 [H=5652, D=666, S=1036, I=151, N=7354]
+===================================================================
+tools/htkbin/HResults finished at Wed 24 Nov 16:17:38 GMT 2021
+
+hvite finished  at Wed 24 Nov 16:17:39 GMT 2021
