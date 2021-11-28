@@ -1,0 +1,128 @@
+#!/bin/tcsh
+#$ -S /bin/tcsh
+
+#set verbose
+# last update: 12/10/2015
+
+############################################################
+# Step: alignment script applied to any involved systems
+############################################################
+
+set ALLARGS=($*)
+set CHANGED
+if ( $#argv > 1 ) then
+while ( $?CHANGED )
+    unset CHANGED
+    if ( "$argv[1]" == "-TESTSET" )  then
+        set CHANGED
+        shift argv
+        set TESTSET
+    endif
+    if ( "$argv[1]" == "-TOOLSDIR" )  then
+        set CHANGED
+        shift argv
+        set TOOLSDIR = $argv[1]
+        shift argv
+    endif
+end
+endif
+
+# Check Number of Args 
+if ( $#argv != 3) then
+    echo "Usage: $0 [-TESTSET] [-TOOLSDIR path] abspath_sourcedir hmmdir systemdir"
+    echo " e.g.: $0 /home/timit/SF0/ml hmm7 SF0/align-hmm7-train"
+    echo " -TESTSET: align full test set rather than the train set"
+    echo " -TOOLSDIR path: use specified dir rather than default TIMITTOOLS"
+    exit 1
+endif
+
+set SRCDIR = $argv[1]
+set HMMDIR = $argv[2]
+set TGTDIR = $argv[3]
+
+if (! -f $SRCDIR/environment) then
+    echo "The environment file $SRCDIR/environment is missing"
+    exit 1
+endif
+source $SRCDIR/environment
+if (-f /opt/intel/composerxe/bin/compilervars.csh) then
+    source /opt/intel/composerxe/bin/compilervars.csh intel64
+endif
+
+if (! -f $SRCDIR/$HMMDIR/MMF) then
+    echo "Source HMMs $SRCDIR/$HMMDIR/MMF do not exist"
+    exit 1
+endif
+if (! -f $SRCDIR/hmms.mlist) then
+    echo "Source HMM list $SRCDIR/hmms.mlist does not exist"
+    exit 1
+endif
+
+if ( -d $TGTDIR) then
+    echo "Target directory $TGTDIR exists - delete before rerun"
+    exit 1
+endif
+mkdir -p $TGTDIR
+
+if (! -d CMDs/$TGTDIR) mkdir -p CMDs/$TGTDIR
+set MEMO = records
+echo "------------------------------------" >> CMDs/$TGTDIR/${MEMO}.cmds
+echo "$0 $ALLARGS" >> CMDs/${TGTDIR}/${MEMO}.cmds
+echo "------------------------------------" >> CMDs/$TGTDIR/${MEMO}.cmds
+
+
+# change to the target working dir and do the basic steups
+cd $TGTDIR
+#     setup the tools dir
+if ($?TOOLSDIR) then
+    ln -s $TOOLSDIR ./tools
+else
+    ln -s $TIMITTOOLS ./tools
+endif
+if ( -d tools/htklib/cuda) then
+    setenv LD_LIBRARY_PATH tools/htklib:$LD_LIBRARY_PATH
+endif
+#     setup the lib and cfgs
+ln -s ${TIMITLIB} ./
+cp lib/cfgs/basic${FEADIFF}.cfg ./basic.cfg
+cp $SRCDIR/hmms.mlist ./hmms.mlist
+
+
+# link alignment HMMs
+mkdir alignHMMs
+ln -s $SRCDIR/$HMMDIR/MMF alignHMMs/MMF
+
+
+# copy the right decoding config
+set nhmms = `wc -l hmms.mlist | awk '{print $1}'`
+set nmono = `wc -l lib/mlists/mono+sil.mlist | awk '{print $1}'`
+if ( $nhmms == $nmono ) then
+    echo "Monophone system alignment"
+    cp lib/cfgs/viterbi-mono.cfg ./viterbi.cfg
+else
+    echo "Cross-word triphone system alignment"
+    cp lib/cfgs/viterbi-xwtri.cfg ./viterbi.cfg
+endif
+
+# choose test or train set alignment
+if ($?TESTSET) then
+    set SET = test
+else
+    set SET = train
+endif
+
+# setup the alignment HTE
+cp lib/htefiles/HTE.align ./HTE.hvite
+echo "set TESTDATALIST = lib/flists/${SET}.scp" >> ./HTE.hvite
+echo "set ALIGNMLF = lib/mlabs/${SET}.mlf" >> ./HTE.hvite
+echo "set HMMLIST = hmms.mlist" >> ./HTE.hvite
+echo "set HVCONFIG = viterbi.cfg" >> ./HTE.hvite
+echo "set BASICCONFIG = basic.cfg" >> ./HTE.hvite
+echo "set HVBIN = tools/htkbin/HVite" >> ./HTE.hvite
+
+
+# do the recognition and scoring
+mkdir align
+echo "aligning ${SET} set"
+tools/scripts/hvite HTE.hvite timit ${SET} alignHMMs
+

@@ -1,0 +1,370 @@
+TR 0 
+QS "L_Class-Stop" { p-*,b-*,t-*,d-*,k-*,g-* } 
+QS "R_Class-Stop" { *+p,*+b,*+t,*+d,*+k,*+g } 
+QS "R_Class-Closure" { *+cl,*+vcl }
+QS "L_Class-Closure" { cl-*,vcl-* }
+QS "R_Class-Silence" { *+sil,*+epi }
+QS "L_Class-Silence" { sil-*,epi-* }
+QS "R_Class-SilenceClosure" { *+sil, *+epi, *+cl, *+vcl }
+QS "L_Class-SilenceClosure" { sil-*, epi-*, cl-*, vcl-* }
+QS "L_Nasal" { m-*,n-*,en-*,ng-* } 
+QS "R_Nasal" { *+m,*+n,*+en,*+ng } 
+QS "L_FricAff" { s-*,sh-*,z-*,zh-*,f-*,v-*,ch-*,jh-*,th-*,dh-* } 
+QS "R_FricAff" { *+s,*+sh,*+z,*+zh,*+f,*+v,*+ch,*+jh,*+th,*+dh } 
+QS "L_Liquid" { l-*,el-*,r-*,w-*,y-*,hh-* } 
+QS "R_Liquid" { *+l,*+el,*+r,*+w,*+y,*+hh } 
+QS "L_Vowel" { ae-*,eh-*,ix-*,ih-*,ao-*,ah-*,aa-*,uw-*,uh-*,er-*,ay-*,oy-*,ey-*,iy-*,aw-*,ow-*,ax-* } 
+QS "R_Vowel" { *+ae,*+eh,*+ix,*+ih,*+ao,*+aa,*+uw,*+uh,*+er,*+ay,*+oy,*+ey,*+iy,*+aw,*+ow,*+ah,*+ax } 
+QS "L_C-Front" { p-*,b-*,m-*,f-*,v-*,w-* } 
+QS "R_C-Front" { *+p,*+b,*+m,*+f,*+v,*+w } 
+QS "L_C-Central" { t-*,d-*,en-*,n-*,s-*,z-*,zh-*,th-*,dh-*,l-*,el-*,r-* } 
+QS "R_C-Central" { *+t,*+d,*+en,*+n,*+s,*+z,*+zh,*+th,*+dh,*+l,*+el,*+r } 
+QS "L_C-Back" { sh-*,ch-*,jh-*,y-*,k-*,g-*,ng-*,hh-* } 
+QS "R_C-Back" { *+sh,*+ch,*+jh,*+y,*+k,*+g,*+ng,*+hh } 
+QS "L_V-Front" { iy-*,ix-*,ih-*,ae-*,eh-* } 
+QS "R_V-Front" { *+iy,*+ix,*+ih,*+ae,*+eh } 
+QS "L_V-Central" { aa-*,ah-*,er-*,ao-* } 
+QS "R_V-Central" { *+aa,*+ah,*+er,*+ao } 
+QS "L_V-Back" { uw-*,uh-*,ow-*,ax-* } 
+QS "R_V-Back" { *+uw,*+uh,*+ow,*+ax } 
+QS "L_Front" { p-*,b-*,m-*,f-*,v-*,w-*,iy-*,ix-*,ih-*,ae-*,eh-* } 
+QS "R_Front" { *+p,*+b,*+m,*+f,*+v,*+w,*+iy,*+ix,*+ih,*+ae,*+eh } 
+QS "L_Central" { t-*,d-*,en-*,n-*,s-*,z-*,zh-*,th-*,dh-*,l-*,el-*,r-*,ah-*,er-*,ao-* } 
+QS "R_Central" { *+t,*+d,*+en,*+n,*+s,*+z,*+zh,*+th,*+dh,*+l,*+el,*+r,*+ah,*+er,*+ao } 
+QS "L_Back" { sh-*,ch-*,jh-*,y-*,k-*,g-*,ng-*,hh-*,aa-*,uw-*,uh-*,ow-*,ax-* } 
+QS "R_Back" { *+sh,*+ch,*+jh,*+y,*+k,*+g,*+ng,*+hh,*+aa,*+uw,*+uh,*+ow,*+ax } 
+QS "L_Fortis" { p-*,t-*,k-*,f-*,th-*,s-*,sh-*,ch-* } 
+QS "R_Fortis" { *+p,*+t,*+k,*+f,*+th,*+s,*+sh,*+ch } 
+QS "L_Lenis" { b-*,d-*,g-*,v-*,dh-*,z-*,zh-*,jh-* } 
+QS "R_Lenis" { *+b,*+d,*+g,*+v,*+dh,*+z,*+zh,*+jh } 
+QS "L_UnFortLenis" { m-*,n-*,en-*,ng-*,hh-*,l-*,el-*,r-*,y-*,w-* } 
+QS "R_UnFortLenis" { *+m,*+n,*+en,*+ng,*+hh,*+l,*+el,*+r,*+y,*+w } 
+QS "L_Coronal" { t-*,d-*,n-*,en-*,th-*,dh-*,s-*,z-*,sh-*,zh-*,ch-*,jh-*,el-*,l-*,r-* } 
+QS "R_Coronal" { *+t,*+d,*+n,*+en,*+th,*+dh,*+s,*+z,*+sh,*+zh,*+ch,*+jh,*+el,*+l,*+r } 
+QS "L_NonCoronal" { p-*,b-*,m-*,k-*,g-*,ng-*,f-*,v-*,hh-*,y-*,w-* } 
+QS "R_NonCoronal" { *+p,*+b,*+m,*+k,*+g,*+ng,*+f,*+v,*+hh,*+y,*+w } 
+QS "L_Anterior" { p-*,b-*,m-*,t-*,d-*,n-*,en-*,f-*,v-*,th-*,dh-*,s-*,z-*,l-*,el-*,w-* } 
+QS "R_Anterior" { *+p,*+b,*+m,*+t,*+d,*+n,*+en,*+f,*+v,*+th,*+dh,*+s,*+z,*+l,*+el,*+w } 
+QS "L_NonAnterior" { k-*,g-*,ng-*,sh-*,zh-*,hh-*,ch-*,jh-*,r-*,y-* } 
+QS "R_NonAnterior" { *+k,*+g,*+ng,*+sh,*+zh,*+hh,*+ch,*+jh,*+r,*+y } 
+QS "L_Continuent" { m-*,n-*,en-*,ng-*,f-*,v-*,th-*,dh-*,s-*,z-*,sh-*,zh-*,hh-*,l-*,el-*,r-*,y-*,w-* } 
+QS "R_Continuent" { *+m,*+n,*+en,*+ng,*+f,*+v,*+th,*+dh,*+s,*+z,*+sh,*+zh,*+hh,*+l,*+el,*+r,*+y,*+w } 
+QS "L_NonContinuent" { p-*,b-*,t-*,d-*,k-*,g-*,ch-*,jh-* } 
+QS "R_NonContinuent" { *+p,*+b,*+t,*+d,*+k,*+g,*+ch,*+jh } 
+QS "L_Strident" { s-*,z-*,sh-*,zh-*,ch-*,jh-* } 
+QS "R_Strident" { *+s,*+z,*+sh,*+zh,*+ch,*+jh } 
+QS "L_NonStrident" { f-*,v-*,th-*,dh-*,hh-* } 
+QS "R_NonStrident" { *+f,*+v,*+th,*+dh,*+hh } 
+QS "L_UnStrident" { p-*,b-*,m-*,t-*,d-*,n-*,en-*,k-*,g-*,ng-*,l-*,el-*,r-*,y-*,w-* } 
+QS "R_UnStrident" { *+p,*+b,*+m,*+t,*+d,*+n,*+en,*+k,*+g,*+ng,*+l,*+el,*+r,*+y,*+w } 
+QS "L_Glide" { hh-*,l-*,el-*,r-*,y-*,w-* } 
+QS "R_Glide" { *+hh,*+l,*+el,*+r,*+y,*+w } 
+QS "L_Syllabic" { en-*,el-*,er-* } 
+QS "R_Syllabic" { *+en,*+el,*+er } 
+QS "L_Unvoiced-cons" { p-*,t-*,k-*,s-*,sh-*,f-*,th-*,hh-*,ch-* } 
+QS "R_Unvoiced-cons" { *+p,*+t,*+k,*+s,*+sh,*+f,*+th,*+hh,*+ch } 
+QS "L_Voiced-cons" { jh-*,b-*,d-*,dh-*,g-*,y-*,l-*,el-*,m-*,n-*,en-*,ng-*,r-*,v-*,w-*,z-* } 
+QS "R_Voiced-cons" { *+jh,*+b,*+d,*+dh,*+g,*+y,*+l,*+el,*+m,*+n,*+en,*+ng,*+r,*+v,*+w,*+z } 
+QS "L_Long" { iy-*,ow-*,aw-*,ao-*,uw-*,en-*,el-* } 
+QS "R_Long" { *+iy,*+ow,*+aw,*+ao,*+uw,*+en,*+el } 
+QS "L_Short" { ey-*,ah-*,eh-*,ix-*,ih-*,ay-*,oy-*,aa-*,ax-*,uh-* } 
+QS "R_Short" { *+ey,*+ah,*+eh,*+ix,*+ih,*+ay,*+oy,*+aa,*+ax,*+uh } 
+QS "L_Dipthong" { ey-*,ay-*,oy-*,aw-*,er-*,en-*,el-* } 
+QS "R_Dipthong" { *+ey,*+ay,*+oy,*+aw,*+er,*+en,*+el } 
+QS "L_Front-Start" { ey-*,aw-*,er-* } 
+QS "R_Front-Start" { *+ey,*+aw,*+er } 
+QS "L_Fronting" { ay-*,ey-*,oy-* } 
+QS "R_Fronting" { *+ay,*+ey,*+oy } 
+QS "L_High" { ix-*,ih-*,uw-*,uh-*,iy-* } 
+QS "R_High" { *+ix,*+ih,*+uw,*+uh,*+iy } 
+QS "L_Medium" { ey-*,er-*,ah-*,ax-*,ow-*,ae-*,eh-*,en-*,el-* } 
+QS "R_Medium" { *+ey,*+er,*+ah,*+ax,*+ow,*+ae,*+eh,*+en,*+el } 
+QS "L_Low" { ae-*,ay-*,aw-*,ah-*,aa-*,ao-*,oy-* } 
+QS "R_Low" { *+ae,*+ay,*+aw,*+ah,*+aa,*+ao,*+oy } 
+QS "L_Rounded" { ao-*,uw-*,uh-*,oy-*,ow-*,w-* } 
+QS "R_Rounded" { *+ao,*+uw,*+uh,*+oy,*+ow,*+w } 
+QS "L_Unrounded" { eh-*,ix-*,ih-*,ae-*,ah-*,aa-*,er-*,ay-*,ey-*,iy-*,aw-*,ax-*,en-*,hh-*,l-*,el-*,r-*,y-* } 
+QS "R_Unrounded" { *+eh,*+ix,*+ih,*+ae,*+ah,*+aa,*+er,*+ay,*+ey,*+iy,*+aw,*+ax,*+en,*+hh,*+l,*+el,*+r,*+y } 
+QS "L_Fricative" { s-*,sh-*,z-*,zh-*,f-*,v-*,th-*,dh-* } 
+QS "R_Fricative" { *+s,*+sh,*+z,*+zh,*+f,*+v,*+th,*+dh } 
+QS "L_Affricate" { ch-*,jh-* } 
+QS "R_Affricate" { *+ch,*+jh } 
+QS "L_RVowel" { ix-*,ax-* } 
+QS "R_RVowel" { *+ix,*+ax } 
+QS "L_IVowel" { ix-*,ih-*,iy-* } 
+QS "R_IVowel" { *+ix,*+ih,*+iy } 
+QS "L_EVowel" { eh-*,ey-* } 
+QS "R_EVowel" { *+eh,*+ey } 
+QS "L_AVowel" { ae-*,aa-*,er-*,ay-*,aw-* } 
+QS "R_AVowel" { *+ae,*+aa,*+er,*+ay,*+aw } 
+QS "L_OVowel" { ao-*,oy-*,ow-* } 
+QS "R_OVowel" { *+ao,*+oy,*+ow } 
+QS "L_UVowel" { ah-*,ax-*,en-*,el-*,uh-*,uw-* } 
+QS "R_UVowel" { *+ah,*+ax,*+en,*+el,*+uh,*+uw } 
+QS "L_Voiced-Stop" { b-*,d-*,g-* } 
+QS "R_Voiced-Stop" { *+b,*+d,*+g } 
+QS "L_Unvoiced-Stop" { p-*,t-*,k-* } 
+QS "R_Unvoiced-Stop" { *+p,*+t,*+k } 
+QS "L_Front-Stop" { p-*,b-* } 
+QS "R_Front-Stop" { *+p,*+b } 
+QS "L_Central-Stop" { t-*,d-* } 
+QS "R_Central-Stop" { *+t,*+d } 
+QS "L_Back-Stop" { k-*,g-* } 
+QS "R_Back-Stop" { *+k,*+g } 
+QS "L_Voiced-Fricative" { z-*,zh-*,dh-*,ch-*,v-* } 
+QS "R_Voiced-Fricative" { *+z,*+zh,*+dh,*+ch,*+v } 
+QS "L_Unvoiced-Fricative" { s-*,sh-*,th-*,f-*,ch-* } 
+QS "R_Unvoiced-Fricative" { *+s,*+sh,*+th,*+f,*+ch } 
+QS "L_Front-Fricative" { f-*,v-* } 
+QS "R_Front-Fricative" { *+f,*+v } 
+QS "L_Central-Fricative" { s-*,z-*,th-*,dh-* } 
+QS "R_Central-Fricative" { *+s,*+z,*+th,*+dh } 
+QS "L_Back-Fricative" { sh-*,zh-*,ch-*,jh-* } 
+QS "R_Back-Fricative" { *+sh,*+zh,*+ch,*+jh } 
+QS "L_b" { b-* } 
+QS "R_b" { *+b } 
+QS "L_ch" { ch-* } 
+QS "R_ch" { *+ch } 
+QS "L_d" { d-* } 
+QS "R_d" { *+d } 
+QS "L_dh" { dh-* } 
+QS "R_dh" { *+dh } 
+QS "L_f" { f-* } 
+QS "R_f" { *+f } 
+QS "L_g" { g-* } 
+QS "R_g" { *+g } 
+QS "L_hh" { hh-* } 
+QS "R_hh" { *+hh } 
+QS "L_jh" { jh-* } 
+QS "R_jh" { *+jh } 
+QS "L_k" { k-* } 
+QS "R_k" { *+k } 
+QS "L_l" { l-* } 
+QS "R_l" { *+l } 
+QS "L_m" { m-* } 
+QS "R_m" { *+m } 
+QS "L_n" { n-* } 
+QS "R_n" { *+n } 
+QS "L_ng" { ng-* } 
+QS "R_ng" { *+ng } 
+QS "L_p" { p-* } 
+QS "R_p" { *+p } 
+QS "L_r" { r-* } 
+QS "R_r" { *+r } 
+QS "L_s" { s-* } 
+QS "R_s" { *+s } 
+QS "L_sh" { sh-* } 
+QS "R_sh" { *+sh } 
+QS "L_t" { t-* } 
+QS "R_t" { *+t } 
+QS "L_th" { th-* } 
+QS "R_th" { *+th } 
+QS "L_el" { el-* } 
+QS "R_el" { *+el } 
+QS "L_en" { en-* } 
+QS "R_en" { *+en } 
+QS "L_v" { v-* } 
+QS "R_v" { *+v } 
+QS "L_w" { w-* } 
+QS "R_w" { *+w } 
+QS "L_y" { y-* } 
+QS "R_y" { *+y } 
+QS "L_z" { z-* } 
+QS "R_z" { *+z } 
+QS "L_zh" { zh-* } 
+QS "R_zh" { *+zh } 
+QS "L_ae" { ae-* } 
+QS "R_ae" { *+ae } 
+QS "L_ah" { ah-* } 
+QS "R_ah" { *+ah } 
+QS "L_aa" { aa-* } 
+QS "R_aa" { *+aa } 
+QS "L_ao" { ao-* } 
+QS "R_ao" { *+ao } 
+QS "L_ay" { ay-* } 
+QS "R_ay" { *+ay } 
+QS "L_iy" { iy-* } 
+QS "R_iy" { *+iy } 
+QS "L_eh" { eh-* } 
+QS "R_eh" { *+eh } 
+QS "L_ey" { ey-* } 
+QS "R_ey" { *+ey } 
+QS "L_ix" { ix-* }
+QS "R_ix" { *+ix }
+QS "L_ih" { ih-* } 
+QS "R_ih" { *+ih } 
+QS "L_ow" { ow-* } 
+QS "R_ow" { *+ow } 
+QS "L_uh" { uh-* } 
+QS "R_uh" { *+uh } 
+QS "L_uw" { uw-* } 
+QS "R_uw" { *+uw } 
+QS "L_aw" { aw-* } 
+QS "R_aw" { *+aw } 
+QS "L_oy" { oy-* } 
+QS "R_oy" { *+oy } 
+QS "L_ax" { ax-* } 
+QS "R_ax" { *+ax } 
+QS "L_er" { er-* } 
+QS "R_er" { *+er } 
+QS "R_dx" { *+dx }
+QS "L_dx" { dx-* }
+QS "R_epi" { *+epi }
+QS "L_epi" { epi-* }
+QS "R_vcl" { *+vcl }
+QS "L_vcl" { vcl-* }
+QS "R_cl" { *+cl }
+QS "L_cl" { cl-* }
+QS "L_sil" { sil-* } 
+QS "R_sil" { *+sil } 
+
+TR 1 
+RO ROVAL "hmm1/stats"
+
+TR 2 
+TB TBVAL "ae_s2_" { ( ae,*-ae,*-ae+*,ae+* ).state[2] } 
+TB TBVAL "ae_s3_" { ( ae,*-ae,*-ae+*,ae+* ).state[3] } 
+TB TBVAL "ae_s4_" { ( ae,*-ae,*-ae+*,ae+* ).state[4] } 
+TB TBVAL "ah_s2_" { ( ah,*-ah,*-ah+*,ah+* ).state[2] } 
+TB TBVAL "ah_s3_" { ( ah,*-ah,*-ah+*,ah+* ).state[3] } 
+TB TBVAL "ah_s4_" { ( ah,*-ah,*-ah+*,ah+* ).state[4] } 
+TB TBVAL "ax_s2_" { ( ax,*-ax,*-ax+*,ax+* ).state[2] } 
+TB TBVAL "ax_s3_" { ( ax,*-ax,*-ax+*,ax+* ).state[3] } 
+TB TBVAL "ax_s4_" { ( ax,*-ax,*-ax+*,ax+* ).state[4] } 
+TB TBVAL "aa_s2_" { ( aa,*-aa,*-aa+*,aa+* ).state[2] } 
+TB TBVAL "aa_s3_" { ( aa,*-aa,*-aa+*,aa+* ).state[3] } 
+TB TBVAL "aa_s4_" { ( aa,*-aa,*-aa+*,aa+* ).state[4] } 
+TB TBVAL "ao_s2_" { ( ao,*-ao,*-ao+*,ao+* ).state[2] } 
+TB TBVAL "ao_s3_" { ( ao,*-ao,*-ao+*,ao+* ).state[3] } 
+TB TBVAL "ao_s4_" { ( ao,*-ao,*-ao+*,ao+* ).state[4] } 
+TB TBVAL "ay_s2_" { ( ay,*-ay,*-ay+*,ay+* ).state[2] } 
+TB TBVAL "ay_s3_" { ( ay,*-ay,*-ay+*,ay+* ).state[3] } 
+TB TBVAL "ay_s4_" { ( ay,*-ay,*-ay+*,ay+* ).state[4] } 
+TB TBVAL "b_s2_" { ( b,*-b,*-b+*,b+* ).state[2] } 
+TB TBVAL "b_s3_" { ( b,*-b,*-b+*,b+* ).state[3] } 
+TB TBVAL "b_s4_" { ( b,*-b,*-b+*,b+* ).state[4] } 
+TB TBVAL "ch_s2_" { ( ch,*-ch,*-ch+*,ch+* ).state[2] } 
+TB TBVAL "ch_s3_" { ( ch,*-ch,*-ch+*,ch+* ).state[3] } 
+TB TBVAL "ch_s4_" { ( ch,*-ch,*-ch+*,ch+* ).state[4] } 
+TB TBVAL "cl_s2_" { ( cl,*-cl,*-cl+*,cl+* ).state[2] }
+TB TBVAL "cl_s3_" { ( cl,*-cl,*-cl+*,cl+* ).state[3] }
+TB TBVAL "cl_s4_" { ( cl,*-cl,*-cl+*,cl+* ).state[4] }
+TB TBVAL "d_s2_" { ( d,*-d,*-d+*,d+* ).state[2] } 
+TB TBVAL "d_s3_" { ( d,*-d,*-d+*,d+* ).state[3] } 
+TB TBVAL "d_s4_" { ( d,*-d,*-d+*,d+* ).state[4] } 
+TB TBVAL "dh_s2_" { ( dh,*-dh,*-dh+*,dh+* ).state[2] } 
+TB TBVAL "dh_s3_" { ( dh,*-dh,*-dh+*,dh+* ).state[3] } 
+TB TBVAL "dh_s4_" { ( dh,*-dh,*-dh+*,dh+* ).state[4] } 
+TB TBVAL "dx_s2_" { ( dx,*-dx,*-dx+*,dx+* ).state[2] }
+TB TBVAL "dx_s3_" { ( dx,*-dx,*-dx+*,dx+* ).state[3] }
+TB TBVAL "dx_s4_" { ( dx,*-dx,*-dx+*,dx+* ).state[4] }
+TB TBVAL "iy_s2_" { ( iy,*-iy,*-iy+*,iy+* ).state[2] } 
+TB TBVAL "iy_s3_" { ( iy,*-iy,*-iy+*,iy+* ).state[3] } 
+TB TBVAL "iy_s4_" { ( iy,*-iy,*-iy+*,iy+* ).state[4] } 
+TB TBVAL "eh_s2_" { ( eh,*-eh,*-eh+*,eh+* ).state[2] } 
+TB TBVAL "eh_s3_" { ( eh,*-eh,*-eh+*,eh+* ).state[3] } 
+TB TBVAL "eh_s4_" { ( eh,*-eh,*-eh+*,eh+* ).state[4] } 
+TB TBVAL "epi_s2_" { ( epi,*-epi,*-epi+*,epi+* ).state[2] }
+TB TBVAL "epi_s3_" { ( epi,*-epi,*-epi+*,epi+* ).state[3] }
+TB TBVAL "epi_s4_" { ( epi,*-epi,*-epi+*,epi+* ).state[4] }
+TB TBVAL "ey_s2_" { ( ey,*-ey,*-ey+*,ey+* ).state[2] } 
+TB TBVAL "ey_s3_" { ( ey,*-ey,*-ey+*,ey+* ).state[3] } 
+TB TBVAL "ey_s4_" { ( ey,*-ey,*-ey+*,ey+* ).state[4] } 
+TB TBVAL "f_s2_" { ( f,*-f,*-f+*,f+* ).state[2] } 
+TB TBVAL "f_s3_" { ( f,*-f,*-f+*,f+* ).state[3] } 
+TB TBVAL "f_s4_" { ( f,*-f,*-f+*,f+* ).state[4] } 
+TB TBVAL "g_s2_" { ( g,*-g,*-g+*,g+* ).state[2] } 
+TB TBVAL "g_s3_" { ( g,*-g,*-g+*,g+* ).state[3] } 
+TB TBVAL "g_s4_" { ( g,*-g,*-g+*,g+* ).state[4] } 
+TB TBVAL "hh_s2_" { ( hh,*-hh,*-hh+*,hh+* ).state[2] } 
+TB TBVAL "hh_s3_" { ( hh,*-hh,*-hh+*,hh+* ).state[3] } 
+TB TBVAL "hh_s4_" { ( hh,*-hh,*-hh+*,hh+* ).state[4] } 
+TB TBVAL "ix_s2_" { ( ix,*-ix,*-ix+*,ix+* ).state[2] } 
+TB TBVAL "ix_s3_" { ( ix,*-ix,*-ix+*,ix+* ).state[3] }
+TB TBVAL "ix_s4_" { ( ix,*-ix,*-ix+*,ix+* ).state[4] } 
+TB TBVAL "ih_s2_" { ( ih,*-ih,*-ih+*,ih+* ).state[2] } 
+TB TBVAL "ih_s3_" { ( ih,*-ih,*-ih+*,ih+* ).state[3] } 
+TB TBVAL "ih_s4_" { ( ih,*-ih,*-ih+*,ih+* ).state[4] } 
+TB TBVAL "jh_s2_" { ( jh,*-jh,*-jh+*,jh+* ).state[2] } 
+TB TBVAL "jh_s3_" { ( jh,*-jh,*-jh+*,jh+* ).state[3] } 
+TB TBVAL "jh_s4_" { ( jh,*-jh,*-jh+*,jh+* ).state[4] } 
+TB TBVAL "k_s2_" { ( k,*-k,*-k+*,k+* ).state[2] } 
+TB TBVAL "k_s3_" { ( k,*-k,*-k+*,k+* ).state[3] } 
+TB TBVAL "k_s4_" { ( k,*-k,*-k+*,k+* ).state[4] } 
+TB TBVAL "l_s2_" { ( l,*-l,*-l+*,l+* ).state[2] } 
+TB TBVAL "l_s3_" { ( l,*-l,*-l+*,l+* ).state[3] } 
+TB TBVAL "l_s4_" { ( l,*-l,*-l+*,l+* ).state[4] } 
+TB TBVAL "m_s2_" { ( m,*-m,*-m+*,m+* ).state[2] } 
+TB TBVAL "m_s3_" { ( m,*-m,*-m+*,m+* ).state[3] } 
+TB TBVAL "m_s4_" { ( m,*-m,*-m+*,m+* ).state[4] } 
+TB TBVAL "n_s2_" { ( n,*-n,*-n+*,n+* ).state[2] } 
+TB TBVAL "n_s3_" { ( n,*-n,*-n+*,n+* ).state[3] } 
+TB TBVAL "n_s4_" { ( n,*-n,*-n+*,n+* ).state[4] } 
+TB TBVAL "ng_s2_" { ( ng,*-ng,*-ng+*,ng+* ).state[2] } 
+TB TBVAL "ng_s3_" { ( ng,*-ng,*-ng+*,ng+* ).state[3] } 
+TB TBVAL "ng_s4_" { ( ng,*-ng,*-ng+*,ng+* ).state[4] } 
+TB TBVAL "ow_s2_" { ( ow,*-ow,*-ow+*,ow+* ).state[2] } 
+TB TBVAL "ow_s3_" { ( ow,*-ow,*-ow+*,ow+* ).state[3] } 
+TB TBVAL "ow_s4_" { ( ow,*-ow,*-ow+*,ow+* ).state[4] } 
+TB TBVAL "uh_s2_" { ( uh,*-uh,*-uh+*,uh+* ).state[2] } 
+TB TBVAL "uh_s3_" { ( uh,*-uh,*-uh+*,uh+* ).state[3] } 
+TB TBVAL "uh_s4_" { ( uh,*-uh,*-uh+*,uh+* ).state[4] } 
+TB TBVAL "uw_s2_" { ( uw,*-uw,*-uw+*,uw+* ).state[2] } 
+TB TBVAL "uw_s3_" { ( uw,*-uw,*-uw+*,uw+* ).state[3] } 
+TB TBVAL "uw_s4_" { ( uw,*-uw,*-uw+*,uw+* ).state[4] } 
+TB TBVAL "aw_s2_" { ( aw,*-aw,*-aw+*,aw+* ).state[2] } 
+TB TBVAL "aw_s3_" { ( aw,*-aw,*-aw+*,aw+* ).state[3] } 
+TB TBVAL "aw_s4_" { ( aw,*-aw,*-aw+*,aw+* ).state[4] } 
+TB TBVAL "oy_s2_" { ( oy,*-oy,*-oy+*,oy+* ).state[2] } 
+TB TBVAL "oy_s3_" { ( oy,*-oy,*-oy+*,oy+* ).state[3] } 
+TB TBVAL "oy_s4_" { ( oy,*-oy,*-oy+*,oy+* ).state[4] } 
+TB TBVAL "p_s2_" { ( p,*-p,*-p+*,p+* ).state[2] } 
+TB TBVAL "p_s3_" { ( p,*-p,*-p+*,p+* ).state[3] } 
+TB TBVAL "p_s4_" { ( p,*-p,*-p+*,p+* ).state[4] } 
+TB TBVAL "r_s2_" { ( r,*-r,*-r+*,r+* ).state[2] } 
+TB TBVAL "r_s3_" { ( r,*-r,*-r+*,r+* ).state[3] } 
+TB TBVAL "r_s4_" { ( r,*-r,*-r+*,r+* ).state[4] } 
+TB TBVAL "s_s2_" { ( s,*-s,*-s+*,s+* ).state[2] } 
+TB TBVAL "s_s3_" { ( s,*-s,*-s+*,s+* ).state[3] } 
+TB TBVAL "s_s4_" { ( s,*-s,*-s+*,s+* ).state[4] } 
+TB TBVAL "sh_s2_" { ( sh,*-sh,*-sh+*,sh+* ).state[2] } 
+TB TBVAL "sh_s3_" { ( sh,*-sh,*-sh+*,sh+* ).state[3] } 
+TB TBVAL "sh_s4_" { ( sh,*-sh,*-sh+*,sh+* ).state[4] } 
+TB TBVAL "t_s2_" { ( t,*-t,*-t+*,t+* ).state[2] } 
+TB TBVAL "t_s3_" { ( t,*-t,*-t+*,t+* ).state[3] } 
+TB TBVAL "t_s4_" { ( t,*-t,*-t+*,t+* ).state[4] } 
+TB TBVAL "th_s2_" { ( th,*-th,*-th+*,th+* ).state[2] } 
+TB TBVAL "th_s3_" { ( th,*-th,*-th+*,th+* ).state[3] } 
+TB TBVAL "th_s4_" { ( th,*-th,*-th+*,th+* ).state[4] } 
+TB TBVAL "el_s2_" { ( el,*-el,*-el+*,el+* ).state[2] } 
+TB TBVAL "el_s3_" { ( el,*-el,*-el+*,el+* ).state[3] } 
+TB TBVAL "el_s4_" { ( el,*-el,*-el+*,el+* ).state[4] } 
+TB TBVAL "en_s2_" { ( en,*-en,*-en+*,en+* ).state[2] } 
+TB TBVAL "en_s3_" { ( en,*-en,*-en+*,en+* ).state[3] } 
+TB TBVAL "en_s4_" { ( en,*-en,*-en+*,en+* ).state[4] } 
+TB TBVAL "er_s2_" { ( er,*-er,*-er+*,er+* ).state[2] } 
+TB TBVAL "er_s3_" { ( er,*-er,*-er+*,er+* ).state[3] } 
+TB TBVAL "er_s4_" { ( er,*-er,*-er+*,er+* ).state[4] } 
+TB TBVAL "v_s2_" { ( v,*-v,*-v+*,v+* ).state[2] } 
+TB TBVAL "v_s3_" { ( v,*-v,*-v+*,v+* ).state[3] } 
+TB TBVAL "v_s4_" { ( v,*-v,*-v+*,v+* ).state[4] } 
+TB TBVAL "vcl_s2_" { ( vcl,*-vcl,*-vcl+*,vcl+* ).state[2] }
+TB TBVAL "vcl_s3_" { ( vcl,*-vcl,*-vcl+*,vcl+* ).state[3] }
+TB TBVAL "vcl_s4_" { ( vcl,*-vcl,*-vcl+*,vcl+* ).state[4] }
+TB TBVAL "w_s2_" { ( w,*-w,*-w+*,w+* ).state[2] } 
+TB TBVAL "w_s3_" { ( w,*-w,*-w+*,w+* ).state[3] } 
+TB TBVAL "w_s4_" { ( w,*-w,*-w+*,w+* ).state[4] } 
+TB TBVAL "y_s2_" { ( y,*-y,*-y+*,y+* ).state[2] } 
+TB TBVAL "y_s3_" { ( y,*-y,*-y+*,y+* ).state[3] } 
+TB TBVAL "y_s4_" { ( y,*-y,*-y+*,y+* ).state[4] } 
+TB TBVAL "z_s2_" { ( z,*-z,*-z+*,z+* ).state[2] } 
+TB TBVAL "z_s3_" { ( z,*-z,*-z+*,z+* ).state[3] } 
+TB TBVAL "z_s4_" { ( z,*-z,*-z+*,z+* ).state[4] } 
+TB TBVAL "zh_s2_" { ( zh,*-zh,*-zh+*,zh+* ).state[2] } 
+TB TBVAL "zh_s3_" { ( zh,*-zh,*-zh+*,zh+* ).state[3] } 
+TB TBVAL "zh_s4_" { ( zh,*-zh,*-zh+*,zh+* ).state[4] } 
+
+TR 1 
+ST "TREENAME"
+AU "lib/mlists/xwtri+sil.mlist" 
+CO "LISTNAME" 

@@ -1,0 +1,16 @@
+#!/bin/tcsh
+
+# HVite parameters
+set HVTRACE = 1			# tracing level
+set HVPRUNE = 100.0		# -t  
+set HVGSCALE = 5.0   		# -s
+set HVIMPROB = 0.0    		# -p
+set HVNET = lib/wdnets/phoneloop.net	# phone loop network
+set HVVOC = lib/dicts/phone.dct		# dictionary
+
+# HResults parameters
+set HRTRACE = 1			# tracing level
+set WORDLIST = lib/mlists/mono+sil.mlist
+set HREQSET = lib/eqsets/phone48_39.eqs	# 39 phone scoring map
+
+# automatically generated below
