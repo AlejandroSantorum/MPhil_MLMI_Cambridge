@@ -1,0 +1,16 @@
+#!/bin/tcsh
+
+# HVite parameters
+set HVTRACE = 1			# tracing level
+set HVVOC = lib/dicts/phone.dct		# dictionary
+set HVALIGN
+set HVSTATEALIGN
+
+
+# automatically generated below
+set TESTDATALIST = lib/flists/train.scp
+set ALIGNMLF = lib/mlabs/train.mlf
+set HMMLIST = hmms.mlist
+set HVCONFIG = viterbi.cfg
+set BASICCONFIG = basic.cfg
+set HVBIN = tools/htkbin/HVite

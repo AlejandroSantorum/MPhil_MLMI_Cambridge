@@ -17,7 +17,7 @@ do
     # Executing decoding (testing)
     ../tools/steps/step-decode -INSWORD $inspen -BEAMWIDTH 300 $PWD/FBK${param}_${mode}/mono hmm${numGaussMixes}4 FBK${param}_${mode}/decode-mono-hmm${numGaussMixes}4-ins${inspen}
     # Fetching data
-    echo "===== MFC${param}_${mode} insertionPenalty=${inspen} =====" >> $fname_fbk_res
+    echo "===== FBK${param}_${mode} insertionPenalty=${inspen} =====" >> $fname_fbk_res
     resSent=$(grep 'SENT:' FBK${param}_${mode}/decode-mono-hmm${numGaussMixes}4-ins${inspen}/test/LOG)
     echo $resSent >> $fname_fbk_res
     resWord=$(grep 'WORD:' FBK${param}_${mode}/decode-mono-hmm${numGaussMixes}4-ins${inspen}/test/LOG)

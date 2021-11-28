@@ -1,9 +1,0 @@
-------------------------------------
-../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracgmm/exp/MFC_E_Z_Init/mono hmm44 MFC_E_Z_Init/decode-mono-hmm44
-------------------------------------
-------------------------------------
-../tools/steps/step-decode -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/MFC_E_Z_Init/mono hmm44 MFC_E_Z_Init/decode-mono-hmm44
-------------------------------------
-------------------------------------
-../tools/steps/step-decode -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/MFC_E_Z_Init/mono hmm44 MFC_E_Z_Init/decode-mono-hmm44
-------------------------------------

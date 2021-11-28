@@ -1,6 +1,0 @@
-------------------------------------
-../tools/steps/step-decode -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm164 FBK_Z_Init/decode-mono-hmm164
-------------------------------------
-------------------------------------
-../tools/steps/step-decode -BEAMWIDTH 300 /homes/as3159/MLMI2/pracgmm/exp/FBK_Z_Init/mono hmm164 FBK_Z_Init/decode-mono-hmm164
-------------------------------------

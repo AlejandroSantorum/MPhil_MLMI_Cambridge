@@ -1,0 +1,16 @@
+#!/bin/tcsh
+
+set HETRACE = 1
+set HEMINWEIGHT = 2.0
+set HESTATS = stats
+set HEMINEG = 0
+set HEUPD = tmvw
+
+# automatically generated below
+
+set TRAINDATALIST = lib/flists/train.scp
+set TRAINMLF = train.mlf
+set HMMLIST = hmms.mlist
+set HECONFIG = herest.cfg
+set BASICCONFIG = basic.cfg
+set HEBIN = tools/htkbin/HERest

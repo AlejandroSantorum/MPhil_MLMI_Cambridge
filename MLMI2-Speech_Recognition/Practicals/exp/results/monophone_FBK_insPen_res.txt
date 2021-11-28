@@ -1,39 +1,39 @@
-===== MFC_D_A_Z_FlatStart insertionPenalty=-30 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=-30 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=64.33, Acc=55.27 [H=33270, D=4463, S=13988, I=4683, N=51721]
-===== MFC_D_A_Z_FlatStart insertionPenalty=-25 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=-25 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=64.91, Acc=54.57 [H=33574, D=4053, S=14094, I=5351, N=51721]
-===== MFC_D_A_Z_FlatStart insertionPenalty=-20 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=-20 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=65.40, Acc=53.54 [H=33823, D=3645, S=14253, I=6131, N=51721]
-===== MFC_D_A_Z_FlatStart insertionPenalty=-15 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=-15 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=65.90, Acc=52.26 [H=34085, D=3226, S=14410, I=7055, N=51721]
-===== MFC_D_A_Z_FlatStart insertionPenalty=-10 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=-10 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=66.35, Acc=50.63 [H=34316, D=2832, S=14573, I=8128, N=51721]
-===== MFC_D_A_Z_FlatStart insertionPenalty=-5 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=-5 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=66.88, Acc=48.57 [H=34593, D=2482, S=14646, I=9474, N=51721]
-===== MFC_D_A_Z_FlatStart insertionPenalty=0 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=0 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=67.38, Acc=46.21 [H=34850, D=2151, S=14720, I=10949, N=51721]
-===== MFC_D_A_Z_FlatStart insertionPenalty=5 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=5 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=67.87, Acc=43.20 [H=35101, D=1884, S=14736, I=12757, N=51721]
-===== MFC_D_A_Z_FlatStart insertionPenalty=10 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=10 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=68.48, Acc=39.51 [H=35421, D=1605, S=14695, I=14985, N=51721]
-===== MFC_D_A_Z_FlatStart insertionPenalty=15 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=15 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=69.15, Acc=35.25 [H=35763, D=1314, S=14644, I=17530, N=51721]
-===== MFC_D_A_Z_FlatStart insertionPenalty=20 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=20 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=69.71, Acc=29.89 [H=36055, D=1099, S=14567, I=20596, N=51721]
-===== MFC_D_A_Z_FlatStart insertionPenalty=25 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=25 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=70.31, Acc=23.97 [H=36366, D=931, S=14424, I=23970, N=51721]
-===== MFC_D_A_Z_FlatStart insertionPenalty=30 =====
+===== FBK_D_A_Z_FlatStart insertionPenalty=30 =====
 SENT: %Correct=0.00 [H=0, S=1344, N=1344]
 WORD: %Corr=71.05, Acc=17.31 [H=36748, D=789, S=14184, I=27795, N=51721]

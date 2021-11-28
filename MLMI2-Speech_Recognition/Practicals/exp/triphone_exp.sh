@@ -3,8 +3,10 @@ inspen=8
 param=MFC_E_D_A_Z_FlatStart/
 fname_res=./results/triphone_res.txt
 
-rm -rf `find ./${param} -name '*xwtri*'`
-rm -rf $fname_res
+if [ "$1" == "-d" ]; then
+    rm -rf `find ./${param} -name '*xwtri*'`
+    rm -rf $fname_res
+fi
 
 ##########################################
 # GRID-SEARCH HYPERPARAMETER TUNING
@@ -38,7 +40,9 @@ do
         # Executing decoding (testing)
         ../tools/steps/step-decode -CORETEST -INSWORD $inspen -BEAMWIDTH 300 $PWD/${param}xwtri-RO${valRO}-TB${valTB} hmm${numMix}4 ${param}decode-xwtri-RO${valRO}-TB${valTB}-NM${numMix}
         # Fetching data
-        echo "===== xwtri RO=${valRO} TB${valTB} numMix=${numMix} =====" >> $fname_res
+        echo "===== xwtri RO=${valRO} TB=${valTB} numMix=${numMix} =====" >> $fname_res
+        resClustStates=$(grep 'CO: HMM' ${param}xwtri-RO${valRO}-TB${valTB}/hmm10/LOG)
+        echo $resClustStates >> $fname_res
         resSent=$(grep 'SENT:' ${param}decode-xwtri-RO${valRO}-TB${valTB}-NM${numMix}/test/LOG)
         echo $resSent >> $fname_res
         resWord=$(grep 'WORD:' ${param}decode-xwtri-RO${valRO}-TB${valTB}-NM${numMix}/test/LOG)
