@@ -1,0 +1,30 @@
+===== Train num_hidden_layers=2 =====
+Train Accuracy = 80.17% [855983 right out of 1067753 samples]
+===== Validation num_hidden_layers=2 =====
+Validation Accuracy = 65.43% [37339 right out of 57070 samples]
+===== Test num_hidden_layers=2 =====
+WORD: %Corr=78.73, Acc=76.69 [H=40721, D=4256, S=6744, I=1057, N=51721]
+===== Train num_hidden_layers=3 =====
+Train Accuracy = 80.35% [857894 right out of 1067753 samples]
+===== Validation num_hidden_layers=3 =====
+Validation Accuracy = 65.23% [37228 right out of 57070 samples]
+===== Test num_hidden_layers=3 =====
+WORD: %Corr=78.95, Acc=76.78 [H=40832, D=4080, S=6809, I=1120, N=51721]
+===== Train num_hidden_layers=4 =====
+Train Accuracy = 81.83% [873735 right out of 1067753 samples]
+===== Validation num_hidden_layers=4 =====
+Validation Accuracy = 65.27% [37247 right out of 57070 samples]
+===== Test num_hidden_layers=4 =====
+WORD: %Corr=78.89, Acc=76.53 [H=40805, D=4039, S=6877, I=1221, N=51721]
+===== Train num_hidden_layers=5 =====
+Train Accuracy = 5.17% [55202 right out of 1067753 samples]
+===== Validation num_hidden_layers=5 =====
+Validation Accuracy = 6.04% [3445 right out of 57070 samples]
+===== Test num_hidden_layers=5 =====
+WORD: %Corr=7.24, Acc=7.24 [H=3743, D=47689, S=289, I=0, N=51721]
+===== Train num_hidden_layers=6 =====
+Train Accuracy = 5.17% [55202 right out of 1067753 samples]
+===== Validation num_hidden_layers=6 =====
+Validation Accuracy = 6.04% [3445 right out of 57070 samples]
+===== Test num_hidden_layers=6 =====
+WORD: %Corr=7.24, Acc=7.24 [H=3743, D=47689, S=289, I=0, N=51721]

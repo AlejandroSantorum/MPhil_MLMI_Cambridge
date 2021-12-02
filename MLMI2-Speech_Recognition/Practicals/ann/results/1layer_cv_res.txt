@@ -1,0 +1,48 @@
+===== ANN1Layer_MFC_E_Z_FlatStart contextWidth=1 =====
+Validation Accuracy = 51.03% [29120 right out of 57070 samples]
+===== ANN1Layer_MFC_E_Z_FlatStart contextWidth=3 =====
+Validation Accuracy = 57.12% [32600 right out of 57070 samples]
+===== ANN1Layer_MFC_E_Z_FlatStart contextWidth=5 =====
+Validation Accuracy = 58.54% [33409 right out of 57070 samples]
+===== ANN1Layer_MFC_E_Z_FlatStart contextWidth=7 =====
+Validation Accuracy = 58.20% [33216 right out of 57070 samples]
+===== ANN1Layer_MFC_E_Z_FlatStart contextWidth=9 =====
+Validation Accuracy = 58.02% [33111 right out of 57070 samples]
+===== ANN1Layer_MFC_E_Z_FlatStart contextWidth=11 =====
+Validation Accuracy = 56.92% [32484 right out of 57070 samples]
+===== ANN1Layer_MFC_E_D_A_Z_FlatStart contextWidth=1 =====
+Validation Accuracy = 61.08% [34856 right out of 57070 samples]
+===== ANN1Layer_MFC_E_D_A_Z_FlatStart contextWidth=3 =====
+Validation Accuracy = 63.11% [36017 right out of 57070 samples]
+===== ANN1Layer_MFC_E_D_A_Z_FlatStart contextWidth=5 =====
+Validation Accuracy = 63.34% [36148 right out of 57070 samples]
+===== ANN1Layer_MFC_E_D_A_Z_FlatStart contextWidth=7 =====
+Validation Accuracy = 63.09% [36008 right out of 57070 samples]
+===== ANN1Layer_MFC_E_D_A_Z_FlatStart contextWidth=9 =====
+Validation Accuracy = 62.76% [35817 right out of 57070 samples]
+===== ANN1Layer_MFC_E_D_A_Z_FlatStart contextWidth=11 =====
+Validation Accuracy = 62.04% [35406 right out of 57070 samples]
+===== ANN1Layer_FBK_Z_FlatStart contextWidth=1 =====
+Validation Accuracy = 47.08% [26868 right out of 57070 samples]
+===== ANN1Layer_FBK_Z_FlatStart contextWidth=3 =====
+Validation Accuracy = 53.03% [30262 right out of 57070 samples]
+===== ANN1Layer_FBK_Z_FlatStart contextWidth=5 =====
+Validation Accuracy = 54.38% [31036 right out of 57070 samples]
+===== ANN1Layer_FBK_Z_FlatStart contextWidth=7 =====
+Validation Accuracy = 54.75% [31247 right out of 57070 samples]
+===== ANN1Layer_FBK_Z_FlatStart contextWidth=9 =====
+Validation Accuracy = 54.00% [30815 right out of 57070 samples]
+===== ANN1Layer_FBK_Z_FlatStart contextWidth=11 =====
+Validation Accuracy = 53.86% [30739 right out of 57070 samples]
+===== ANN1Layer_FBK_D_A_Z_FlatStart contextWidth=1 =====
+Validation Accuracy = 59.91% [34189 right out of 57070 samples]
+===== ANN1Layer_FBK_D_A_Z_FlatStart contextWidth=3 =====
+Validation Accuracy = 62.11% [35446 right out of 57070 samples]
+===== ANN1Layer_FBK_D_A_Z_FlatStart contextWidth=5 =====
+Validation Accuracy = 62.53% [35688 right out of 57070 samples]
+===== ANN1Layer_FBK_D_A_Z_FlatStart contextWidth=7 =====
+Validation Accuracy = 62.51% [35672 right out of 57070 samples]
+===== ANN1Layer_FBK_D_A_Z_FlatStart contextWidth=9 =====
+Validation Accuracy = 62.14% [35465 right out of 57070 samples]
+===== ANN1Layer_FBK_D_A_Z_FlatStart contextWidth=11 =====
+Validation Accuracy = 61.56% [35131 right out of 57070 samples]

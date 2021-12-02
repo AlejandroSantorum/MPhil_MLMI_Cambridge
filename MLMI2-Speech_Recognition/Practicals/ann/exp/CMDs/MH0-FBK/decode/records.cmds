@@ -1,3 +1,0 @@
-------------------------------------
-../tools/steps/step-decode -BEAMWIDTH 200 /homes/as3159/MLMI2/pracann/exp/MH0-FBK/dnntrain hmm0 MH0-FBK/decode
-------------------------------------
