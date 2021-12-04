@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 
 class NaiveBayesText(Evaluation):
-    def __init__(self,smoothing,bigrams,trigrams,discard_closed_class):
+    def __init__(self,smoothing,bigrams,trigrams,discard_closed_class,kappa=1):
         """
         initialisation of NaiveBayesText classifier.
 
@@ -38,6 +38,8 @@ class NaiveBayesText(Evaluation):
         self.trigrams=trigrams
         # restrict unigrams to nouns, adjectives, adverbs and verbs?
         self.discard_closed_class=discard_closed_class
+        # kappa value if laplace smoothing is used
+        self.kappa = kappa
         # stored predictions from test instances
         self.predictions=[]
 
@@ -130,8 +132,8 @@ class NaiveBayesText(Evaluation):
         # Laplace smoothing if specified
         if self.smoothing:
             for token in self.vocabulary:
-                self.condProb["POS"][token] += 1
-                self.condProb["NEG"][token] += 1
+                self.condProb["POS"][token] += self.kappa # usually = 1
+                self.condProb["NEG"][token] += self.kappa # usually = 1
 
         # calculating priors
         self.prior["POS"] = np.log(total_pos_reviews/len(reviews))

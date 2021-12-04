@@ -2,7 +2,7 @@ import os, codecs, sys
 from nltk.stem.porter import PorterStemmer
 
 class MovieReviewCorpus():
-    def __init__(self,stemming,pos):
+    def __init__(self, stemming, pos, lc=False, del_pun=False):
         """
         initialisation of movie review corpus.
 
@@ -11,6 +11,13 @@ class MovieReviewCorpus():
 
         @param pos: use pos tagging?
         @type pos: boolean
+
+        > Extra params:
+        @param lc: lowercase?
+        @type lc: boolean
+
+        @param pos: delete common punctuation characters?
+        @type del_pun: boolean
         """
         # raw movie reviews
         self.reviews=[]
@@ -23,6 +30,10 @@ class MovieReviewCorpus():
         self.stemmer=PorterStemmer() if stemming else None
         # part-of-speech tags
         self.pos=pos
+        # lowercase?
+        self.lc=lc
+        # delete common punctuation?
+        self.del_pun=del_pun
         # import movie reviews
         self.get_reviews()
 
@@ -33,12 +44,22 @@ class MovieReviewCorpus():
             for line in f:
                 # omitting empty lines
                 if len(line) > 1:
+                    # lowercasing if specified
+                    if self.lc:
+                        line = line.lower()
                     # line[:-1] to delete final \n, and then splitting by tabs
                     word_tag_list = line[:-1].split("\t")
+
+                    # deleting common punctuation characters, if specified
+                    if self.del_pun:
+                        if word_tag_list[0] in ['.', ',', ';', '?', '!', '-', '"', '\'', '(', ')']:
+                            continue # not adding punctuation characters
+
                     # stemming if specified at class constructor
                     if self.stemmer:
                         word_tag_list[0] = self.stemmer.stem(word_tag_list[0])
 
+                    # adding part-of-speech features if specified
                     if self.pos:
                         word_tag = tuple(word_tag_list)
                         # adding (word, tag) to list
