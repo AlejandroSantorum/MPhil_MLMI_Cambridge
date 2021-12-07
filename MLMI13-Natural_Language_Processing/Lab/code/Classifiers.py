@@ -119,6 +119,24 @@ class NaiveBayesText(Evaluation):
             else:
                 # calculating total number of negative reviews
                 total_neg_reviews += 1
+
+            if self.bigrams:
+                review_bigrams = list(ngrams(review, 2))
+                for bigram in review_bigrams:
+                    if bigram in self.vocabulary:
+                        if sentiment == "POS":
+                            self.condProb["POS"][bigram] += 1
+                        else:
+                            self.condProb["NEG"][bigram] += 1
+            
+            elif self.trigrams:
+                review_trigrams = ngrams(review, 3)
+                for trigram in review_trigrams:
+                    if trigram in self.vocabulary:
+                        if sentiment == "POS":
+                            self.condProb["POS"][trigram] += 1
+                        else:
+                            self.condProb["NEG"][trigram] += 1
             
             # calculating appearences for each token (word + tag)
             for token in review:
@@ -166,6 +184,20 @@ class NaiveBayesText(Evaluation):
                 if token in self.vocabulary:
                     arg_pos += self.condProb["POS"][token]
                     arg_neg += self.condProb["NEG"][token]
+            
+            if self.bigrams:
+                review_bigrams = list(ngrams(review, 2))
+                for bigram in review_bigrams:
+                    if bigram in self.vocabulary:
+                        arg_pos += self.condProb["POS"][bigram]
+                        arg_neg += self.condProb["NEG"][bigram]
+
+            if self.trigrams:
+                review_trigrams = ngrams(review, 3)
+                for trigram in review_trigrams:
+                    if trigram in self.vocabulary:
+                        arg_pos += self.condProb["POS"][trigram]
+                        arg_neg += self.condProb["NEG"][trigram]
 
             if arg_pos > arg_neg and sentiment == "POS":
                 self.predictions.append("+")
