@@ -5,9 +5,9 @@ Validation Accuracy = 65.43% [37339 right out of 57070 samples]
 ===== Test num_hidden_layers=2 =====
 WORD: %Corr=78.73, Acc=76.69 [H=40721, D=4256, S=6744, I=1057, N=51721]
 ===== Train num_hidden_layers=3 =====
-Train Accuracy = 80.35% [857894 right out of 1067753 samples]
+Train Accuracy = 80.90% [863846 right out of 1067753 samples]
 ===== Validation num_hidden_layers=3 =====
-Validation Accuracy = 65.23% [37228 right out of 57070 samples]
+Validation Accuracy = 65.30% [37267 right out of 57070 samples]
 ===== Test num_hidden_layers=3 =====
 WORD: %Corr=78.95, Acc=76.78 [H=40832, D=4080, S=6809, I=1120, N=51721]
 ===== Train num_hidden_layers=4 =====

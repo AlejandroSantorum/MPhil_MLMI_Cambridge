@@ -1,6 +1,6 @@
 
-fname_res=./results/rnn_dnn_multiple_layers.txt
-fname_plot=./imgs/rnn_dnn_multiple_layers.png
+fname_res=./results/rnn_dnn_multiple_layers_mfc.txt
+fname_plot=./imgs/rnn_dnn_multiple_layers_mfc.png
 
 limInf=2
 jump=1
@@ -25,7 +25,7 @@ if ! [ -d "$store_folder" ]; then
 fi
 
 if [ "$1" == "-d" ]; then # Deliting previous execution folders if specified
-    rm -rf `find ./${store_folder} -name '*MultH*'`
+    rm -rf `find ./${store_folder} -name '*RNN-1L-DNN-*L-MFC*'`
     rm -rf $fname_res
 fi
 

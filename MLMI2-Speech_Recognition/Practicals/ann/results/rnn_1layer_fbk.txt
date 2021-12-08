@@ -1,0 +1,30 @@
+===== Train unfold_value=5 =====
+Train Accuracy = 69.54% [742545 right out of 1067753 samples]
+===== Validation unfold_value=5 =====
+Validation Accuracy = 59.00% [33670 right out of 57070 samples]
+===== Test unfold_value=5 =====
+WORD: %Corr=75.77, Acc=73.32 [H=39190, D=4672, S=7859, I=1266, N=51721]
+===== Train unfold_value=10 =====
+Train Accuracy = 76.41% [815861 right out of 1067753 samples]
+===== Validation unfold_value=10 =====
+Validation Accuracy = 63.75% [36384 right out of 57070 samples]
+===== Test unfold_value=10 =====
+WORD: %Corr=78.20, Acc=75.90 [H=40447, D=4148, S=7126, I=1189, N=51721]
+===== Train unfold_value=15 =====
+Train Accuracy = 79.00% [843550 right out of 1067753 samples]
+===== Validation unfold_value=15 =====
+Validation Accuracy = 64.61% [36871 right out of 57070 samples]
+===== Test unfold_value=15 =====
+WORD: %Corr=78.78, Acc=76.54 [H=40746, D=4111, S=6864, I=1160, N=51721]
+===== Train unfold_value=20 =====
+Train Accuracy = 79.38% [847537 right out of 1067753 samples]
+===== Validation unfold_value=20 =====
+Validation Accuracy = 65.35% [37298 right out of 57070 samples]
+===== Test unfold_value=20 =====
+WORD: %Corr=78.65, Acc=76.56 [H=40679, D=4196, S=6846, I=1082, N=51721]
+===== Train unfold_value=25 =====
+Train Accuracy = 77.19% [824161 right out of 1067753 samples]
+===== Validation unfold_value=25 =====
+Validation Accuracy = 65.83% [37567 right out of 57070 samples]
+===== Test unfold_value=25 =====
+WORD: %Corr=78.01, Acc=76.12 [H=40350, D=4481, S=6890, I=982, N=51721]

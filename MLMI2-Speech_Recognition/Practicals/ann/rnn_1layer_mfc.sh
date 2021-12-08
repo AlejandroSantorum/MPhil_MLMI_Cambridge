@@ -23,7 +23,7 @@ if ! [ -d "$store_folder" ]; then
 fi
 
 if [ "$1" == "-d" ]; then # Deliting previous execution folders if specified
-    rm -rf `find ./${store_folder} -name '*RNN-1L*'`
+    rm -rf `find ./${store_folder} -name '*RNN-1L-MFC*'`
     rm -rf $fname_res
 fi
 
