@@ -1,10 +1,10 @@
 
-inspen=8
+inspen=-10
 param=MFC_E_D_A_Z_FlatStart/
 fname_res=./results/triphone_res.txt
 
 if [ "$1" == "-d" ]; then
-    rm -rf `find ./${param} -name '*xwtri*'`
+    rm -rf `find ./${param} -name '*xwtri-RO*'`
     rm -rf $fname_res
 fi
 
@@ -18,12 +18,12 @@ jumpNumMix=4
 
 # RO value
 infRO=100
-supRO=300
+supRO=400
 jumpRO=100
 
 # TB value
 infTB=600
-supTB=1000
+supTB=1200
 jumpTB=200
 ##########################################
 
@@ -38,7 +38,7 @@ do
         for ((numMix = infNumMix; numMix <= supNumMix; numMix += jumpNumMix));
         do
         # Executing decoding (testing)
-        ../tools/steps/step-decode -CORETEST -BEAMWIDTH 300 $PWD/${param}xwtri-RO${valRO}-TB${valTB} hmm${numMix}4 ${param}decode-xwtri-RO${valRO}-TB${valTB}-NM${numMix}
+        ../tools/steps/step-decode -CORETEST -INSWORD $inspen -BEAMWIDTH 300 $PWD/${param}xwtri-RO${valRO}-TB${valTB} hmm${numMix}4 ${param}decode-xwtri-RO${valRO}-TB${valTB}-NM${numMix}
         # Fetching data
         echo "===== xwtri RO=${valRO} TB=${valTB} numMix=${numMix} =====" >> $fname_res
         resClustStates=$(grep 'CO: HMM' ${param}xwtri-RO${valRO}-TB${valTB}/hmm10/LOG)

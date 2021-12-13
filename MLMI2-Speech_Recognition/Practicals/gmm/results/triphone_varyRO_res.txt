@@ -1,0 +1,36 @@
+===== xwtri RO=100 TB=1000 numMix=12 =====
+CO: HMMs 108289 Logical 2207 Physical
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=77.79, Acc=69.01 [H=40233, D=2284, S=9204, I=4542, N=51721]
+===== xwtri RO=150 TB=1000 numMix=12 =====
+CO: HMMs 108289 Logical 2170 Physical
+SENT: %Correct=0.07 [H=1, S=1343, N=1344]
+WORD: %Corr=77.85, Acc=69.20 [H=40267, D=2251, S=9203, I=4474, N=51721]
+===== xwtri RO=200 TB=1000 numMix=12 =====
+CO: HMMs 108289 Logical 2165 Physical
+SENT: %Correct=0.07 [H=1, S=1343, N=1344]
+WORD: %Corr=77.74, Acc=69.20 [H=40210, D=2262, S=9249, I=4419, N=51721]
+===== xwtri RO=250 TB=1000 numMix=12 =====
+CO: HMMs 108289 Logical 2162 Physical
+SENT: %Correct=0.07 [H=1, S=1343, N=1344]
+WORD: %Corr=77.73, Acc=69.06 [H=40204, D=2263, S=9254, I=4488, N=51721]
+===== xwtri RO=300 TB=1000 numMix=12 =====
+CO: HMMs 108289 Logical 2103 Physical
+SENT: %Correct=0.15 [H=2, S=1342, N=1344]
+WORD: %Corr=77.79, Acc=69.29 [H=40236, D=2270, S=9215, I=4401, N=51721]
+===== xwtri RO=350 TB=1000 numMix=12 =====
+CO: HMMs 108289 Logical 2106 Physical
+SENT: %Correct=0.22 [H=3, S=1341, N=1344]
+WORD: %Corr=77.78, Acc=68.98 [H=40227, D=2285, S=9209, I=4552, N=51721]
+===== xwtri RO=400 TB=1000 numMix=12 =====
+CO: HMMs 108289 Logical 2039 Physical
+SENT: %Correct=0.22 [H=3, S=1341, N=1344]
+WORD: %Corr=77.69, Acc=69.07 [H=40180, D=2270, S=9271, I=4454, N=51721]
+===== xwtri RO=450 TB=1000 numMix=12 =====
+CO: HMMs 108289 Logical 1956 Physical
+SENT: %Correct=0.07 [H=1, S=1343, N=1344]
+WORD: %Corr=77.70, Acc=69.05 [H=40187, D=2288, S=9246, I=4474, N=51721]
+===== xwtri RO=500 TB=1000 numMix=12 =====
+CO: HMMs 108289 Logical 1881 Physical
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=77.69, Acc=69.02 [H=40180, D=2322, S=9219, I=4484, N=51721]
