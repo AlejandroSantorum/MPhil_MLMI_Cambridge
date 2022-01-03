@@ -1,0 +1,60 @@
+===== Train numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1168, N=1168]
+WORD: %Corr=67.87, Acc=49.58 [H=30877, D=2674, S=11944, I=8322, N=45495]
+===== Test numberGaussians=2 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=67.47, Acc=49.31 [H=34898, D=2934, S=13889, I=9394, N=51721]
+===== Train numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1168, N=1168]
+WORD: %Corr=70.64, Acc=54.62 [H=32136, D=2509, S=10850, I=7286, N=45495]
+===== Test numberGaussians=4 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=69.61, Acc=53.17 [H=36002, D=2808, S=12911, I=8504, N=51721]
+===== Train numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1168, N=1168]
+WORD: %Corr=72.41, Acc=56.77 [H=32945, D=2316, S=10234, I=7117, N=45495]
+===== Test numberGaussians=6 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=71.08, Acc=54.96 [H=36763, D=2671, S=12287, I=8336, N=51721]
+===== Train numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1168, N=1168]
+WORD: %Corr=73.98, Acc=58.95 [H=33657, D=2227, S=9611, I=6838, N=45495]
+===== Test numberGaussians=8 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=72.53, Acc=56.74 [H=37515, D=2509, S=11697, I=8168, N=51721]
+===== Train numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1168, N=1168]
+WORD: %Corr=75.11, Acc=60.47 [H=34171, D=2111, S=9213, I=6662, N=45495]
+===== Test numberGaussians=10 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=73.31, Acc=57.59 [H=37916, D=2451, S=11354, I=8128, N=51721]
+===== Train numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1168, N=1168]
+WORD: %Corr=76.00, Acc=61.98 [H=34575, D=2097, S=8823, I=6379, N=45495]
+===== Test numberGaussians=12 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=74.02, Acc=58.72 [H=38283, D=2409, S=11029, I=7910, N=51721]
+===== Train numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1168, N=1168]
+WORD: %Corr=76.97, Acc=63.56 [H=35016, D=2052, S=8427, I=6101, N=45495]
+===== Test numberGaussians=14 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=74.53, Acc=59.39 [H=38549, D=2324, S=10848, I=7834, N=51721]
+===== Train numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1168, N=1168]
+WORD: %Corr=77.67, Acc=64.55 [H=35334, D=1975, S=8186, I=5968, N=45495]
+===== Test numberGaussians=16 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=75.01, Acc=60.12 [H=38795, D=2246, S=10680, I=7701, N=51721]
+===== Train numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1168, N=1168]
+WORD: %Corr=78.38, Acc=65.64 [H=35661, D=1945, S=7889, I=5800, N=45495]
+===== Test numberGaussians=18 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=75.38, Acc=60.56 [H=38989, D=2223, S=10509, I=7665, N=51721]
+===== Train numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1168, N=1168]
+WORD: %Corr=78.85, Acc=66.38 [H=35872, D=1932, S=7691, I=5671, N=45495]
+===== Test numberGaussians=20 =====
+SENT: %Correct=0.00 [H=0, S=1344, N=1344]
+WORD: %Corr=75.51, Acc=60.77 [H=39052, D=2198, S=10471, I=7623, N=51721]
