@@ -1,36 +1,36 @@
 ===== Train num_hidden_layers=1 =====
-Train Accuracy = 72.69% [776151 right out of 1067753 samples]
+Train Accuracy = 78.51% [838322 right out of 1067753 samples]
 ===== Validation num_hidden_layers=1 =====
-Validation Accuracy = 62.33% [35572 right out of 57070 samples]
+Validation Accuracy = 63.42% [36192 right out of 57070 samples]
 ===== Test num_hidden_layers=1 =====
-WORD: %Corr=75.73, Acc=73.81 [H=39170, D=5253, S=7298, I=993, N=51721]
+WORD: %Corr=76.88, Acc=74.70 [H=39765, D=4685, S=7271, I=1131, N=51721]
 ===== Train num_hidden_layers=2 =====
-Train Accuracy = 77.42% [826666 right out of 1067753 samples]
+Train Accuracy = 86.58% [924496 right out of 1067753 samples]
 ===== Validation num_hidden_layers=2 =====
-Validation Accuracy = 61.98% [35371 right out of 57070 samples]
+Validation Accuracy = 63.39% [36176 right out of 57070 samples]
 ===== Test num_hidden_layers=2 =====
 WORD: %Corr=6.09, Acc=6.09 [H=3152, D=47689, S=880, I=0, N=51721]
 ===== Train num_hidden_layers=3 =====
-Train Accuracy = 4.46% [47644 right out of 1067753 samples]
+Train Accuracy = 4.69% [50062 right out of 1067753 samples]
 ===== Validation num_hidden_layers=3 =====
-Validation Accuracy = 5.40% [3082 right out of 57070 samples]
+Validation Accuracy = 5.16% [2944 right out of 57070 samples]
 ===== Test num_hidden_layers=3 =====
 WORD: %Corr=6.09, Acc=6.09 [H=3152, D=47689, S=880, I=0, N=51721]
 ===== Train num_hidden_layers=4 =====
-Train Accuracy = 4.46% [47644 right out of 1067753 samples]
+Train Accuracy = 4.69% [50062 right out of 1067753 samples]
 ===== Validation num_hidden_layers=4 =====
-Validation Accuracy = 5.40% [3082 right out of 57070 samples]
+Validation Accuracy = 5.16% [2944 right out of 57070 samples]
 ===== Test num_hidden_layers=4 =====
 WORD: %Corr=6.09, Acc=6.09 [H=3152, D=47689, S=880, I=0, N=51721]
 ===== Train num_hidden_layers=5 =====
-Train Accuracy = 4.48% [47825 right out of 1067753 samples]
+Train Accuracy = 4.68% [50016 right out of 1067753 samples]
 ===== Validation num_hidden_layers=5 =====
-Validation Accuracy = 5.40% [3082 right out of 57070 samples]
+Validation Accuracy = 5.16% [2944 right out of 57070 samples]
 ===== Test num_hidden_layers=5 =====
 WORD: %Corr=6.09, Acc=6.09 [H=3152, D=47689, S=880, I=0, N=51721]
 ===== Train num_hidden_layers=6 =====
-Train Accuracy = 4.48% [47822 right out of 1067753 samples]
+Train Accuracy = 4.70% [50161 right out of 1067753 samples]
 ===== Validation num_hidden_layers=6 =====
-Validation Accuracy = 5.40% [3082 right out of 57070 samples]
+Validation Accuracy = 5.16% [2944 right out of 57070 samples]
 ===== Test num_hidden_layers=6 =====
 WORD: %Corr=6.09, Acc=6.09 [H=3152, D=47689, S=880, I=0, N=51721]
