@@ -75,48 +75,37 @@ class Indexer:
             return None
         
         ret = []
-        # Phrase query
-        if len(query_words) > 1:
-            word0 = query_words[0]
-            for doc_id, word_position in self.word_index[word0]:
-                # prev_end_time = prev_tbeg + prev_dur
-                prev_end_time = self.doc_index[doc_id][word_position][2]+self.doc_index[doc_id][word_position][3]
-                hit = True # hit flag  
-                for i in range(1, len(query_words)):
-                    # checking phrase in the document
-                    if self.doc_index[doc_id][word_position+i][0] == query_words[i]:
-                        # checking time condition (1/2 second rule)
-                        if self.doc_index[doc_id][word_position+i][2] - 0.5 <= prev_end_time:
-                            # prev_end_time = prev_tbeg + prev_dur
-                            prev_end_time = self.doc_index[doc_id][word_position+i][2] + self.doc_index[doc_id][word_position+i][3]
-                    else:
-                        hit = False
-                        break
-                
-                if hit:
-                    # word 0
-                    ret_word = self.doc_index[doc_id][word_position][0]
-                    # channel of word 0
-                    ret_ch = self.doc_index[doc_id][word_position][1]
-                    # beginning time of word 0
-                    ret_tbeg = self.doc_index[doc_id][word_position][2]
-                    # total duration of phrase = last word beg_time + last word dur - first word beg_time
-                    ret_dur = self.doc_index[doc_id][word_position+len(query_words)-1][2] + \
-                              self.doc_index[doc_id][word_position+len(query_words)-1][3] - ret_tbeg
-                    ret_dur = round(ret_dur, 2)
-                    # score
-                    ret_score = self._calculate_score(doc_id, word_position, len(query_words))
-                    # query hit information
-                    ret_item = (doc_id, ret_word, ret_ch, ret_tbeg, ret_dur, ret_score)
-                    ret.append(ret_item)
-        
-        # Word query
-        else:
-            word = query_words[0]
-            for doc_id, word_position in self.word_index[word]:
-                # the dictionary (= hash table) has a list of all the appearances of the queried word
-                # an appearance is described by doc_id where the word appears and its position in the document
-                ret_item = (doc_id, ) + self.doc_index[doc_id][word_position]
+        word0 = query_words[0]
+        for doc_id, word_position in self.word_index[word0]:
+            # prev_end_time = prev_tbeg + prev_dur
+            prev_end_time = self.doc_index[doc_id][word_position][2]+self.doc_index[doc_id][word_position][3]
+            hit = True # hit flag  
+            for i in range(1, len(query_words)):
+                # checking phrase in the document
+                if self.doc_index[doc_id][word_position+i][0] == query_words[i]:
+                    # checking time condition (1/2 second rule)
+                    if self.doc_index[doc_id][word_position+i][2] - 0.5 <= prev_end_time:
+                        # prev_end_time = prev_tbeg + prev_dur
+                        prev_end_time = self.doc_index[doc_id][word_position+i][2] + self.doc_index[doc_id][word_position+i][3]
+                else:
+                    hit = False
+                    break
+            
+            if hit:
+                # word 0
+                ret_word = self.doc_index[doc_id][word_position][0]
+                # channel of word 0
+                ret_ch = self.doc_index[doc_id][word_position][1]
+                # beginning time of word 0
+                ret_tbeg = self.doc_index[doc_id][word_position][2]
+                # total duration of phrase = last word beg_time + last word dur - first word beg_time
+                ret_dur = self.doc_index[doc_id][word_position+len(query_words)-1][2] + \
+                            self.doc_index[doc_id][word_position+len(query_words)-1][3] - ret_tbeg
+                ret_dur = round(ret_dur, 2)
+                # score
+                ret_score = self._calculate_score(doc_id, word_position, len(query_words))
+                # query hit information
+                ret_item = (doc_id, ret_word, ret_ch, ret_tbeg, ret_dur, ret_score)
                 ret.append(ret_item)
 
         return ret
@@ -135,6 +124,8 @@ if __name__ == '__main__':
     print(indexer.search_query('nimwachie'))
     # expected output:
     #   file="BABEL_OP2_202_92740_20130923_235638_outLine" channel="1" tbeg="104.61" dur="0.75" score="1.000000"
+
+    #print(indexer.search_query('what'))
 
     print(indexer.search_query('what she has gone'))
     # expected output:
