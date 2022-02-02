@@ -82,9 +82,10 @@ class Indexer:
             for i in range(1, len(query_words)):
                 # checking phrase in the document
                 pointer_position = word_position + i
-                if pointer_position < len(self.doc_index[doc_id]) and self.doc_index[doc_id][pointer_position][0] == query_words[i].lower():
-                    # checking time condition (1/2 second rule)
-                    if self.doc_index[doc_id][pointer_position][2] - 0.5 <= prev_end_time:
+                # checking we are not exceeding array bounds + next word doc = next word phrase
+                if pointer_position < len(self.doc_index[doc_id]) and \
+                   self.doc_index[doc_id][pointer_position][0] == query_words[i].lower() and \
+                   self.doc_index[doc_id][pointer_position][2] - 0.5 <= prev_end_time: # checking time condition (1/2 second rule)
                         # prev_end_time = prev_tbeg + prev_dur
                         prev_end_time = self.doc_index[doc_id][pointer_position][2] + self.doc_index[doc_id][pointer_position][3]
                 else:
@@ -125,3 +126,7 @@ if __name__ == '__main__':
     print(indexer.search_query('what she has gone'))
     # expected output:
     #   file="BABEL_OP2_202_29663_20131208_035816_outLine" channel="1" tbeg="217.41" dur="0.83" score="1.000000"
+
+    print(len(indexer.search_query('saa hii niko')))
+    # expected output:
+    #   5
