@@ -1,0 +1,19 @@
+[[COMMANDLINE]]  /usr/local/teach/scoring/F4DE-3.2.4/KWSEval/BABEL/Participants/../../tools/KWSEval/KWSEval.pl -I "p-test 1: IARPA-babel202b-v1.0d conv-dev - Full Submission"  -iso '' -e /usr/local/teach/MLSALT5/Practical/IndusDB/IARPA-babel202b-v1.0d_conv-dev/IARPA-babel202b-v1.0d_conv-dev.scoring.ecf.xml -r /usr/local/teach/MLSALT5/Practical/IndusDB/IARPA-babel202b-v1.0d_conv-dev/IARPA-babel202b-v1.0d_conv-dev.mitllfa3.rttm -t /usr/local/teach/MLSALT5/Practical/IndusDB/IARPA-babel202b-v1.0d_conv-dev/IARPA-babel202b-v1.0d_conv-dev.annot.kwlist.xml -s scoring/reference.kwslist.xml -c -o -b -d  -a --ExcludePNGFileFromTxtTable -f scoring/reference-tmp/Full-Occur-MITLLFA3-AppenWordSeg -y TXT -y HTML 
+[[RETURN CODE]] 0
+[[STDOUT]]
+Loading ECF /usr/local/teach/MLSALT5/Practical/IndusDB/IARPA-babel202b-v1.0d_conv-dev/IARPA-babel202b-v1.0d_conv-dev.scoring.ecf.xml
+Loading KWSList File scoring/reference.kwslist.xml
+Loading KWList File /usr/local/teach/MLSALT5/Practical/IndusDB/IARPA-babel202b-v1.0d_conv-dev/IARPA-babel202b-v1.0d_conv-dev.annot.kwlist.xml
+Loading RTTM File /usr/local/teach/MLSALT5/Practical/IndusDB/IARPA-babel202b-v1.0d_conv-dev/IARPA-babel202b-v1.0d_conv-dev.mitllfa3.rttm
+Performing Occurrence Alignment
+Computing requested DET curves and reports
+Building Articulated DETs
+Summary Report: scoring/reference-tmp/Full-Occur-MITLLFA3-AppenWordSeg.sum
+Wrote: scoring/reference-tmp/Full-Occur-MITLLFA3-AppenWordSeg.sum.txt
+Wrote: scoring/reference-tmp/Full-Occur-MITLLFA3-AppenWordSeg.sum.html
+Block Summary Report: scoring/reference-tmp/Full-Occur-MITLLFA3-AppenWordSeg.bsum
+Wrote: scoring/reference-tmp/Full-Occur-MITLLFA3-AppenWordSeg.bsum.txt
+Wrote: scoring/reference-tmp/Full-Occur-MITLLFA3-AppenWordSeg.bsum.html
+
+[[STDERR]]
+

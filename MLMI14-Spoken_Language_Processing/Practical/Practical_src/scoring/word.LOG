@@ -1,0 +1,65 @@
+[/usr/local/teach/scoring/F4DE-3.2.4/bin/BABEL13_Scorer]
+FYI: /usr/local/teach/scoring/F4DE-3.2.4/bin/BABEL13_Scorer will run: [/usr/local/teach/scoring/F4DE-3.2.4/KWSEval/BABEL/Participants/BABEL_Scorer.pl --Specfile /usr/local/teach/scoring/F4DE-3.2.4/KWSEval/BABEL/Participants/../../data/KWS13-SubmissionChecker_conf.perl -sys scoring/word.kwslist.xml -dbDir /usr/local/teach/MLSALT5/Practical/IndusDB -comp scoring/word-tmp -res scoring/word -exp KWS13_CUED_IARPA-babel202b-v1.0d_conv-dev_BaDev_KWS_FullLP_BaseLR_NTAR_p-test_1]
+
+Step 1: Parse input
+Info: EXPID = KWS13_CUED_IARPA-babel202b-v1.0d_conv-dev_BaDev_KWS_FullLP_BaseLR_NTAR_p-test_1
+Info: Tag = KWS13
+Info: Team = CUED
+Info: Corpus = IARPA-babel202b-v1.0d
+Info: Partition = conv-dev
+Info: ScoringCase = BaDev
+Info: Task = KWS
+Info: TrainingCond = 
+Info: SystemID = p-test
+Info: Version = 1
+Info: Language ID = IARPA-babel202
+Info: Language = 202
+Info: SCTKBin = 
+Info: SHA256 = 
+Info: evalYearSpecificKWSOptions = 
+Info: SystemMetadata = 
+Info: dbDir = /usr/local/teach/MLSALT5/Practical/IndusDB/IARPA-babel202b-v1.0d_conv-dev
+Info: indusCorporaDefsFile = /usr/local/teach/MLSALT5/Practical/IndusDB/IndusCorporaDefs.pl version 'IndusCorporaDefs V14 20150424'
+Info: indusCorporaDefsFile for IARPA-babel202: KWSProtocol => Occur
+Info: indusCorporaDefsFile for IARPA-babel202: TokTimes => MITLLFA3
+Info: indusCorporaDefsFile for IARPA-babel202: TokSeg => AppenWordSeg
+Info: indusCorporaDefsFile for IARPA-babel202: Set => Full|EvalPart1
+Info: indusCorporaDefsFile for IARPA-babel202: STTOptions{encoding} => -e utf-8
+Beginning KWS scoring
+
+Step 2: KWS scoring execution EvalPart1-Occur-MITLLFA3-AppenWordSeg: Scase BaDev: Eval Subset Part1, Occurrence scoring, MITLL Force Ali. V3, Original orthography
+   Pre-requist file(s) /usr/local/teach/MLSALT5/Practical/IndusDB/IARPA-babel202b-v1.0d_conv-dev/IARPA-babel202b-v1.0d_conv-dev.scoring.cond-evalpart.value-evalpart1.files.ecf.xml do not exist.  Skipping run.
+
+Step 2: KWS scoring execution Full-Occur-MITLLFA3-AppenWordSeg: Scase BaDev: Full Submission, Occurrence scoring, MITLL Force Ali. V3, Original orthography
+  Execution completed.  Copying to results
+    Full-Occur-MITLLFA3-AppenWordSeg.alignment.csv
+    Full-Occur-MITLLFA3-AppenWordSeg.bsum.html
+    Full-Occur-MITLLFA3-AppenWordSeg.bsum.txt
+    Full-Occur-MITLLFA3-AppenWordSeg.dets/sum.Occurrence.png
+    Full-Occur-MITLLFA3-AppenWordSeg.dets/sum.png
+    Full-Occur-MITLLFA3-AppenWordSeg.dets/sum.Occurrence.srl.gz
+    Full-Occur-MITLLFA3-AppenWordSeg.dets/sum.Occurrence.thresh.png
+    Full-Occur-MITLLFA3-AppenWordSeg.log
+    Full-Occur-MITLLFA3-AppenWordSeg.sh
+    Full-Occur-MITLLFA3-AppenWordSeg.sum.html
+    Full-Occur-MITLLFA3-AppenWordSeg.sum.txt
+
+Completed KWS Runs:
+   Full-Occur-MITLLFA3-AppenWordSeg
+
+Step 3: Building Ensemble.AllOccur: Scase BaDev: All Occurrence Scorings
+  Main Title: 'Occurrence scoring, Full Submission, Original orthography, MITLL Force Ali. V3'
+  Execution completed.  Copying to results
+    Ensemble.AllOccur.log
+    Ensemble.AllOccur.png
+    Ensemble.AllOccur.results.txt
+    Ensemble.AllOccur.sh
+
+Step 4: Cleanup
+  Scoring completed.  Copying readme and system description
+    Readme.txt
+find: ‘SystemMetadata.*’: No such file or directory
+tar: Cowardly refusing to create an empty archive
+Try 'tar --help' or 'tar --usage' for more information.
+    tar: This does not look like a tar archive
+    tar: Exiting with failure status due to previous errors
