@@ -1,5 +1,4 @@
 
-
 class Indexer:
 
     def __init__(self):
@@ -41,7 +40,7 @@ class Indexer:
                     channel = tokens[1]
                     tbeg = tokens[2]
                     dur = tokens[3]
-                    word = tokens[4]
+                    word = tokens[4].lower()
                     score = tokens[5]
                     
                     # update position of the word in the document
@@ -75,18 +74,19 @@ class Indexer:
             return None
         
         ret = []
-        word0 = query_words[0]
+        word0 = query_words[0].lower()
         for doc_id, word_position in self.word_index[word0]:
             # prev_end_time = prev_tbeg + prev_dur
             prev_end_time = self.doc_index[doc_id][word_position][2]+self.doc_index[doc_id][word_position][3]
             hit = True # hit flag  
             for i in range(1, len(query_words)):
                 # checking phrase in the document
-                if self.doc_index[doc_id][word_position+i][0] == query_words[i]:
+                pointer_position = word_position + i
+                if pointer_position < len(self.doc_index[doc_id]) and self.doc_index[doc_id][pointer_position][0] == query_words[i].lower():
                     # checking time condition (1/2 second rule)
-                    if self.doc_index[doc_id][word_position+i][2] - 0.5 <= prev_end_time:
+                    if self.doc_index[doc_id][pointer_position][2] - 0.5 <= prev_end_time:
                         # prev_end_time = prev_tbeg + prev_dur
-                        prev_end_time = self.doc_index[doc_id][word_position+i][2] + self.doc_index[doc_id][word_position+i][3]
+                        prev_end_time = self.doc_index[doc_id][pointer_position][2] + self.doc_index[doc_id][pointer_position][3]
                 else:
                     hit = False
                     break
@@ -109,11 +109,6 @@ class Indexer:
                 ret.append(ret_item)
 
         return ret
-
-
-
-                
-    
 
 
 
