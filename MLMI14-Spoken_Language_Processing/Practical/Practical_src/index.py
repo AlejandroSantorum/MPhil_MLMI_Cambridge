@@ -30,7 +30,7 @@ class Indexer:
             position = None  # position of the word in the document
             for line in f.readlines():
                 if len(line)>1: # valid line
-                    tokens = line[:-1].split(' ')
+                    tokens = line[:-1].split()
                     if len(tokens) != 6: # incorrect format
                         print("Format error: the input file has the incorrect format")
                         return None
@@ -68,13 +68,17 @@ class Indexer:
             print("Error: index not initialized. Execute build_index() specifying an input file")
             return None
         
-        query_words = query.split(' ')
+        query_words = query.split()
         if len(query_words) < 1:
             print("Error: invalid query")
             return None
         
         ret = []
         word0 = query_words[0].lower()
+        # first word OOV
+        if word0 not in self.word_index:
+            return ret
+        # first word encountered
         for doc_id, word_position in self.word_index[word0]:
             # prev_end_time = prev_tbeg + prev_dur
             prev_end_time = self.doc_index[doc_id][word_position][2]+self.doc_index[doc_id][word_position][3]

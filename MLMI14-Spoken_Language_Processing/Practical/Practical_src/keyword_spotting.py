@@ -1,3 +1,5 @@
+import sys
+import subprocess
 from index import Indexer
 
 
@@ -45,11 +47,45 @@ def run_kws(input_file, query_file, output_file):
 
 if __name__ == '__main__':
 
-    input_file = './lib/ctms/reference.ctm'
-    query_file = './lib/kws/queries.xml'
-    output_file = './test_output.xml'
+    if len(sys.argv) > 3:
+        input_file = sys.argv[1]
+        query_file = sys.argv[2]
+        output_file = sys.argv[3]
+    else:
+        input_file = './lib/ctms/reference.ctm'
+        query_file = './lib/kws/queries.xml'
+        output_file = './output/out_reference.xml'
 
+    # keywork spotting
     run_kws(input_file, query_file, output_file)
+
+    # scoring if specified
+    if '-score' in sys.argv:
+        cmd = "scripts/score.sh {} scoring".format(output_file)
+        process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
+        output, error = process.communicate()
+        if error:
+            print(error)
+            exit()
+    
+    # get TWV
+    if '-twv' in sys.argv:
+        # whole system performance
+        cmd = "./scripts/termselect.sh lib/terms/ivoov.map {} scoring all".format(output_file)
+        process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
+        output, error = process.communicate()
+        print(output[:-1].decode())
+        # IV performance
+        cmd = "./scripts/termselect.sh lib/terms/ivoov.map {} scoring iv".format(output_file)
+        process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
+        output, error = process.communicate()
+        print(output[:-1].decode())
+        # OOV performance
+        cmd = "./scripts/termselect.sh lib/terms/ivoov.map {} scoring oov".format(output_file)
+        process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
+        output, error = process.communicate()
+        print(output[:-1].decode())
+
     
 
     
