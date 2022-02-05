@@ -86,6 +86,10 @@ if __name__ == '__main__':
         output, error = process.communicate()
         print(output[:-1].decode())
 
+
+# Examples:
+    # python3 keyword_spotting.py ./lib/ctms/decode.ctm ./lib/kws/queries.xml ./output/out_decode.xml -twv
+    # python3 keyword_spotting.py ./output/morph/my_decode_morph.ctm ./output/morph/my_queries_morph.xml ./output/out_my_morph_decode.xml -score -twv
     
 
     

@@ -56,11 +56,19 @@ class Indexer:
                     self._update_doc_index(doc_id, word, channel, tbeg, dur, score)
 
 
-    def _calculate_score(self, doc_id, word_position, query_length):
-        score = 0.0
-        for i in range(query_length):
-            score += self.doc_index[doc_id][word_position+i][4]
-        return score/query_length
+    def _calculate_score(self, doc_id, word_position, query_length, metric='mean'):
+        if metric=='mean':
+            score = 0.0
+            for i in range(query_length):
+                score += self.doc_index[doc_id][word_position+i][4]
+            return score/query_length
+        elif metric=='prod':
+            score = 1.0
+            for i in range(query_length):
+                score *= self.doc_index[doc_id][word_position+i][4]
+            return score
+        # Error: invalid metric
+        return -1
 
 
     def search_query(self, query):
@@ -108,7 +116,7 @@ class Indexer:
                             self.doc_index[doc_id][word_position+len(query_words)-1][3] - ret_tbeg
                 ret_dur = round(ret_dur, 2)
                 # score
-                ret_score = self._calculate_score(doc_id, word_position, len(query_words))
+                ret_score = self._calculate_score(doc_id, word_position, len(query_words), metric='mean')
                 # query hit information
                 ret_item = (doc_id, ret_word, ret_ch, ret_tbeg, ret_dur, ret_score)
                 ret.append(ret_item)
