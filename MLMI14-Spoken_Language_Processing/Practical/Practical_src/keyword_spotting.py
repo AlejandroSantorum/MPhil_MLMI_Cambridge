@@ -6,7 +6,8 @@ from index import Indexer
 output_file_header = "<kwslist kwlist_filename=\"IARPA-babel202b-v1.0d_conv-dev.kwlist.xml\" language=\"swahili\" system_id=\"\">"
 
 
-def run_kws(input_file, query_file, output_file):
+
+def run_kws(input_file, query_file, output_file, score_norm=False, gamma=1.0):
     indexer = Indexer()
     indexer.build_index(input_file)
 
@@ -27,7 +28,7 @@ def run_kws(input_file, query_file, output_file):
             if 'kwtext' in line:
                 # searching for query using the indexer
                 query = line[line.find("<kwtext>")+len("<kwtext>") : line.find("</kwtext>")]
-                hits = indexer.search_query(query)
+                hits = indexer.search_query(query, score_norm=score_norm, gamma=gamma)
                 # write query header including query id
                 hit_header = "<detected_kwlist kwid={} oov_count=\"0\" search_time=\"0.0\">".format(kwid)
                 out.write(hit_header+'\n')
@@ -57,10 +58,14 @@ if __name__ == '__main__':
         output_file = './output/out_reference.xml'
 
     # keywork spotting
-    run_kws(input_file, query_file, output_file)
+    if '-score_norm' in sys.argv:
+        gamma = float(sys.argv[-1])
+        run_kws(input_file, query_file, output_file, score_norm=True, gamma=gamma)
+    else:
+        run_kws(input_file, query_file, output_file)
 
     # scoring if specified
-    if '-score' in sys.argv:
+    if '-sc' in sys.argv:
         cmd = "scripts/score.sh {} scoring".format(output_file)
         process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
@@ -88,8 +93,9 @@ if __name__ == '__main__':
 
 
 # Examples:
-    # python3 keyword_spotting.py ./lib/ctms/decode.ctm ./lib/kws/queries.xml ./output/out_decode.xml -twv
-    # python3 keyword_spotting.py ./output/morph/my_decode_morph.ctm ./output/morph/my_queries_morph.xml ./output/out_my_morph_decode.xml -score -twv
-    
-
-    
+    # python3 keyword_spotting.py ./lib/ctms/decode.ctm ./lib/kws/queries.xml ./output/out_decode.xml -sc -twv
+    # python3 keyword_spotting.py ./output/morph/my_decode_morph.ctm ./output/morph/my_queries_morph.xml ./output/out_my_morph_decode.xml -sc -twv
+    # python3 keyword_spotting.py ./lib/ctms/decode-morph.ctm ./output/morph/my_queries_morph.xml ./output/out_decode-morph.xml -sc -twv
+    # python3 keyword_spotting.py ./lib/ctms/decode.ctm ./lib/kws/queries.xml ./output/out_decode_scNorm.xml -sc -twv -score_norm 1.0
+    # python3 keyword_spotting.py ./output/morph/my_decode_morph.ctm ./output/morph/my_queries_morph.xml ./output/out_my_morph_decode_scNorm.xml -sc -twv -score_norm 1.0
+    # python3 keyword_spotting.py ./lib/ctms/decode-morph.ctm ./output/morph/my_queries_morph.xml ./output/out_decode-morph_scNorm.xml -sc -twv -score_norm 1.0

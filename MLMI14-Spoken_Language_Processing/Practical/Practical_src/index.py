@@ -4,6 +4,7 @@ class Indexer:
     def __init__(self):
         self.word_index = {}
         self.doc_index = {}
+        self.cache_scores = []
 
 
     def _update_word_index(self, word, doc_id, word_position):
@@ -55,23 +56,52 @@ class Indexer:
                     self._update_word_index(word, doc_id, position)
                     self._update_doc_index(doc_id, word, channel, tbeg, dur, score)
 
-
-    def _calculate_score(self, doc_id, word_position, query_length, metric='mean'):
-        if metric=='mean':
-            score = 0.0
-            for i in range(query_length):
-                score += self.doc_index[doc_id][word_position+i][4]
-            return score/query_length
-        elif metric=='prod':
-            score = 1.0
-            for i in range(query_length):
-                score *= self.doc_index[doc_id][word_position+i][4]
-            return score
-        # Error: invalid metric
-        return -1
+    
+    def _cache_scores(self, doc_id, word_position, query_length):
+        cache = []
+        for i in range(query_length):
+            cache.append(self.doc_index[doc_id][word_position+i][4])
+        self.cache_scores.append(cache)
 
 
-    def search_query(self, query):
+    def _calculate_scores(self, hits, query_length, metric='mean', score_norm=False, gamma=1.0):
+        ret = []
+        # perform score normalisation if specified
+        if score_norm:
+            # calculating denominators of the score normalisation expression
+            denominators = [sum([sc[i] for sc in self.cache_scores]) for i in range(query_length)]
+            for i in range(len(self.cache_scores)):
+                for j in range(len(self.cache_scores[i])):
+                    # score normalisation
+                    self.cache_scores[i][j] = (self.cache_scores[i][j]**gamma)/(denominators[j]**gamma)
+
+        # checking all scores have been stored
+        if len(hits) != len(self.cache_scores):
+            print("Error: number of hits is different from the number of cached scores arrays")
+            return None
+        
+        # calculating query score
+        for idx, hit in enumerate(hits):
+            if metric == 'prod':
+                score = 1.0
+                for sc in self.cache_scores[idx]:
+                    score *= sc
+            elif metric == 'mean':
+                score = 0.0
+                for sc in self.cache_scores[idx]:
+                    score += sc
+                score/=len(self.cache_scores[idx])
+            else:
+                print("Error: invalid metric")
+                return None
+            
+            ret_hit = hit + (score,) # concatenating tuples
+            ret.append(ret_hit)
+        
+        return ret
+
+
+    def search_query(self, query, score_norm=False, gamma=1.0):
         if self.word_index is None or self.doc_index is None:
             print("Error: index not initialized. Execute build_index() specifying an input file")
             return None
@@ -86,7 +116,8 @@ class Indexer:
         # first word OOV
         if word0 not in self.word_index:
             return ret
-        # first word encountered
+        # first word encountered, so let's reset hit scores first and then look for the hits
+        self.cache_scores = []
         for doc_id, word_position in self.word_index[word0]:
             # prev_end_time = prev_tbeg + prev_dur
             prev_end_time = self.doc_index[doc_id][word_position][2]+self.doc_index[doc_id][word_position][3]
@@ -115,12 +146,14 @@ class Indexer:
                 ret_dur = self.doc_index[doc_id][word_position+len(query_words)-1][2] + \
                             self.doc_index[doc_id][word_position+len(query_words)-1][3] - ret_tbeg
                 ret_dur = round(ret_dur, 2)
-                # score
-                ret_score = self._calculate_score(doc_id, word_position, len(query_words), metric='mean')
+                # scores
+                self._cache_scores(doc_id, word_position, len(query_words))
+                #ret_score = self._calculate_score(doc_id, word_position, len(query_words), metric='mean')
                 # query hit information
-                ret_item = (doc_id, ret_word, ret_ch, ret_tbeg, ret_dur, ret_score)
+                ret_item = (doc_id, ret_word, ret_ch, ret_tbeg, ret_dur) # ret_score will need to be appended afterwards
                 ret.append(ret_item)
-
+        
+        ret = self._calculate_scores(ret, len(query_words), metric='mean', score_norm=score_norm, gamma=gamma)
         return ret
 
 
