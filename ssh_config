@@ -16,3 +16,13 @@ Host mlsalt-cpu1
   HostName mlsalt-cpu1
   ProxyJump gate.eng.cam.ac.uk
   User as3159
+
+Host mlsalt-term5
+  HostName mlsalt-term5
+  ProxyJump gate.eng.cam.ac.uk
+  User as3159
+
+Host mlsalt-term6
+  HostName mlsalt-term6
+  ProxyJump gate.eng.cam.ac.uk
+  User as3159
