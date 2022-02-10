@@ -57,7 +57,7 @@ if __name__ == "__main__":
         elif sys.argv[1] == 'small':
             model = Model(small_world)
         elif sys.argv[1] == 'grid':
-            model = Model(grid_word)
+            model = Model(grid_world)
         else:
             print("Error: unknown world type:", sys.argv[1])
     else:
