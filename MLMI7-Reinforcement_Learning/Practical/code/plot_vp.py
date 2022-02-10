@@ -1,4 +1,5 @@
 import numpy as np
+import copy
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
@@ -27,6 +28,7 @@ def plot_vp(model: Model, value_function: np.array, policy: np.array):
         nrows=2, figsize=figsize, gridspec_kw={"height_ratios": [1, 0.05]}
     )
     cmap = mpl.cm.viridis
+    cmap = copy.copy(mpl.cm.get_cmap("viridis"))
     cmap.set_bad("black", 1.0)
     im = ax.matshow(
         v.reshape(model.world.num_rows, model.world.num_cols), cmap=cmap
