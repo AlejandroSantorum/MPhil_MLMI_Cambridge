@@ -46,9 +46,17 @@ if __name__ == "__main__":
     from world_config import cliff_world, small_world, grid_world
     from plot_vp import plot_vp
 
-    # model = Model(cliff_world)
-    model = Model(small_world)
-    # model = Model(grid_world)
+    if len(sys.argv) > 1:
+        if sys.argv[1] == 'cliff':
+            model = Model(cliff_world)
+        elif sys.argv[1] == 'small':
+            model = Model(small_world)
+        elif sys.argv[1] == 'grid':
+            model = Model(grid_word)
+        else:
+            print("Error: unknown world type:", sys.argv[1])
+    else:
+        model = Model(small_world)
 
     V, pi = value_iteration(model)
     plot_vp(model, V, pi)
