@@ -1,10 +1,18 @@
+import sys
+from Levenshtein import distance as levenshtein_distance
+from difflib import SequenceMatcher
+from grapheme import build_grapheme_confusion_mtx, grapheme_to_idx
+
 
 class Indexer:
 
-    def __init__(self):
+    def __init__(self, grapheme_file=None):
         self.word_index = {}
         self.doc_index = {}
         self.cache_scores = []
+        self.grapheme_mtx = None
+        if grapheme_file:
+            self.grapheme_mtx = build_grapheme_confusion_mtx(grapheme_file)
 
 
     def _update_word_index(self, word, doc_id, word_position):
@@ -99,6 +107,48 @@ class Indexer:
             ret.append(ret_hit)
         
         return ret
+    
+
+    def _get_closest_word_iv(self, word):
+        min_dist = 1000
+        min_word = None
+
+        for w in self.word_index:
+            d = levenshtein_distance(w, word)
+            if d < min_dist:
+                min_dist = d
+                min_word = w
+ 
+        return min_word
+
+
+    def _calc_conf_prob(self, query_word, iv_word):
+        # adding silences depeding on the longest matching substring
+        (idx_qu, idx_iv, length) = SequenceMatcher(None, query_word, iv_word).find_longest_match(0, len(query_word), 0, len(iv_word))
+        # adding silences in front
+        if idx_qu > idx_iv:
+            padding = ' '*(idx_qu-idx_iv)
+            iv_word = padding + iv_word
+        elif idx_iv > idx_qu:
+            padding = ' '*(idx_iv-idx_qu)
+            query_word = padding + query_word
+        # adding silences at the end
+        if len(query_word) > len(iv_word):
+            padding = ' '*(len(query_word)-len(iv_word))
+            iv_word += padding
+        elif len(iv_word) > len(query_word):
+            padding = ' '*(len(iv_word)-len(query_word))
+            query_word += padding
+
+        assert len(iv_word) == len(query_word)
+
+        # calculate confusion probability
+        conf_prob = 1.0
+        for i in range(len(iv_word)):
+            conf_prob *= self.grapheme_mtx[grapheme_to_idx(iv_word[i])][grapheme_to_idx(query_word[i])]
+        
+        return conf_prob
+
 
 
     def search_query(self, query, score_norm=False, gamma=1.0):
@@ -112,10 +162,16 @@ class Indexer:
             return None
         
         ret = []
+        conf_prob = 1.0
         word0 = query_words[0].lower()
         # first word OOV
         if word0 not in self.word_index:
-            return ret
+            if self.grapheme_mtx is not None:
+                cl_word_iv = self._get_closest_word_iv(word0)
+                conf_prob *= self._calc_conf_prob(word0, cl_word_iv)
+                word0 = cl_word_iv
+            else:
+                return ret
         # first word encountered, so let's reset hit scores first and then look for the hits
         self.cache_scores = []
         for doc_id, word_position in self.word_index[word0]:
@@ -125,22 +181,31 @@ class Indexer:
             for i in range(1, len(query_words)):
                 # checking phrase in the document
                 pointer_position = word_position + i
-                # checking we are not exceeding array bounds + next word doc = next word phrase
-                if pointer_position < len(self.doc_index[doc_id]) and \
-                   self.doc_index[doc_id][pointer_position][0] == query_words[i].lower() and \
-                   self.doc_index[doc_id][pointer_position][2] - 0.5 <= prev_end_time: # checking time condition (1/2 second rule)
+                # checking we are not exceeding array bounds and the time condition (1/2 second rule)
+                if pointer_position >= len(self.doc_index[doc_id]) or self.doc_index[doc_id][pointer_position][2] - 0.5 > prev_end_time:
+                    hit = False; break
+                else:
+                    # next word doc = next word phrase
+                    if self.doc_index[doc_id][pointer_position][0] == query_words[i].lower():
                         # prev_end_time = prev_tbeg + prev_dur
                         prev_end_time = self.doc_index[doc_id][pointer_position][2] + self.doc_index[doc_id][pointer_position][3]
-                else:
-                    hit = False
-                    break
+                    # if the queried word does NOT match, we check if it is an OOV word (only if we are using grapheme confusion matrix)
+                    elif self.grapheme_mtx is not None and query_words[i].lower() not in self.word_index:
+                        cl_query_word_iv = self._get_closest_word_iv(query_words[i].lower())
+                        if self.doc_index[doc_id][pointer_position][0] == cl_query_word_iv:
+                            prev_end_time = self.doc_index[doc_id][pointer_position][2] + self.doc_index[doc_id][pointer_position][3]
+                            conf_prob *= self._calc_conf_prob(query_words[i].lower(), cl_query_word_iv)
+                        else:
+                            hit = False; break
+                    else:
+                        hit = False; break
             
             if hit:
-                # word 0
+                # word in doc
                 ret_word = self.doc_index[doc_id][word_position][0]
-                # channel of word 0
+                # channel
                 ret_ch = self.doc_index[doc_id][word_position][1]
-                # beginning time of word 0
+                # beginning time
                 ret_tbeg = self.doc_index[doc_id][word_position][2]
                 # total duration of phrase = last word beg_time + last word dur - first word beg_time
                 ret_dur = self.doc_index[doc_id][word_position+len(query_words)-1][2] + \
@@ -148,18 +213,21 @@ class Indexer:
                 ret_dur = round(ret_dur, 2)
                 # scores
                 self._cache_scores(doc_id, word_position, len(query_words))
-                #ret_score = self._calculate_score(doc_id, word_position, len(query_words), metric='mean')
                 # query hit information
                 ret_item = (doc_id, ret_word, ret_ch, ret_tbeg, ret_dur) # ret_score will need to be appended afterwards
                 ret.append(ret_item)
         
-        ret = self._calculate_scores(ret, len(query_words), metric='mean', score_norm=score_norm, gamma=gamma)
+        ret = self._calculate_scores(ret, len(query_words), metric='prod', score_norm=score_norm, gamma=gamma)
         return ret
 
 
 
 if __name__ == '__main__':
-    indexer = Indexer()
+    if '-graph' in sys.argv:
+        indexer = Indexer('./lib/kws/grapheme.map')
+    else:
+        indexer = Indexer()
+
     indexer.build_index('./lib/ctms/reference.ctm')
 
     print(indexer.search_query('nimwachie'))
@@ -172,6 +240,8 @@ if __name__ == '__main__':
     # expected output:
     #   file="BABEL_OP2_202_29663_20131208_035816_outLine" channel="1" tbeg="217.41" dur="0.83" score="1.000000"
 
-    print(len(indexer.search_query('saa hii niko')))
-    # expected output:
-    #   5
+    print(indexer.search_query('what she has gonee'))
+    # expected output IF USING GRAPHEME CONFUSION MATRIX:
+    #   file="BABEL_OP2_202_29663_20131208_035816_outLine" channel="1" tbeg="217.41" dur="0.83" score="1.000000"
+    # expected output IF *NOT* USING GRAPHEME CONFUSION MATRIX:
+    #   []

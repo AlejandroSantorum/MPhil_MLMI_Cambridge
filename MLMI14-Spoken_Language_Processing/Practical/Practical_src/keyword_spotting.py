@@ -1,14 +1,16 @@
 import sys
 import subprocess
 from index import Indexer
+from grapheme import build_grapheme_confusion_mtx
 
 
 output_file_header = "<kwslist kwlist_filename=\"IARPA-babel202b-v1.0d_conv-dev.kwlist.xml\" language=\"swahili\" system_id=\"\">"
 
+grapheme_file = None
 
 
 def run_kws(input_file, query_file, output_file, score_norm=False, gamma=1.0):
-    indexer = Indexer()
+    indexer = Indexer(grapheme_file=grapheme_file)
     indexer.build_index(input_file)
 
     try:
@@ -57,6 +59,10 @@ if __name__ == '__main__':
         query_file = './lib/kws/queries.xml'
         output_file = './output/out_reference.xml'
 
+    # grapheme confusion matrix
+    if '-graph' in sys.argv:
+        grapheme_file = './lib/kws/grapheme.map'
+
     # keywork spotting
     if '-score_norm' in sys.argv:
         gamma = float(sys.argv[-1])
@@ -93,9 +99,10 @@ if __name__ == '__main__':
 
 
 # Examples:
+    # python3 keyword_spotting.py ./lib/ctms/reference.ctm ./lib/kws/queries.xml ./output/out_reference.xml -sc -twv
     # python3 keyword_spotting.py ./lib/ctms/decode.ctm ./lib/kws/queries.xml ./output/out_decode.xml -sc -twv
     # python3 keyword_spotting.py ./output/morph/my_decode_morph.ctm ./output/morph/my_queries_morph.xml ./output/out_my_morph_decode.xml -sc -twv
     # python3 keyword_spotting.py ./lib/ctms/decode-morph.ctm ./output/morph/my_queries_morph.xml ./output/out_decode-morph.xml -sc -twv
-    # python3 keyword_spotting.py ./lib/ctms/decode.ctm ./lib/kws/queries.xml ./output/out_decode_scNorm.xml -sc -twv -score_norm 1.0
-    # python3 keyword_spotting.py ./output/morph/my_decode_morph.ctm ./output/morph/my_queries_morph.xml ./output/out_my_morph_decode_scNorm.xml -sc -twv -score_norm 1.0
-    # python3 keyword_spotting.py ./lib/ctms/decode-morph.ctm ./output/morph/my_queries_morph.xml ./output/out_decode-morph_scNorm.xml -sc -twv -score_norm 1.0
+    # python3 keyword_spotting.py ./lib/ctms/decode.ctm ./lib/kws/queries.xml ./output/out_decode_scNorm1.xml -sc -twv -score_norm 1.0
+    # python3 keyword_spotting.py ./output/morph/my_decode_morph.ctm ./output/morph/my_queries_morph.xml ./output/out_my_morph_decode_scNorm1.xml -sc -twv -score_norm 1.0
+    # python3 keyword_spotting.py ./lib/ctms/decode-morph.ctm ./output/morph/my_queries_morph.xml ./output/out_decode-morph_scNorm1.xml -sc -twv -score_norm 1.0
