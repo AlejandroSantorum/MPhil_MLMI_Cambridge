@@ -59,6 +59,18 @@ def write_output(output_file, comb_dict):
         f.write("</kwslist>\n")
 
 
+def _read_mtwv(output_file):
+    # parsing output file
+    output_name = output_file.split('/')[-1]
+    output_name = output_name[:output_name.find('.')]
+
+    with open('./scoring/'+output_name+'-res.txt', 'r') as f:
+        res_line = f.readlines()[-1]
+        mtwv = float(res_line.split('|')[16])
+
+    return mtwv
+
+
 def main():
     if len(sys.argv) == 2 and sys.argv[1] == 'default':
         sys_outfiles = ['./lib/kws/word.xml', './lib/kws/word-sys2.xml']
@@ -82,6 +94,13 @@ def main():
         elif sys_comb_mode == '-combMEAN' or sys_comb_mode == '-combmean':
             # all systems are equally weighted, summing up to 1
             sys_weights = 1/len(sys_outfiles) * np.ones(len(sys_outfiles))
+        
+        elif sys_comb_mode == '-WcombSUM' or sys_comb_mode == '-wcombsum':
+            mtwvs = []
+            for file in sys_outfiles:
+                mtwvs.append(_read_mtwv(file))
+            # systems are weighted depending on their MTWV
+            sys_weights = np.array(mtwvs)/np.sum(np.array(mtwvs))
 
     comb_dict = combine_systems(sys_outfiles, sys_weights)
     write_output(comb_out_file, comb_dict)
