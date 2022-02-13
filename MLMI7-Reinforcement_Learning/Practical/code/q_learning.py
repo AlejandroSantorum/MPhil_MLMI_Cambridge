@@ -9,7 +9,7 @@ from model import Model, Actions
 
 
 
-def sarsa(model: Model, max_epochs: int = 100, maxit: int = 50, alpha: float = 0.2, epsilon: float = 0.1):
+def q_learning(model: Model, max_epochs: int = 100, maxit: int = 50, alpha: float = 0.2, epsilon: float = 0.1):
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
     Q = np.zeros((model.num_states, len(Actions)))
@@ -27,22 +27,20 @@ def sarsa(model: Model, max_epochs: int = 100, maxit: int = 50, alpha: float = 0
     for _ in tqdm(range(max_epochs)):
         # init state
         s = model.start_state
-        # init action eps-greedily
-        a = choose_eps_greedily(s)
 
         for _ in range(maxit):
+            # choose action eps-greedily
+            a = choose_eps_greedily(s)
             # get new state after taking action a
             acts_probs_dict = model._possible_next_states_from_state_action(s, a)
             new_s = np.random.choice(list(acts_probs_dict.keys()), p=list(acts_probs_dict.values()))
             # calculate reward
             r = model.reward(s, a)
-            # get new action eps-greedily
-            new_a = choose_eps_greedily(new_s)
+            q = np.max(Q[new_s])
             # update Q using SARSA equation
-            Q[s][a] = Q[s][a] + alpha*(r + model.gamma*Q[new_s][new_a] - Q[s][a])
-            # updating state and action
+            Q[s][a] = Q[s][a] + alpha*(r + model.gamma*q - Q[s][a])
+            # updating state
             s = new_s
-            a = new_a
             # checking if the new state is terminal
             if s == model.goal_state:
                 break
@@ -60,8 +58,6 @@ def sarsa(model: Model, max_epochs: int = 100, maxit: int = 50, alpha: float = 0
 
 
 
-
-
 if __name__ == "__main__":
 
     if len(sys.argv) > 1:
@@ -76,6 +72,6 @@ if __name__ == "__main__":
     else:
         model = Model(small_world)
 
-    V, pi = sarsa(model)
+    V, pi = q_learning(model)
     plot_vp(model, V, pi)
     plt.show()
