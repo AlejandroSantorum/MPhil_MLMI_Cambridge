@@ -6,8 +6,10 @@ from difflib import SequenceMatcher
 def grapheme_to_idx(grapheme):
     if grapheme == 'sil' or grapheme == ' ':
         return -1
-    else:
-        return ord(grapheme) - ord('a')
+    if not grapheme.isalpha():
+        return 0
+
+    return ord(grapheme) - ord('a')
 
 
 def build_grapheme_confusion_mtx(grapheme_file):
@@ -19,6 +21,10 @@ def build_grapheme_confusion_mtx(grapheme_file):
             idx1 = grapheme_to_idx(gra1)
             idx2 = grapheme_to_idx(gra2)
             grapheme_mtx[idx1][idx2] = occ
+    
+    # P(IV|OVV) = P(predicted|reference):
+    #   because IV word (dict) is considered 'predicted' and OVV word (query) is considered 'reference'
+    grapheme_mtx = np.transpose(grapheme_mtx)
 
     # normalising grapheme matrix => probabilities => columns must sum to 1
     sums_of_cols = np.sum(grapheme_mtx, axis=0)

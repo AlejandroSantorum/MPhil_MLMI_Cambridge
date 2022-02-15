@@ -36,8 +36,8 @@ def run_kws(input_file, query_file, output_file, score_norm=False, gamma=1.0):
                 out.write(hit_header+'\n')
                 # writing every hit
                 for hit in hits:
-                    hit_str = "<kw file=\"{}\" channel=\"{}\" tbeg=\"{}\" dur=\"{}\" score=\"{:.5f}\" decision=\"YES\"/>".format(
-                                    hit[0], hit[2], hit[3], hit[4], round(hit[5],5))
+                    hit_str = "<kw file=\"{}\" channel=\"{}\" tbeg=\"{}\" dur=\"{}\" score=\"{}\" decision=\"YES\"/>".format(
+                                    hit[0], hit[2], hit[3], hit[4], hit[5])
                     out.write(hit_str+'\n')
                 
                 # write query closing including query id

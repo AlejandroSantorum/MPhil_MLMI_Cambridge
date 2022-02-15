@@ -6,11 +6,13 @@ from grapheme import build_grapheme_confusion_mtx, grapheme_to_idx
 
 class Indexer:
 
-    def __init__(self, grapheme_file=None):
+    def __init__(self, grapheme_file=None, max_closest=10):
         self.word_index = {}
         self.doc_index = {}
         self.cache_scores = []
+        self.cache_conf_probs = []
         self.grapheme_mtx = None
+        self.max_closest = max_closest
         if grapheme_file:
             self.grapheme_mtx = build_grapheme_confusion_mtx(grapheme_file)
 
@@ -72,16 +74,18 @@ class Indexer:
         self.cache_scores.append(cache)
 
 
-    def _calculate_scores(self, hits, query_length, metric='mean', score_norm=False, gamma=1.0):
+    def _calculate_scores(self, hits, query_length, score_norm=False, gamma=1.0):
         ret = []
         # perform score normalisation if specified
         if score_norm:
             # calculating denominators of the score normalisation expression
-            denominators = [sum([sc[i] for sc in self.cache_scores]) for i in range(query_length)]
+            denominators = [sum([sc_list[i]*self.cache_conf_probs[list_idx][i] \
+                            for list_idx, sc_list in enumerate(self.cache_scores)]) \
+                                for i in range(query_length)]
             for i in range(len(self.cache_scores)):
                 for j in range(len(self.cache_scores[i])):
                     # score normalisation
-                    self.cache_scores[i][j] = (self.cache_scores[i][j]**gamma)/(denominators[j]**gamma)
+                    self.cache_scores[i][j] = ((self.cache_conf_probs[i][j]*self.cache_scores[i][j])**gamma)/(denominators[j]**gamma)
 
         # checking all scores have been stored
         if len(hits) != len(self.cache_scores):
@@ -90,18 +94,12 @@ class Indexer:
         
         # calculating query score
         for idx, hit in enumerate(hits):
-            if metric == 'prod':
-                score = 1.0
-                for sc in self.cache_scores[idx]:
-                    score *= sc
-            elif metric == 'mean':
-                score = 0.0
-                for sc in self.cache_scores[idx]:
-                    score += sc
-                score/=len(self.cache_scores[idx])
-            else:
-                print("Error: invalid metric")
-                return None
+            score = 1.0
+            for i in range(len(self.cache_scores[idx])):
+                if score_norm:
+                    score *= self.cache_scores[idx][i]
+                else:
+                    score *= self.cache_conf_probs[idx][i]*self.cache_scores[idx][i]
             
             ret_hit = hit + (score,) # concatenating tuples
             ret.append(ret_hit)
@@ -109,17 +107,19 @@ class Indexer:
         return ret
     
 
-    def _get_closest_word_iv(self, word):
+    def _get_n_closest_words_iv(self, word, n):
         min_dist = 1000
-        min_word = None
+        min_words = []
 
         for w in self.word_index:
             d = levenshtein_distance(w, word)
             if d < min_dist:
                 min_dist = d
-                min_word = w
+                min_words = [w]
+            if d == min_dist:
+                min_words.append(w)
  
-        return min_word
+        return min_words
 
 
     def _calc_conf_prob(self, query_word, iv_word):
@@ -148,7 +148,19 @@ class Indexer:
             conf_prob *= self.grapheme_mtx[grapheme_to_idx(iv_word[i])][grapheme_to_idx(query_word[i])]
         
         return conf_prob
+    
 
+    def _get_highest_conf_prob(self, oov_word, closest_iv_words):
+        conf_prob = -100
+        highest_prob_iv_word = None
+
+        for iv_w in closest_iv_words:
+            p = self._calc_conf_prob(oov_word, iv_w)
+            if p > conf_prob:
+                conf_prob = p
+                highest_prob_iv_word = iv_w
+        
+        return highest_prob_iv_word, conf_prob
 
 
     def search_query(self, query, score_norm=False, gamma=1.0):
@@ -162,22 +174,30 @@ class Indexer:
             return None
         
         ret = []
-        conf_prob = 1.0
+        #self.cache_conf_probs = [1.0] # confusion probability of first word is 1.0 (temp)
+        first_word_conf_prob = [1.0]
         word0 = query_words[0].lower()
         # first word OOV
         if word0 not in self.word_index:
             if self.grapheme_mtx is not None:
-                cl_word_iv = self._get_closest_word_iv(word0)
-                conf_prob *= self._calc_conf_prob(word0, cl_word_iv)
-                word0 = cl_word_iv
+                # searching for the n closest IV words (using levenshtein_distance)
+                closest_words_iv = self._get_n_closest_words_iv(word0, n=self.max_closest)
+                # the closest word is calculated by getting the highest confusion probability between the
+                # closest N words using levenshtein_distance.
+                cl_iv_word, conf_prob = self._get_highest_conf_prob(word0, closest_words_iv)
+                # updating confusion probability of first word
+                first_word_conf_prob = [conf_prob]
+                word0 = cl_iv_word
             else:
                 return ret
         # first word encountered, so let's reset hit scores first and then look for the hits
         self.cache_scores = []
+        self.cache_conf_probs = []
         for doc_id, word_position in self.word_index[word0]:
+            conf_probabilities = first_word_conf_prob.copy()
             # prev_end_time = prev_tbeg + prev_dur
             prev_end_time = self.doc_index[doc_id][word_position][2]+self.doc_index[doc_id][word_position][3]
-            hit = True # hit flag  
+            hit = True # hit flag 
             for i in range(1, len(query_words)):
                 # checking phrase in the document
                 pointer_position = word_position + i
@@ -185,16 +205,22 @@ class Indexer:
                 if pointer_position >= len(self.doc_index[doc_id]) or self.doc_index[doc_id][pointer_position][2] - 0.5 > prev_end_time:
                     hit = False; break
                 else:
-                    # next word doc = next word phrase
+                    # next word doc = next word query phrase
                     if self.doc_index[doc_id][pointer_position][0] == query_words[i].lower():
                         # prev_end_time = prev_tbeg + prev_dur
                         prev_end_time = self.doc_index[doc_id][pointer_position][2] + self.doc_index[doc_id][pointer_position][3]
+                        conf_probabilities.append(1.0) # the current query word is IV
                     # if the queried word does NOT match, we check if it is an OOV word (only if we are using grapheme confusion matrix)
                     elif self.grapheme_mtx is not None and query_words[i].lower() not in self.word_index:
-                        cl_query_word_iv = self._get_closest_word_iv(query_words[i].lower())
-                        if self.doc_index[doc_id][pointer_position][0] == cl_query_word_iv:
+                        # searching for the n closest IV words (using levenshtein_distance)
+                        closest_words_iv = self._get_n_closest_words_iv(query_words[i].lower(), n=self.max_closest)
+                        # the closest word is calculated by getting the highest confusion probability between the
+                        # closest N words using levenshtein_distance.
+                        cl_iv_word, conf_prob = self._get_highest_conf_prob(word0, closest_words_iv)
+                        if self.doc_index[doc_id][pointer_position][0] == cl_iv_word:
                             prev_end_time = self.doc_index[doc_id][pointer_position][2] + self.doc_index[doc_id][pointer_position][3]
-                            conf_prob *= self._calc_conf_prob(query_words[i].lower(), cl_query_word_iv)
+                            # updating confusion probability of current word
+                            conf_probabilities.append(conf_prob)
                         else:
                             hit = False; break
                     else:
@@ -213,11 +239,12 @@ class Indexer:
                 ret_dur = round(ret_dur, 2)
                 # scores
                 self._cache_scores(doc_id, word_position, len(query_words))
+                self.cache_conf_probs.append(conf_probabilities) 
                 # query hit information
                 ret_item = (doc_id, ret_word, ret_ch, ret_tbeg, ret_dur) # ret_score will need to be appended afterwards
                 ret.append(ret_item)
         
-        ret = self._calculate_scores(ret, len(query_words), metric='prod', score_norm=score_norm, gamma=gamma)
+        ret = self._calculate_scores(ret, len(query_words), score_norm=score_norm, gamma=gamma)
         return ret
 
 
@@ -240,7 +267,7 @@ if __name__ == '__main__':
     # expected output:
     #   file="BABEL_OP2_202_29663_20131208_035816_outLine" channel="1" tbeg="217.41" dur="0.83" score="1.000000"
 
-    print(indexer.search_query('what she has gonee'))
+    print(indexer.search_query('what she ha gonee'))
     # expected output IF USING GRAPHEME CONFUSION MATRIX:
     #   file="BABEL_OP2_202_29663_20131208_035816_outLine" channel="1" tbeg="217.41" dur="0.83" score="1.000000"
     # expected output IF *NOT* USING GRAPHEME CONFUSION MATRIX:
