@@ -10,7 +10,7 @@ from model import Model, Actions
 
 
 
-def expected_sarsa(model: Model, max_epochs: int = 1000, maxit: int = 100, alpha: float = 0.2, epsilon: float = 0.1):
+def expected_sarsa(model: Model, max_epochs: int = 5000, maxit: int = 200, alpha: float = 0.2, epsilon: float = 0.1):
     '''
         References for some code:
         https://medium.com/analytics-vidhya/q-learning-expected-sarsa-and-comparison-of-td-learning-algorithms-e4612064de97
@@ -74,17 +74,12 @@ def expected_sarsa(model: Model, max_epochs: int = 1000, maxit: int = 100, alpha
             s = new_s
             # checking if the new state is terminal
             if s == model.goal_state:
+                r = model.reward(s, a)
+                Q[s][a] += alpha*(r - Q[s][a])
                 break
         
-        # checking convergence
-        V_new = np.amax(Q, axis=1)
-        pi_new = np.argmax(Q, axis=1)
-        if all(pi_new == pi):
-            break
-        
-        V = V_new
-        pi = pi_new
-
+    V = np.amax(Q, axis=1)
+    pi = np.argmax(Q, axis=1)
     return V, pi
 
 

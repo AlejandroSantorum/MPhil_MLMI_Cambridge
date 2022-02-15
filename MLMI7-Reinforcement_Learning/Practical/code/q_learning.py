@@ -9,7 +9,7 @@ from model import Model, Actions
 
 
 
-def q_learning(model: Model, max_epochs: int = 100, maxit: int = 50, alpha: float = 0.2, epsilon: float = 0.1):
+def q_learning(model: Model, max_epochs: int = 10000, maxit: int = 1000, alpha: float = 0.2, epsilon: float = 0.1):
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
     Q = np.zeros((model.num_states, len(Actions)))
@@ -44,17 +44,12 @@ def q_learning(model: Model, max_epochs: int = 100, maxit: int = 50, alpha: floa
             s = new_s
             # checking if the new state is terminal
             if s == model.goal_state:
+                r = model.reward(s, a)
+                Q[s][a] += alpha*(r - Q[s][a])
                 break
         
-        # checking convergence
-        V_new = np.amax(Q, axis=1)
-        pi_new = np.argmax(Q, axis=1)
-        if all(pi_new == pi):
-            break
-        
-        V = V_new
-        pi = pi_new
-
+    V = np.amax(Q, axis=1)
+    pi = np.argmax(Q, axis=1)
     return V, pi
 
 
