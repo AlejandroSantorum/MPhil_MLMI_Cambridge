@@ -1,4 +1,5 @@
 import sys
+import numpy as np
 from Levenshtein import distance as levenshtein_distance
 from difflib import SequenceMatcher
 from grapheme import build_grapheme_confusion_mtx, grapheme_to_idx
@@ -73,9 +74,10 @@ class Indexer:
             cache.append(self.doc_index[doc_id][word_position+i][4])
         self.cache_scores.append(cache)
 
-
+    '''
     def _calculate_scores(self, hits, query_length, score_norm=False, gamma=1.0):
         ret = []
+
         # perform score normalisation if specified
         if score_norm:
             # calculating denominators of the score normalisation expression
@@ -95,13 +97,32 @@ class Indexer:
         # calculating query score
         for idx, hit in enumerate(hits):
             score = 1.0
+            aux = 0
             for i in range(len(self.cache_scores[idx])):
                 if score_norm:
+                    aux += self.cache_scores[idx][i]
                     score *= self.cache_scores[idx][i]
                 else:
                     score *= self.cache_conf_probs[idx][i]*self.cache_scores[idx][i]
             
             ret_hit = hit + (score,) # concatenating tuples
+            ret.append(ret_hit)
+        
+        return ret
+    '''
+    def _calculate_scores(self, hits, query_length, score_norm=False, gamma=1.0):
+        ret = []
+
+        hits_score = np.ones(len(hits))
+        for idx, hit in enumerate(hits):
+            for i in range(len(self.cache_scores[idx])):
+                hits_score[idx] *= self.cache_conf_probs[idx][i]*self.cache_scores[idx][i]
+        
+        if score_norm:
+            hits_score /= np.sum(hits_score)
+
+        for idx, hit in enumerate(hits):
+            ret_hit = hit + (hits_score[idx],)
             ret.append(ret_hit)
         
         return ret
@@ -255,13 +276,12 @@ if __name__ == '__main__':
     else:
         indexer = Indexer()
 
+    ''' TEST 1
     indexer.build_index('./lib/ctms/reference.ctm')
 
     print(indexer.search_query('nimwachie'))
     # expected output:
     #   file="BABEL_OP2_202_92740_20130923_235638_outLine" channel="1" tbeg="104.61" dur="0.75" score="1.000000"
-
-    #print(indexer.search_query('what'))
 
     print(indexer.search_query('what she has gone'))
     # expected output:
@@ -272,3 +292,10 @@ if __name__ == '__main__':
     #   file="BABEL_OP2_202_29663_20131208_035816_outLine" channel="1" tbeg="217.41" dur="0.83" score="1.000000"
     # expected output IF *NOT* USING GRAPHEME CONFUSION MATRIX:
     #   []
+    '''
+
+    indexer.build_index('./lib/ctms/decode.ctm')
+
+    hit_list = indexer.search_query('wiki mbili', score_norm=True)
+    for hit in hit_list:
+        print(hit[5])
