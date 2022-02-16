@@ -11,10 +11,10 @@
 |                        Value |                                                                                1 |
 |                        Ptarg |                                                                           0.0001 |
 |                         Cost |                                                                           0.1000 |
-|            Combined DET Plot |                                                        /tmp/R3CjI0cGIc/merge.png |
+|            Combined DET Plot |                                                        /tmp/_QR16JQqql/merge.png |
 
 
-|              |                  Inputs                  |                                Actual Decision TWV Analysis                                |              Maximum TWV Analysis               |                                              DET Curve Graphs                                              |
-|    Title     |  #Keyword  |  #Targ  |  #NTarg  |  #Sys  |  #CorDet  |  #Cor!Det  |  #FA   |  #Miss  |    PFA    |  PMiss   |   TWV    |  Dec. Tresh  |    PFA    |  PMiss   |   TWV    |  Dec. Thresh  |                    DET Curve                     |                     Threshold Curve                     |
-|--------------+------------+---------+----------+--------+-----------+------------+--------+---------+-----------+----------+----------+--------------+-----------+----------+----------+---------------+--------------------------------------------------+---------------------------------------------------------+
-|   Occurrence |        488 |     963 |     1220 |   1631 |       411 |          0 |   1220 |     552 |   0.00007 |    0.649 |   0.2817 |       0.0007 |   0.00002 |    0.661 |   0.3240 |         0.057 |   /tmp/R3CjI0cGIc/merge.Occurrencescoring_ou.png |   /tmp/R3CjI0cGIc/merge.Occurrencescoring_ou.thresh.png |
+|              |                  Inputs                  |                               Actual Decision TWV Analysis                                |              Maximum TWV Analysis               |                                              DET Curve Graphs                                              |
+|    Title     |  #Keyword  |  #Targ  |  #NTarg  |  #Sys  |  #CorDet  |  #Cor!Det  |  #FA  |  #Miss  |    PFA    |  PMiss   |   TWV    |  Dec. Tresh  |    PFA    |  PMiss   |   TWV    |  Dec. Thresh  |                    DET Curve                     |                     Threshold Curve                     |
+|--------------+------------+---------+----------+--------+-----------+------------+-------+---------+-----------+----------+----------+--------------+-----------+----------+----------+---------------+--------------------------------------------------+---------------------------------------------------------+
+|   Occurrence |        488 |     963 |      384 |    782 |       398 |          0 |   384 |     565 |   0.00002 |    0.658 |   0.3201 |       0.0060 |   0.00002 |    0.661 |   0.3240 |         0.057 |   /tmp/_QR16JQqql/merge.Occurrencescoring_ou.png |   /tmp/_QR16JQqql/merge.Occurrencescoring_ou.thresh.png |

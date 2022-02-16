@@ -264,7 +264,7 @@ class Indexer:
                 # query hit information
                 ret_item = (doc_id, ret_word, ret_ch, ret_tbeg, ret_dur) # ret_score will need to be appended afterwards
                 ret.append(ret_item)
-        
+
         ret = self._calculate_scores(ret, len(query_words), score_norm=score_norm, gamma=gamma)
         return ret
 
