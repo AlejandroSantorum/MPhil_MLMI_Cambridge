@@ -10,7 +10,7 @@ from model import Model, Actions
 
 
 
-def expected_sarsa(model: Model, max_epochs: int = 5000, maxit: int = 200, alpha: float = 0.2, epsilon: float = 0.1):
+def expected_sarsa(model: Model, n_episodes: int = 5000, maxit: int = 200, alpha: float = 0.2, epsilon: float = 0.1):
     '''
         References for some code:
         https://medium.com/analytics-vidhya/q-learning-expected-sarsa-and-comparison-of-td-learning-algorithms-e4612064de97
@@ -18,6 +18,7 @@ def expected_sarsa(model: Model, max_epochs: int = 5000, maxit: int = 200, alpha
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
     Q = np.zeros((model.num_states, len(Actions)))
+    cum_r = np.zeros((n_episodes,))
 
 
     def choose_eps_greedily(s):
@@ -53,7 +54,7 @@ def expected_sarsa(model: Model, max_epochs: int = 5000, maxit: int = 200, alpha
         return next_state_probs
 
 
-    for _ in tqdm(range(max_epochs)):
+    for i in tqdm(range(n_episodes)):
         # init state
         s = model.start_state
 
@@ -72,6 +73,8 @@ def expected_sarsa(model: Model, max_epochs: int = 5000, maxit: int = 200, alpha
             Q[s][a] = Q[s][a] + alpha*(r + model.gamma*expected_q - Q[s][a])
             # updating state
             s = new_s
+            # updating cumulative reward
+            cum_r[i] += model.gamma*model.reward(s, a)
             # checking if the new state is terminal
             if s == model.goal_state:
                 r = model.reward(s, a)
@@ -80,7 +83,7 @@ def expected_sarsa(model: Model, max_epochs: int = 5000, maxit: int = 200, alpha
         
     V = np.amax(Q, axis=1)
     pi = np.argmax(Q, axis=1)
-    return V, pi
+    return V, pi, cum_r
 
 
 
@@ -97,7 +100,12 @@ if __name__ == "__main__":
             print("Error: unknown world type:", sys.argv[1])
     else:
         model = Model(small_world)
+    
+    if len(sys.argv) > 2:
+        n_episodes = int(sys.argv[2])
+        V, pi, _ = expected_sarsa(model, n_episodes=n_episodes)
+    else:
+        V, pi, _ = expected_sarsa(model)
 
-    V, pi = expected_sarsa(model)
     plot_vp(model, V, pi)
     plt.show()

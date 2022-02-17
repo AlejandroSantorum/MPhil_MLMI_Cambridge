@@ -7,7 +7,7 @@ from model import Model, Actions
 
 
 
-def value_iteration(model: Model, maxit: int = 100):
+def value_iteration(model: Model, n_episodes: int = 100):
     # Initialise values arbitrarily, e.g. V_0(s) = 0 for every s state
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
@@ -21,22 +21,26 @@ def value_iteration(model: Model, maxit: int = 100):
             ]
         )
 
-    def policy_improvement():
+    def value_func_update():
         V_new = np.zeros((model.num_states,))
         for s in model.states:
             action_values = [compute_value(s, a, model.reward) for a in Actions]
             action_val = np.max(action_values)
-            action_index = np.argmax(action_values)
             V_new[s] = action_val
-            pi[s] = Actions(action_index)
         return V_new
     
-    for i in tqdm(range(maxit)):
-        V_new = policy_improvement()
+    for i in tqdm(range(n_episodes)):
+        V_new = value_func_update()
         if all(V_new == V):
             print("breaking")
             break
         V = V_new
+
+    # get final policy 
+    for s in model.states:
+        action_values = [compute_value(s, a, model.reward) for a in Actions]
+        action_index = np.argmax(action_values)
+        pi[s] = Actions(action_index)
 
     return V, pi
 
@@ -58,7 +62,12 @@ if __name__ == "__main__":
             print("Error: unknown world type:", sys.argv[1])
     else:
         model = Model(small_world)
+    
+    if len(sys.argv) > 2:
+        n_episodes = int(sys.argv[2])
+        V, pi = value_iteration(model, n_episodes=n_episodes)
+    else:
+        V, pi = value_iteration(model)
 
-    V, pi = value_iteration(model)
     plot_vp(model, V, pi)
     plt.show()

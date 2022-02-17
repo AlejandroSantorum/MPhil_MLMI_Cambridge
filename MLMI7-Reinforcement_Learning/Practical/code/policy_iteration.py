@@ -8,7 +8,7 @@ import sys
 from model import Model, Actions
 
 
-def policy_iteration(model: Model, maxit: int = 100):
+def policy_iteration(model: Model, n_episodes: int = 100):
 
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
@@ -34,7 +34,7 @@ def policy_iteration(model: Model, maxit: int = 100):
             )
             pi[s] = Actions(action_index)
 
-    for i in tqdm(range(maxit)):
+    for i in tqdm(range(n_episodes)):
         for _ in range(5):
             policy_evaluation()
         pi_old = np.copy(pi)
@@ -62,7 +62,12 @@ if __name__ == "__main__":
             print("Error: unknown world type:", sys.argv[1])
     else:
         model = Model(small_world)
+    
+    if len(sys.argv) > 2:
+        n_episodes = int(sys.argv[2])
+        V, pi = policy_iteration(model, n_episodes=n_episodes)
+    else:
+        V, pi = policy_iteration(model)
 
-    V, pi = policy_iteration(model)
     plot_vp(model, V, pi)
     plt.show()

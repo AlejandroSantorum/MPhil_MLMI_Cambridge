@@ -9,10 +9,11 @@ from model import Model, Actions
 
 
 
-def sarsa(model: Model, max_epochs: int = 10000, maxit: int = 100, alpha: float = 0.2, epsilon: float = 0.1):
+def sarsa(model: Model, n_episodes: int = 10000, maxit: int = 100, alpha: float = 0.2, epsilon: float = 0.1):
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
     Q = np.zeros((model.num_states, len(Actions)))
+    cum_r = np.zeros((n_episodes,))
 
     def choose_eps_greedily(s):
         rand_n = np.random.rand()
@@ -24,7 +25,7 @@ def sarsa(model: Model, max_epochs: int = 10000, maxit: int = 100, alpha: float 
         idx = np.argmax(Q[s])
         return Actions(idx)
 
-    for _ in tqdm(range(max_epochs)):
+    for i in tqdm(range(n_episodes)):
         # init state
         s = model.start_state
         # init action eps-greedily
@@ -40,6 +41,8 @@ def sarsa(model: Model, max_epochs: int = 10000, maxit: int = 100, alpha: float 
             new_a = choose_eps_greedily(new_s)
             # update Q using SARSA equation
             Q[s][a] = Q[s][a] + alpha*(r + model.gamma*Q[new_s][new_a] - Q[s][a])
+            # updating cumulative reward
+            cum_r[i] += model.reward(s, a)
             # updating state and action
             s = new_s
             a = new_a
@@ -51,8 +54,7 @@ def sarsa(model: Model, max_epochs: int = 10000, maxit: int = 100, alpha: float 
 
     V = np.amax(Q, axis=1)
     pi = np.argmax(Q, axis=1)
-    return V, pi
-
+    return V, pi, cum_r
 
 
 
@@ -70,7 +72,12 @@ if __name__ == "__main__":
             print("Error: unknown world type:", sys.argv[1])
     else:
         model = Model(small_world)
+    
+    if len(sys.argv) > 2:
+        n_episodes = int(sys.argv[2])
+        V, pi, _ = sarsa(model, n_episodes=n_episodes)
+    else:
+        V, pi, _ = sarsa(model)
 
-    V, pi = sarsa(model)
     plot_vp(model, V, pi)
     plt.show()
