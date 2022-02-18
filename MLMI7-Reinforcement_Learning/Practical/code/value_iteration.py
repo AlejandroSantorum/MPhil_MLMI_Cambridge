@@ -7,10 +7,11 @@ from model import Model, Actions
 
 
 
-def value_iteration(model: Model, n_episodes: int = 100):
+def value_iteration(model: Model, n_episodes: int = 100, tol: float=0.001):
     # Initialise values arbitrarily, e.g. V_0(s) = 0 for every s state
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
+    mse_per_episode = []
 
     def compute_value(s, a, reward: Callable):
         return np.sum(
@@ -31,8 +32,9 @@ def value_iteration(model: Model, n_episodes: int = 100):
     
     for i in tqdm(range(n_episodes)):
         V_new = value_func_update()
-        if all(V_new == V):
-            print("breaking")
+        mse = ((V_new - V)**2).mean()
+        mse_per_episode.append(mse)
+        if all((V_new - V) <= tol):
             break
         V = V_new
 
@@ -42,7 +44,7 @@ def value_iteration(model: Model, n_episodes: int = 100):
         action_index = np.argmax(action_values)
         pi[s] = Actions(action_index)
 
-    return V, pi
+    return V, pi, np.array(mse_per_episode)
 
 
 
@@ -65,9 +67,9 @@ if __name__ == "__main__":
     
     if len(sys.argv) > 2:
         n_episodes = int(sys.argv[2])
-        V, pi = value_iteration(model, n_episodes=n_episodes)
+        V, pi, _ = value_iteration(model, n_episodes=n_episodes)
     else:
-        V, pi = value_iteration(model)
+        V, pi, _ = value_iteration(model)
 
     plot_vp(model, V, pi)
     plt.show()

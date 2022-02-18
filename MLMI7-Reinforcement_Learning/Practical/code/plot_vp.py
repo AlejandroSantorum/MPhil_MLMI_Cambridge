@@ -34,6 +34,7 @@ def plot_vp(model: Model, value_function: np.array, policy: np.array):
         v.reshape(model.world.num_rows, model.world.num_cols), cmap=cmap
     )
     fig.colorbar(im, cax=cax, orientation="horizontal")
+    cax.set_xlabel('State-action reward')
 
     for cell, marker in [
         (model.world.start_cell, "s"),

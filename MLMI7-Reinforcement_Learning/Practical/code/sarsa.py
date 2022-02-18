@@ -9,7 +9,7 @@ from model import Model, Actions
 
 
 
-def sarsa(model: Model, n_episodes: int = 10000, maxit: int = 100, alpha: float = 0.2, epsilon: float = 0.1):
+def sarsa(model: Model, n_episodes: int = 1000, maxit: int = 100, alpha: float = 0.2, epsilon: float = 0.1):
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
     Q = np.zeros((model.num_states, len(Actions)))
@@ -51,7 +51,7 @@ def sarsa(model: Model, n_episodes: int = 10000, maxit: int = 100, alpha: float 
                 r = model.reward(s, a)
                 Q[s][a] += alpha*(r - Q[s][a])
                 break
-
+    
     V = np.amax(Q, axis=1)
     pi = np.argmax(Q, axis=1)
     return V, pi, cum_r

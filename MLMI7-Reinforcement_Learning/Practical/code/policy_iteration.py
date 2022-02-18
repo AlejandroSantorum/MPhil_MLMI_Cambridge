@@ -12,6 +12,7 @@ def policy_iteration(model: Model, n_episodes: int = 100):
 
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
+    diff_per_episode = []
 
     def compute_value(s, a, reward: Callable):
         return np.sum(
@@ -39,11 +40,12 @@ def policy_iteration(model: Model, n_episodes: int = 100):
             policy_evaluation()
         pi_old = np.copy(pi)
         policy_improvement()
+        diffs = sum((pi_old != pi))
+        diff_per_episode.append(diffs)
         if all(pi_old == pi):
-            print("breaking")
             break
 
-    return V, pi
+    return V, pi, np.array(diff_per_episode)
 
 
 if __name__ == "__main__":
@@ -65,9 +67,9 @@ if __name__ == "__main__":
     
     if len(sys.argv) > 2:
         n_episodes = int(sys.argv[2])
-        V, pi = policy_iteration(model, n_episodes=n_episodes)
+        V, pi, _ = policy_iteration(model, n_episodes=n_episodes)
     else:
-        V, pi = policy_iteration(model)
+        V, pi, _ = policy_iteration(model)
 
     plot_vp(model, V, pi)
     plt.show()
