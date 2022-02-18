@@ -9,16 +9,17 @@ from model import Model, Actions
 
 
 
-def sarsa(model: Model, n_episodes: int = 1000, maxit: int = 100, alpha: float = 0.2, epsilon: float = 0.1):
+def sarsa(model: Model, n_episodes: int = 1000, maxit: int = 100, alpha: float = 0.3, epsilon: float = 0.1, decay_alpha=False, decay_eps=False):
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
     Q = np.zeros((model.num_states, len(Actions)))
     cum_r = np.zeros((n_episodes,))
+    cum_iter = np.zeros((n_episodes,))
 
-    def choose_eps_greedily(s):
+    def choose_eps_greedily(s, eps):
         rand_n = np.random.rand()
 
-        if rand_n < epsilon:
+        if rand_n < eps:
             rand_idx = np.random.randint(0, len(Actions))
             return Actions(rand_idx)
         
@@ -29,17 +30,22 @@ def sarsa(model: Model, n_episodes: int = 1000, maxit: int = 100, alpha: float =
         # init state
         s = model.start_state
         # init action eps-greedily
-        a = choose_eps_greedily(s)
+        a = choose_eps_greedily(s, epsilon) if not decay_eps else choose_eps_greedily(s, 1/(i+1))
+
+        if i > 0:
+                cum_iter[i] = cum_iter[i-1]
 
         for _ in range(maxit):
+            cum_iter[i] += 1
             # get new state after taking action a
             acts_probs_dict = model._possible_next_states_from_state_action(s, a)
             new_s = np.random.choice(list(acts_probs_dict.keys()), p=list(acts_probs_dict.values()))
             # calculate reward
             r = model.reward(s, a)
             # get new action eps-greedily
-            new_a = choose_eps_greedily(new_s)
+            new_a = choose_eps_greedily(s, epsilon) if not decay_eps else choose_eps_greedily(s, 1/(i+1))
             # update Q using SARSA equation
+            if decay_alpha: alpha = 1/(i+1)
             Q[s][a] = Q[s][a] + alpha*(r + model.gamma*Q[new_s][new_a] - Q[s][a])
             # updating cumulative reward
             cum_r[i] += model.reward(s, a)
@@ -54,7 +60,7 @@ def sarsa(model: Model, n_episodes: int = 1000, maxit: int = 100, alpha: float =
     
     V = np.amax(Q, axis=1)
     pi = np.argmax(Q, axis=1)
-    return V, pi, cum_r
+    return V, pi, cum_r, cum_iter
 
 
 
@@ -75,9 +81,9 @@ if __name__ == "__main__":
     
     if len(sys.argv) > 2:
         n_episodes = int(sys.argv[2])
-        V, pi, _ = sarsa(model, n_episodes=n_episodes)
+        V, pi, _, _ = sarsa(model, n_episodes=n_episodes)
     else:
-        V, pi, _ = sarsa(model)
+        V, pi, _, _ = sarsa(model)
 
     plot_vp(model, V, pi)
     plt.show()
