@@ -8,7 +8,6 @@ from plot_vp import plot_vp
 from model import Model, Actions
 
 
-
 def sarsa(model: Model, n_episodes: int = 1000, maxit: int = 100, alpha: float = 0.3, epsilon: float = 0.1, decay_alpha=False, decay_eps=False):
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
@@ -37,18 +36,18 @@ def sarsa(model: Model, n_episodes: int = 1000, maxit: int = 100, alpha: float =
 
         for _ in range(maxit):
             cum_iter[i] += 1
+            # calculate reward
+            r = model.reward(s, a)
             # get new state after taking action a
             acts_probs_dict = model._possible_next_states_from_state_action(s, a)
             new_s = np.random.choice(list(acts_probs_dict.keys()), p=list(acts_probs_dict.values()))
-            # calculate reward
-            r = model.reward(s, a)
             # get new action eps-greedily
-            new_a = choose_eps_greedily(s, epsilon) if not decay_eps else choose_eps_greedily(s, 1/(i+1))
+            new_a = choose_eps_greedily(new_s, epsilon) if not decay_eps else choose_eps_greedily(new_s, 1/(i+1))
             # update Q using SARSA equation
             if decay_alpha: alpha = 1/(i+1)
             Q[s][a] = Q[s][a] + alpha*(r + model.gamma*Q[new_s][new_a] - Q[s][a])
             # updating cumulative reward
-            cum_r[i] += model.reward(s, a)
+            cum_r[i] += r
             # updating state and action
             s = new_s
             a = new_a
@@ -58,8 +57,9 @@ def sarsa(model: Model, n_episodes: int = 1000, maxit: int = 100, alpha: float =
                 Q[s][a] += alpha*(r - Q[s][a])
                 break
     
-    V = np.amax(Q, axis=1)
-    pi = np.argmax(Q, axis=1)
+        V = np.amax(Q, axis=1)
+        pi = np.argmax(Q, axis=1)
+
     return V, pi, cum_r, cum_iter
 
 

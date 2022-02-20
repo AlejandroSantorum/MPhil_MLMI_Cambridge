@@ -16,13 +16,11 @@ from scipy.ndimage.filters import uniform_filter1d
 if __name__ == '__main__':
     model = Model(cliff_world)
 
-    V_sarsa, pi_sarsa, cumR_sarsa, _ = sarsa(model, n_episodes=2000, maxit=100, alpha=0.2, epsilon=0.1)
-    V_ql, pi_ql, cumR_ql, _ = q_learning(model, n_episodes=2000, maxit=100, alpha=0.2, epsilon=0.1)
+    V_sarsa, pi_sarsa, cumR_sarsa, _ = sarsa(model, n_episodes=5000, maxit=100, alpha=0.2, epsilon=0.1)
+    V_ql, pi_ql, cumR_ql, _ = q_learning(model, n_episodes=5000, maxit=100, alpha=0.2, epsilon=0.1)
 
-    y_sarsa = uniform_filter1d(cumR_sarsa, size=100)
-    y_ql = uniform_filter1d(cumR_ql, size=100)
-
-    #plt.style.use('seaborn')
+    y_sarsa = uniform_filter1d(cumR_sarsa, size=150)
+    y_ql = uniform_filter1d(cumR_ql, size=150)
 
     plt.plot(range(len(y_sarsa)), y_sarsa, label='SARSA')
     plt.plot(range(len(y_ql)), y_ql, label='Q Learning')
