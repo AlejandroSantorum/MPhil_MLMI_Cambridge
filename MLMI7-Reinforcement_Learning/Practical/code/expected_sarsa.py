@@ -10,7 +10,7 @@ from model import Model, Actions
 
 
 
-def expected_sarsa(model: Model, n_episodes: int = 5000, maxit: int = 200, alpha: float = 0.2, epsilon: float = 0.1):
+def expected_sarsa(model: Model, n_episodes: int=1000, maxit: int=100, alpha: float=0.3, epsilon: float=0.1, decay_eps=False):
     '''
         References for some code:
         https://medium.com/analytics-vidhya/q-learning-expected-sarsa-and-comparison-of-td-learning-algorithms-e4612064de97
@@ -19,12 +19,13 @@ def expected_sarsa(model: Model, n_episodes: int = 5000, maxit: int = 200, alpha
     pi = np.zeros((model.num_states,))
     Q = np.zeros((model.num_states, len(Actions)))
     cum_r = np.zeros((n_episodes,))
+    cum_iter = np.zeros((n_episodes,))
 
 
-    def choose_eps_greedily(s):
+    def choose_eps_greedily(s, eps):
         rand_n = np.random.rand()
 
-        if rand_n < epsilon:
+        if rand_n < eps:
             rand_idx = np.random.randint(0, len(Actions))
             return Actions(rand_idx)
         
@@ -54,13 +55,17 @@ def expected_sarsa(model: Model, n_episodes: int = 5000, maxit: int = 200, alpha
         return next_state_probs
 
 
-    for i in tqdm(range(n_episodes)):
+    for i in tqdm(range(n_episodes), disable=False):
         # init state
         s = model.start_state
 
+        if i > 0:
+                cum_iter[i] = cum_iter[i-1]
+
         for _ in range(maxit):
+            cum_iter[i] += 1
             # choose action eps-greedily
-            a = choose_eps_greedily(s)
+            a = choose_eps_greedily(s, epsilon) if not decay_eps else choose_eps_greedily(s, 1/(i+1))
             # get new state after taking action a
             acts_probs_dict = model._possible_next_states_from_state_action(s, a)
             new_s = np.random.choice(list(acts_probs_dict.keys()), p=list(acts_probs_dict.values()))
@@ -83,7 +88,7 @@ def expected_sarsa(model: Model, n_episodes: int = 5000, maxit: int = 200, alpha
         
     V = np.amax(Q, axis=1)
     pi = np.argmax(Q, axis=1)
-    return V, pi, cum_r
+    return V, pi, cum_r, cum_iter
 
 
 
@@ -103,9 +108,9 @@ if __name__ == "__main__":
     
     if len(sys.argv) > 2:
         n_episodes = int(sys.argv[2])
-        V, pi, _ = expected_sarsa(model, n_episodes=n_episodes)
+        V, pi, _, _ = expected_sarsa(model, n_episodes=n_episodes)
     else:
-        V, pi, _ = expected_sarsa(model)
+        V, pi, _, _ = expected_sarsa(model)
 
     plot_vp(model, V, pi)
     plt.show()

@@ -8,7 +8,7 @@ from plot_vp import plot_vp
 from model import Model, Actions
 
 
-def sarsa(model: Model, n_episodes: int = 1000, maxit: int = 100, alpha: float = 0.3, epsilon: float = 0.1, decay_alpha=False, decay_eps=False):
+def sarsa(model: Model, n_episodes: int=1000, maxit: int=100, alpha: float=0.3, epsilon: float=0.1, decay_alpha=False, decay_eps=False):
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
     Q = np.zeros((model.num_states, len(Actions)))
@@ -25,7 +25,7 @@ def sarsa(model: Model, n_episodes: int = 1000, maxit: int = 100, alpha: float =
         idx = np.argmax(Q[s])
         return Actions(idx)
 
-    for i in tqdm(range(n_episodes)):
+    for i in tqdm(range(n_episodes), disable=False):
         # init state
         s = model.start_state
         # init action eps-greedily
@@ -57,9 +57,8 @@ def sarsa(model: Model, n_episodes: int = 1000, maxit: int = 100, alpha: float =
                 Q[s][a] += alpha*(r - Q[s][a])
                 break
     
-        V = np.amax(Q, axis=1)
-        pi = np.argmax(Q, axis=1)
-
+    V = np.amax(Q, axis=1)
+    pi = np.argmax(Q, axis=1)
     return V, pi, cum_r, cum_iter
 
 

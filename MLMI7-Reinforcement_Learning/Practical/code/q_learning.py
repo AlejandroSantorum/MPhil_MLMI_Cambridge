@@ -9,7 +9,7 @@ from model import Model, Actions
 
 
 
-def q_learning(model: Model, n_episodes: int = 10000, maxit: int = 1000, alpha: float = 0.2, epsilon: float = 0.1, decay_alpha=False, decay_eps=False):
+def q_learning(model: Model, n_episodes: int=1000, maxit: int=100, alpha: float=0.3, epsilon: float=0.1, decay_alpha=False, decay_eps=False):
     V = np.zeros((model.num_states,))
     pi = np.zeros((model.num_states,))
     Q = np.zeros((model.num_states, len(Actions)))
@@ -26,7 +26,7 @@ def q_learning(model: Model, n_episodes: int = 10000, maxit: int = 1000, alpha: 
         idx = np.argmax(Q[s])
         return Actions(idx)
 
-    for i in tqdm(range(n_episodes)):
+    for i in tqdm(range(n_episodes), disable=False):
         # init state
         s = model.start_state
 
@@ -45,6 +45,7 @@ def q_learning(model: Model, n_episodes: int = 10000, maxit: int = 1000, alpha: 
             # approximating the optimal action-value function
             q = np.max(Q[new_s])
             # update Q using SARSA equation
+            if decay_alpha: alpha = 1/(i+1)
             Q[s][a] = Q[s][a] + alpha*(r + model.gamma*q - Q[s][a])
             # updating cumulative reward
             cum_r[i] += model.reward(s, a)
