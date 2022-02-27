@@ -54,6 +54,7 @@ def sarsa(model: Model, n_episodes: int=1000, maxit: int=100, alpha: float=0.3, 
             # checking if the new state is terminal
             if s == model.goal_state:
                 r = model.reward(s, a)
+                cum_r[i] += r
                 Q[s][a] += alpha*(r - Q[s][a])
                 break
     
