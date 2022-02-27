@@ -138,4 +138,6 @@ if __name__ == '__main__':
         # python3 system_comb.py ./lib/kws/word.xml ./lib/kws/word-sys2.xml ./test_sys_comb.xml -combSUM
         # python3 system_comb.py ./lib/kws/word.xml ./lib/kws/word-sys2.xml ./test_sys_comb.xml -combMEAN
 
-        # python3 system_comb.py ./output/out_decode.xml ./output/out_my_morph_decode.xml ./output/sys_combination/decode+my_decode_morph.xml -combSUM
+        # python3 system_comb.py ./output/out_decode.xml ./output/out_my_morph_decode.xml ./output/sys_comb/decode+my_decode_morph.xml -combSUM
+
+        # python3 system_comb.py ./output/out_decode_scNorm1.xml ./output/out_decode-morph_scNorm1.xml ./lib/kws/word_SN.xml ./lib/kws/word-sys2_SN.xml ./output/sys_comb/sum_decode_SN+decode-morph_SN+word_SN+word-sys2_SN.xml -combSUM

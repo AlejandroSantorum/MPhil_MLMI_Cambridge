@@ -1,0 +1,20 @@
+|                                 Performance Summary Over and Ensemble of Subsets                                 |
+|             Key              |                                       Value                                       |
+|------------------------------+-----------------------------------------------------------------------------------+
+|                 System Title |                                                                                NA |
+|                  Decision ID |                                                                        Occurrence |
+|                    TotTrials |                                                                             35843 |
+|   IncludeBlocksWithNoTargets |                                                                                 0 |
+|              TrialsPerSecond |                                                                                 1 |
+|                       TotDur |                                                                        35842.9925 |
+|                         BETA |                                                                             999.9 |
+|                        Value |                                                                                 1 |
+|                        Ptarg |                                                                            0.0001 |
+|                         Cost |                                                                            0.1000 |
+|            Combined DET Plot |   scoring/wsum_morph_SN+word_SN-tmp/Full-Occur-MITLLFA3-AppenWordSeg.dets/sum.png |
+
+
+|              |                  Inputs                   |                                 Actual Decision TWV Analysis                                 |              Maximum TWV Analysis               |                                                                                          DET Curve Graphs                                                                                          |
+|    Title     |  #Keyword  |  #Targ  |  #NTarg  |  #Sys   |  #CorDet  |  #Cor!Det  |   #FA   |  #Miss  |    PFA    |  PMiss   |    TWV    |  Dec. Tresh  |    PFA    |  PMiss   |   TWV    |  Dec. Thresh  |                                          DET Curve                                           |                                           Threshold Curve                                           |
+|--------------+------------+---------+----------+---------+-----------+------------+---------+---------+-----------+----------+-----------+--------------+-----------+----------+----------+---------------+----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
+|   Occurrence |        488 |     963 |    17874 |   18637 |       763 |          0 |   17874 |     200 |   0.00102 |    0.261 |   -0.2828 |       0.0005 |   0.00008 |    0.381 |   0.5420 |         0.027 |   scoring/wsum_morph_SN+word_SN-tmp/Full-Occur-MITLLFA3-AppenWordSeg.dets/sum.Occurrence.png |   scoring/wsum_morph_SN+word_SN-tmp/Full-Occur-MITLLFA3-AppenWordSeg.dets/sum.Occurrence.thresh.png |

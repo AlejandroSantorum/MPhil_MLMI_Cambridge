@@ -1,5 +1,5 @@
 Program: BABEL_Scorer (F4DE-3.2.4)
-Date: Wed 16 Feb 07:39:18 GMT 2022
+Date: Wed 23 Feb 11:28:50 GMT 2022
 Info: EXPID = KWS13_CUED_IARPA-babel202b-v1.0d_conv-dev_BaDev_KWS_FullLP_BaseLR_NTAR_p-test_1
 Info: Tag = KWS13
 Info: Team = CUED
