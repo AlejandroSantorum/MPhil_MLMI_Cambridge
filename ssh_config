@@ -1,3 +1,7 @@
+Host login-gpu.hpc.cam.ac.uk
+  HostName login-gpu.hpc.cam.ac.uk
+  User as3159
+
 Host gate.eng.cam.ac.uk
   HostName gate.eng.cam.ac.uk
   User as3159
