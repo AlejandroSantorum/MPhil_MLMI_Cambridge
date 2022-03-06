@@ -39,8 +39,7 @@ def sarsa(model: Model, n_episodes: int=1000, maxit: int=100, alpha: float=0.3, 
             # calculate reward
             r = model.reward(s, a)
             # get new state after taking action a
-            acts_probs_dict = model._possible_next_states_from_state_action(s, a)
-            new_s = np.random.choice(list(acts_probs_dict.keys()), p=list(acts_probs_dict.values()))
+            new_s = model.next_state(s, a)
             # get new action eps-greedily
             new_a = choose_eps_greedily(new_s, epsilon) if not decay_eps else choose_eps_greedily(new_s, 1/(i+1))
             # update Q using SARSA equation

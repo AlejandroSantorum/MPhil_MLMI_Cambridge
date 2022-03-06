@@ -66,11 +66,10 @@ def expected_sarsa(model: Model, n_episodes: int=1000, maxit: int=100, alpha: fl
             cum_iter[i] += 1
             # choose action eps-greedily
             a = choose_eps_greedily(s, epsilon) if not decay_eps else choose_eps_greedily(s, 1/(i+1))
-            # get new state after taking action a
-            acts_probs_dict = model._possible_next_states_from_state_action(s, a)
-            new_s = np.random.choice(list(acts_probs_dict.keys()), p=list(acts_probs_dict.values()))
             # calculate reward
             r = model.reward(s, a)
+            # get new state after taking action a
+            new_s = model.next_state(s, a)
             # calculate expected value of the action-value function
             next_state_probs = action_probs(new_s)
             expected_q = sum([a*b for a, b in zip(next_state_probs, Q[new_s])])

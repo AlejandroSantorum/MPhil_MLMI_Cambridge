@@ -87,6 +87,10 @@ class Model:
         else:
             # otherwise we simply made a valid step, and return the reward for this
             return self.world.reward_step
+    
+    def next_state(self, s: State, a: Actions) -> State:
+        probs = [self.transition_probability(s, s2, a) for s2 in self.states[:-1]]
+        return np.random.choice(range(self.num_states - 1), p=probs)
 
     def transition_probability(self, s1: State, s2: State, a: Actions) -> float:
         """

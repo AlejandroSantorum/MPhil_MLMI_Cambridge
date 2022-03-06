@@ -37,11 +37,10 @@ def q_learning(model: Model, n_episodes: int=1000, maxit: int=100, alpha: float=
             cum_iter[i] += 1
             # choose action eps-greedily
             a = choose_eps_greedily(s, epsilon) if not decay_eps else choose_eps_greedily(s, 1/(i+1))
-            # get new state after taking action a
-            acts_probs_dict = model._possible_next_states_from_state_action(s, a)
-            new_s = np.random.choice(list(acts_probs_dict.keys()), p=list(acts_probs_dict.values()))
             # calculate reward
             r = model.reward(s, a)
+            # get new state after taking action a
+            new_s = model.next_state(s, a)
             # approximating the optimal action-value function
             q = np.max(Q[new_s])
             # update Q using SARSA equation
