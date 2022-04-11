@@ -1,0 +1,64 @@
+decode:
+  corpus: multiwoz21
+  model_name_or_path: gpt2
+  max_seq_len: 1024
+  data_size: null
+  decode_only: []
+  decode_steps: []
+  max_len: 1024
+  temperature: 1.0
+  num_beams: 1
+  checkpoint: /rds/user/as3159/hpc-work/checkpoints/nlu_continued_training/model.180000
+  hyp_dir: hyps
+  experiment_name: nlu_continued_training
+  generate_api: custom
+  repeat_token_tolerance: 10
+  verbose:
+    disable_display: false
+  override: false
+  dst_test_path: /rds/project/rds-xyBFuSj0hm0/MLMI8.L2022/GPT2DST/data_preparation/data/multiwoz21/processed/test/version_1/data.json
+data:
+  version: 1
+  processing:
+    sequence_format:
+      separators:
+        state_components: ' <sep> '
+      example_format:
+        dst_input: turn_pair
+        belief_state_type: nlu
+train:
+  model_name_or_path: gpt2
+  max_seq_len: 1024
+  epochs: 4
+  data_size: -1
+  batch_size: 1
+  gradient_accumulation_steps: 8
+  max_grad_norm: 1.0
+  use_scheduler: true
+  warmup_steps: 0
+  learning_rate: 6.25e-05
+  adam_eps: 1.0e-12
+  fp16: false
+  eps: 1.0e-12
+  checkpoint_dir: checkpoints
+  experiment_name: nlu_continued_training
+  checkpoint: /rds/project/rds-xyBFuSj0hm0/MLMI8.L2022/GPT2DST/checkpoints/nlu_flat_start/model.60000
+  verbose:
+    disable_display: false
+  dst_train_path: /rds/project/rds-xyBFuSj0hm0/MLMI8.L2022/GPT2DST/data_preparation/data/multiwoz21/processed/train/version_1/data.json
+  special_tokens:
+    state_components: ' <sep> '
+dev:
+  max_seq_len: 1024
+  data_size: -1
+  eval_interval: 2000
+  batch_size: 1
+  verbose:
+    disable_display: false
+  dst_dev_path: /rds/project/rds-xyBFuSj0hm0/MLMI8.L2022/GPT2DST/data_preparation/data/multiwoz21/processed/dev/version_1/data.json
+reproduce:
+  seed: 1122
+  cudnn:
+    enabled: true
+    deterministic: false
+    benchmark: true
