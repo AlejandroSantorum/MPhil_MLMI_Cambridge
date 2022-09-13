@@ -1,4 +1,6 @@
-# Computer Vision
+# MLMI12 - Computer Vision
+
+Taught by [Prof. Ignas Budvytis](http://mi.eng.cam.ac.uk/~ib255/).
 
 The aims of the course are to:
 - Introduce the principles, models and applications of computer vision.

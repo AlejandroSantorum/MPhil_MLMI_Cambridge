@@ -1,5 +1,7 @@
 # L48 - Machine Learning and the Physical World
 
+Taught by [Prof. Carl Henrik Ek](http://carlhenrik.com/) and [Prof. Neil Lawrence](https://inverseprobability.com/).
+
 The course is focused on machine learning systems that interact directly with the real world. Building artificial systems that interact with the physical world have significantly different challenges compared to the purely digital domain. This module will provide the methodological background to machine learning applied in this scenario. We will study how we can build models with a principled treatment of uncertainty, allowing us to leverage prior knowledge and provide decisions that can be interrogated.
 
 Main page of MLPW: <https://mlatcl.github.io/mlphysical/>
