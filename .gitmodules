@@ -1,0 +1,3 @@
+[submodule "mphil-mlmi-cambridge"]
+	path = mphil-mlmi-cambridge
+	url = https://github.com/AlejandroSantorum/mphil-mlmi-cambridge.git
